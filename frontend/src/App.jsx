@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import PlanTrip from "./pages/PlanTrip";
 
 function App() {
   return (
@@ -11,10 +12,7 @@ function App() {
             path="/"
             element={<h1 className="text-4xl font-bold p-6">Home Page</h1>}
           />
-          <Route
-            path="/plan"
-            element={<h1 className="text-4xl font-bold p-6">Plan a Trip</h1>}
-          />
+          <Route path="/plan" element={<PlanTrip />} />
           <Route
             path="/trips"
             element={<h1 className="text-4xl font-bold p-6">Trips</h1>}
