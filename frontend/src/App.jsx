@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 import PlanTrip from "./pages/PlanTrip";
 
 function App() {
   return (
     <Router>
-      <Navbar />
+      <Header />
       <div className="mt-20 p-6">
         <Routes>
           <Route
