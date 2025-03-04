@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import PlanTrip from "./pages/PlanTrip";
+import Plan from "./pages/Plan/Plan";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -15,7 +15,7 @@ function App() {
               path="/"
               element={<h1 className="text-4xl font-bold p-6">Home Page</h1>}
             />
-            <Route path="/plan" element={<PlanTrip />} />
+            <Route path="/plan" element={<Plan />} />
             <Route
               path="/trips"
               element={<h1 className="text-4xl font-bold p-6">Trips</h1>}
@@ -36,5 +36,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
