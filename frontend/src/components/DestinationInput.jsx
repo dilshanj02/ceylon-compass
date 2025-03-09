@@ -11,11 +11,11 @@ const locations = [
   "Trincomalee",
 ];
 
-export default function DestinationInput({
+const DestinationInput = ({
   searchQuery,
   setSearchQuery,
   setSelectedLocation,
-}) {
+}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Filter locations based on input
@@ -64,4 +64,6 @@ export default function DestinationInput({
       )}
     </fieldset>
   );
-}
+};
+
+export default DestinationInput;

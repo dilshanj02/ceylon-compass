@@ -1,38 +1,36 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Plan from "./pages/Plan/Plan";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import MainLayout from "./layouts/MainLayout.jsx";
+import PlanPage from "./pages/PlanPage";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<MainLayout />}>
+      <Route
+        index
+        element={<h1 className="text-4xl font-bold p-6">Home Page</h1>}
+      />
+      <Route path="/plan" element={<PlanPage />} />
+      <Route
+        path="/trips"
+        element={<h1 className="text-4xl font-bold p-6">Trips</h1>}
+      />
+      <Route
+        path="/community"
+        element={<h1 className="text-4xl font-bold p-6">Community</h1>}
+      />
+      <Route
+        path="/login"
+        element={<h1 className="text-4xl font-bold p-6">Login</h1>}
+      />
+    </Route>
+  )
+);
 
 export default function App() {
-  return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-
-        <div className="flex-grow mt-20 p-6">
-          <Routes>
-            <Route
-              path="/"
-              element={<h1 className="text-4xl font-bold p-6">Home Page</h1>}
-            />
-            <Route path="/plan" element={<Plan />} />
-            <Route
-              path="/trips"
-              element={<h1 className="text-4xl font-bold p-6">Trips</h1>}
-            />
-            <Route
-              path="/community"
-              element={<h1 className="text-4xl font-bold p-6">Community</h1>}
-            />
-            <Route
-              path="/login"
-              element={<h1 className="text-4xl font-bold p-6">Login Page</h1>}
-            />
-          </Routes>
-        </div>
-
-        <Footer />
-      </div>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }

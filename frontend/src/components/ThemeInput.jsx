@@ -1,4 +1,4 @@
-export default function ThemeSelect({ theme, setTheme }) {
+const ThemeInput = ({ theme, setTheme }) => {
   return (
     <fieldset>
       <legend className="text-sm font-semibold text-gray-600 pl-4">What</legend>
@@ -14,4 +14,6 @@ export default function ThemeSelect({ theme, setTheme }) {
       </select>
     </fieldset>
   );
-}
+};
+
+export default ThemeInput;

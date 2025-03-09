@@ -1,11 +1,9 @@
-import PlanForm from "./PlanForm";
-import RecommendedDestinations from "./RecommendedDestinations";
-import ThemeCards from "./ThemeCards";
+import PlanInputs from "../components/PlanInputs";
 
-export default function Plan() {
+const PlanPage = () => {
   return (
     <>
-      {/* Hero Section */}
+      {/* Heading */}
       <section className="flex flex-col items-center justify-center text-center py-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Plan Your Perfect Trip
@@ -16,14 +14,10 @@ export default function Plan() {
         </p>
       </section>
 
-      {/* Form Section */}
-      <PlanForm />
-
-      {/* Theme Cards */}
-      <ThemeCards />
-
-      {/* Recommended Destinations */}
-      <RecommendedDestinations />
+      {/* Plan inputs form */}
+      <PlanInputs />
     </>
   );
-}
+};
+
+export default PlanPage;

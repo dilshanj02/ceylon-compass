@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Header() {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation(); // Get current path
 
   return (
-    <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-white fixed w-full z-20 border-b border-gray-200 shadow-sm">
+      <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
@@ -88,4 +88,6 @@ export default function Header() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
