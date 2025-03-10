@@ -1,4 +1,4 @@
-import PlanInputs from "../components/PlanInputs";
+import PlanAccordion from "../components/PlanAccordion";
 
 const PlanPage = () => {
   return (
@@ -14,8 +14,7 @@ const PlanPage = () => {
         </p>
       </section>
 
-      {/* Plan inputs form */}
-      <PlanInputs />
+      <PlanAccordion />
     </>
   );
 };

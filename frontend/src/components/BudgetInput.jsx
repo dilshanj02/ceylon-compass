@@ -8,7 +8,7 @@ const BudgetInput = ({ budget, setBudget }) => {
         {/* Budget input */}
         <input
           className="input input-bordered w-full rounded-full focus:outline-none"
-          placeholder="Enter budget"
+          placeholder="Enter budget (LKR)"
           value={budget ? Number(budget).toLocaleString() : ""}
           onChange={(e) => {
             const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters

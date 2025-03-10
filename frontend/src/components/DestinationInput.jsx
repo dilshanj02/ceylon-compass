@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const locations = [
+const destinations = [
   "Colombo",
   "Kandy",
   "Galle",
@@ -14,13 +14,13 @@ const locations = [
 const DestinationInput = ({
   searchQuery,
   setSearchQuery,
-  setSelectedLocation,
+  setSelectedDestination,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Filter locations based on input
-  const filteredLocations = searchQuery
-    ? locations.filter((place) =>
+  // Filter destinations based on input
+  const filteredDestinations = searchQuery
+    ? destinations.filter((place) =>
         place.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
@@ -28,7 +28,7 @@ const DestinationInput = ({
   return (
     <fieldset className="relative">
       <legend className="text-sm font-semibold text-gray-600 pl-4">
-        Where
+        Destination
       </legend>
 
       {/* Input Field */}
@@ -45,14 +45,14 @@ const DestinationInput = ({
       />
 
       {/* Dropdown List (Appears Below Input) */}
-      {isDropdownOpen && filteredLocations.length > 0 && (
+      {isDropdownOpen && filteredDestinations.length > 0 && (
         <ul className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 z-10">
-          {filteredLocations.map((place) => (
+          {filteredDestinations.map((place) => (
             <li
               key={place}
               className="p-3 text-gray-700 cursor-pointer hover:bg-gray-200"
               onClick={() => {
-                setSelectedLocation(place);
+                setSelectedDestination(place);
                 setSearchQuery(place);
                 setIsDropdownOpen(false);
               }}
