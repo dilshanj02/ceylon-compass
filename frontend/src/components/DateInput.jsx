@@ -1,4 +1,4 @@
-const DateInput = ({ label, date, setDate }) => {
+const DateInput = ({ label, date, setDate, minDate }) => {
   return (
     <fieldset className="relative">
       <legend className="text-sm font-semibold text-gray-600 pl-4">
@@ -30,6 +30,7 @@ const DateInput = ({ label, date, setDate }) => {
           type="date"
           className="input input-bordered w-full rounded-full focus:outline-none"
           value={date}
+          min={minDate} // Restrict past dates
           onChange={(e) => setDate(e.target.value)}
         />
       </div>

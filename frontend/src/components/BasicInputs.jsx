@@ -3,6 +3,8 @@ import ThemeInput from "./ThemeInput";
 import DateInput from "./DateInput";
 
 const BasicInputs = ({ formData, setFormData }) => {
+  const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
   return (
     <div className="max-w-2xl mx-auto">
       {/* Grid based input fields */}
@@ -28,6 +30,7 @@ const BasicInputs = ({ formData, setFormData }) => {
           setDate={(value) =>
             setFormData((prev) => ({ ...prev, checkIn: value }))
           }
+          minDate={today}
         />
         <DateInput
           label="Check-out"
@@ -35,6 +38,7 @@ const BasicInputs = ({ formData, setFormData }) => {
           setDate={(value) =>
             setFormData((prev) => ({ ...prev, checkOut: value }))
           }
+          minDate={formData.checkIn || today} // Check-out must be after check-in
         />
       </div>
     </div>
