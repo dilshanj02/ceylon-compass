@@ -20,6 +20,10 @@ const router = createBrowserRouter(
         element={<h1 className="text-4xl font-bold p-6">Trips</h1>}
       />
       <Route
+        path="/trips/:id"
+        element={<h1 className="text-4xl font-bold p-6">Trip Summary</h1>}
+      />
+      <Route
         path="/community"
         element={<h1 className="text-4xl font-bold p-6">Community</h1>}
       />

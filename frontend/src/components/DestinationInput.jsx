@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 const destinations = [
   "Colombo",
@@ -11,17 +11,14 @@ const destinations = [
   "Trincomalee",
 ];
 
-const DestinationInput = ({
-  searchQuery,
-  setSearchQuery,
-  setSelectedDestination,
-}) => {
+const DestinationInput = ({ selectedDestination, setSelectedDestination }) => {
+  const [searchQuery, setSearchQuery] = useState(selectedDestination || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Filter destinations based on input
   const filteredDestinations = searchQuery
-    ? destinations.filter((place) =>
-        place.toLowerCase().includes(searchQuery.toLowerCase())
+    ? destinations.filter((destination) =>
+        destination.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 
@@ -47,17 +44,17 @@ const DestinationInput = ({
       {/* Dropdown List (Appears Below Input) */}
       {isDropdownOpen && filteredDestinations.length > 0 && (
         <ul className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 z-10">
-          {filteredDestinations.map((place) => (
+          {filteredDestinations.map((destination) => (
             <li
-              key={place}
+              key={destination}
               className="p-3 text-gray-700 cursor-pointer hover:bg-gray-200"
               onClick={() => {
-                setSelectedDestination(place);
-                setSearchQuery(place);
+                setSelectedDestination(destination);
+                setSearchQuery(destination);
                 setIsDropdownOpen(false);
               }}
             >
-              {place}
+              {destination}
             </li>
           ))}
         </ul>

@@ -10,12 +10,9 @@ const BasicInputs = ({ formData, setFormData }) => {
       {/* Grid based input fields */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-5">
         <DestinationInput
-          searchQuery={formData.searchQuery}
-          setSearchQuery={(value) =>
-            setFormData((prev) => ({ ...prev, searchQuery: value }))
-          }
+          selectedDestination={formData.destination}
           setSelectedDestination={(value) =>
-            setFormData((prev) => ({ ...prev, selectedDestination: value }))
+            setFormData((prev) => ({ ...prev, destination: value }))
           }
         />
         <ThemeInput

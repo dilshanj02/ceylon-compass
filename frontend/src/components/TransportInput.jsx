@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+
 const TransportInput = ({ transport, setTransport }) => {
+  useEffect(() => {
+    if (!transport) {
+      setTransport("Public Transport");
+    }
+  }, [transport]);
+
   return (
     <fieldset>
       <legend className="text-sm font-semibold text-gray-600 pl-4">
