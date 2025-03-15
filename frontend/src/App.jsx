@@ -4,8 +4,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout.jsx";
+import MainLayout from "./layouts/MainLayout";
 import PlanPage from "./pages/PlanPage";
+import SigninPage from "./pages/SigninPage";
+import SignupPage from "./pages/SignupPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,10 +29,8 @@ const router = createBrowserRouter(
         path="/community"
         element={<h1 className="text-4xl font-bold p-6">Community</h1>}
       />
-      <Route
-        path="/login"
-        element={<h1 className="text-4xl font-bold p-6">Login</h1>}
-      />
+      <Route path="/signin" element={<SigninPage />} />
+      <Route path="/signup" element={<SignupPage />} />
     </Route>
   )
 );
