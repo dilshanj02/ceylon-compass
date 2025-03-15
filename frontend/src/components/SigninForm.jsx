@@ -1,15 +1,24 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const SigninForm = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { login, user, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ email, password, remember });
-    // Add your authentication logic here
+
+    await login(username, password);
   };
+
+  useEffect(() => {
+    if (!loading && user) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="flex justify-center">
@@ -20,7 +29,7 @@ const SigninForm = () => {
           </h5>
           <div>
             <label
-              htmlFor="email"
+              htmlFor="username"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your username
@@ -31,8 +40,8 @@ const SigninForm = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="username"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>

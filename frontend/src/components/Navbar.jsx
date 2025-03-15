@@ -1,9 +1,20 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation(); // Get current path
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSignin = () => {
+    if (user) {
+      logout();
+    } else {
+      navigate("/signin");
+    }
+  };
 
   return (
     <nav className="bg-white fixed w-full z-20 border-b border-gray-200 shadow-sm">
@@ -17,13 +28,13 @@ const Navbar = () => {
 
         {/* Right-side buttons */}
         <div className="flex md:order-2 space-x-3 md:space-x-0">
-          <Link
-            to="/signin"
+          <button
+            onClick={handleSignin}
             className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 
             font-medium rounded-full text-sm px-5 py-2.5 me-2 border-gray-700"
           >
-            Sign-in
-          </Link>
+            {user ? "Sign out" : "Sign in"}
+          </button>
 
           {/* Mobile menu button */}
           <button
