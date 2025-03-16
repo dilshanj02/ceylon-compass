@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const ThemeInput = ({ theme, setTheme }) => {
+const ThemeInput = ({ theme, setTheme, validationErrors }) => {
   useEffect(() => {
     if (!theme) {
       setTheme("Adventure & Outdoors"); // Default theme

@@ -18,6 +18,17 @@ def api_overview(request):
 
     return Response(api_endpoints)
 
+@api_view(["POST"])
+def trip_validate(request):
+    serializer = TripSerializer(data=request.data)
+
+    if serializer.is_valid():
+        return Response({
+            "message": "Data is valid",
+            "trip_details": serializer.data
+        }, status=status.HTTP_200_OK)
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["GET", "POST"])
 def trip_list(request):

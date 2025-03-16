@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-const TransportInput = ({ transport, setTransport }) => {
+const TransportInput = ({ transport, setTransport, validationErrors }) => {
   useEffect(() => {
     if (!transport) {
-      setTransport("Public Transport");
+      setTransport("Public");
     }
   }, [transport]);
 
@@ -18,10 +18,15 @@ const TransportInput = ({ transport, setTransport }) => {
         onChange={(e) => setTransport(e.target.value)}
       >
         <option disabled>Select a transport mode</option>
-        <option>Public Transport</option>
-        <option>Private Vehicle</option>
-        <option>Rental Vehicle</option>
+        <option>Public</option>
+        <option>Private</option>
+        <option>Rental</option>
       </select>
+      {validationErrors.transport && (
+        <p className="text-red-500 text-xs mt-1 pl-4">
+          Please select a valid transport
+        </p>
+      )}
     </fieldset>
   );
 };

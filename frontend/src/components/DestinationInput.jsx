@@ -4,14 +4,17 @@ const destinations = [
   "Colombo",
   "Kandy",
   "Galle",
+  "Nuwara Eliya",
   "Ella",
-  "Sigiriya",
   "Jaffna",
-  "Mirissa",
-  "Trincomalee",
 ];
 
-const DestinationInput = ({ selectedDestination, setSelectedDestination }) => {
+const DestinationInput = ({
+  selectedDestination,
+  setSelectedDestination,
+  validationErrors,
+  setValidationErrors,
+}) => {
   const [searchQuery, setSearchQuery] = useState(selectedDestination || "");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -37,9 +40,15 @@ const DestinationInput = ({ selectedDestination, setSelectedDestination }) => {
         onChange={(e) => {
           setSearchQuery(e.target.value);
           setIsDropdownOpen(true);
+          setValidationErrors((prev) => ({ ...prev, destination: "" }));
         }}
         onFocus={() => setIsDropdownOpen(true)}
       />
+      {validationErrors.destination && (
+        <p className="text-red-500 text-xs mt-1 pl-4">
+          {validationErrors.destination}
+        </p>
+      )}
 
       {/* Dropdown List (Appears Below Input) */}
       {isDropdownOpen && filteredDestinations.length > 0 && (

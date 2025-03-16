@@ -1,4 +1,11 @@
-const DateInput = ({ label, date, setDate, minDate }) => {
+const DateInput = ({
+  label,
+  date,
+  setDate,
+  minDate,
+  validationErrors,
+  setValidationErrors,
+}) => {
   return (
     <fieldset className="relative">
       <legend className="text-sm font-semibold text-gray-600 pl-4">
@@ -31,8 +38,30 @@ const DateInput = ({ label, date, setDate, minDate }) => {
           className="input input-bordered w-full rounded-full focus:outline-none"
           value={date}
           min={minDate} // Restrict past dates
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => {
+            setDate(e.target.value);
+            setValidationErrors((prev) => {
+              const updatedErrors = { ...prev };
+
+              if (label === "Check-in") {
+                delete updatedErrors.checkIn;
+              } else if (label === "Check-out") {
+                delete updatedErrors.checkOut;
+              }
+              return updatedErrors;
+            });
+          }}
         />
+        {label == "Check-in" && validationErrors.checkIn && (
+          <p className="text-red-500 text-xs mt-1 pl-4">
+            {validationErrors.checkIn}
+          </p>
+        )}
+        {label == "Check-out" && validationErrors.checkOut && (
+          <p className="text-red-500 text-xs mt-1 pl-4">
+            {validationErrors.checkOut}
+          </p>
+        )}
       </div>
     </fieldset>
   );

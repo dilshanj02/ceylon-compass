@@ -1,7 +1,7 @@
-const TravelersInput = ({ travelers, setTravelers }) => {
+const TravelersInput = ({ travelers, setTravelers, validationErrors }) => {
   // Function to handle traveler count change
   const handleTravelersChange = (value) => {
-    if (value >= 1 && value <= 10) {
+    if (value >= 1 && value <= 4) {
       setTravelers(value);
     }
   };

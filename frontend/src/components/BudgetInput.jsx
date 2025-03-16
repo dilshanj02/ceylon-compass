@@ -1,4 +1,10 @@
-const BudgetInput = ({ budget, setBudget }) => {
+const BudgetInput = ({
+  budget,
+  setBudget,
+  validationErrors,
+  setValidationErrors,
+  serializerErrors,
+}) => {
   return (
     <fieldset className="relative">
       <legend className="text-sm font-semibold text-gray-600 pl-4">
@@ -13,8 +19,19 @@ const BudgetInput = ({ budget, setBudget }) => {
           onChange={(e) => {
             const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
             setBudget(value);
+            setValidationErrors((prev) => ({ ...prev, budget: "" }));
           }}
         />
+        {validationErrors.budget && (
+          <p className="text-red-500 tsext-xs mt-1 pl-4">
+            {validationErrors.budget}
+          </p>
+        )}
+        {serializerErrors.budget && (
+          <p className="text-red-500 tsext-xs mt-1 pl-4">
+            {serializerErrors.budget}
+          </p>
+        )}
       </div>
     </fieldset>
   );

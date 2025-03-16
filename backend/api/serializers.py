@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from datetime import date, timedelta
-from .models import Trip
+from decimal import Decimal
 
-from .constants import DESTINATIONS, THEMES, ACCOMMODATION_COSTS, TRANSPORT_COSTS
+from .models import Trip
+from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
 class TripSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,23 +13,16 @@ class TripSerializer(serializers.ModelSerializer):
     def validate(self, data):
         errors = {}
 
-        destination = data.get("destination")
-        theme = data.get("theme")
         check_in = data.get("check_in")
         check_out = data.get("check_out")
         travelers = data.get("travelers")
         transport = data.get("transport")
-        accommodation = data.get("accommodation")
+        accommodation_type = data.get("accommodation_type")
+        accommodation_tier = data.get("accommodation_tier")       
         budget = data.get("budget")
 
         MAX_TRIP_DAYS = 5 
         MAX_TRAVELERS = 4
-        
-        if destination not in DESTINATIONS:
-            errors["destination"] = "Invalid destination selected."
-
-        if theme not in THEMES:
-            errors["theme"] = "Invalid trip theme."
 
         # Validate dates
         if check_in is None or check_out is None:
@@ -44,21 +38,17 @@ class TripSerializer(serializers.ModelSerializer):
                 errors["trip_duration"] = f"Trip duration cannot exceed {MAX_TRIP_DAYS} days."
 
         # Validate traveler count
+        if travelers is None:
+            errors["travelers"] = "Number of travelers is required."
         if travelers < 1 or travelers > MAX_TRAVELERS:
             errors["travelers"] = f"Number of travelers must be between 1 and {MAX_TRAVELERS}."
 
-        if transport not in TRANSPORT_COSTS:
-            errors["transport"] = "Invalid transport mode selected."
-
-        if accommodation not in ACCOMMODATION_COSTS:
-            errors["accommodation"] = "Invalid accommodation type selected."
-
         # Calulate minimum required budget
         num_days = (check_out - check_in).days
-        transport_cost = TRANSPORT_COSTS[transport] * num_days # Transport cost considered as for the total travelers per day
-        accommodation_cost = ACCOMMODATION_COSTS[accommodation] * num_days * travelers 
-        food_cost = 2500 * num_days * travelers 
-        misc_cost = 0.15 * (transport_cost + accommodation_cost + food_cost) 
+        transport_cost = Decimal(TRANSPORT_COSTS[transport]) * num_days # Transport cost considered as for the total travelers per day
+        accommodation_cost = Decimal(ACCOMMODATION_COSTS[accommodation_type][accommodation_tier]) * num_days * travelers 
+        food_cost = Decimal(FOOD_COST_PER_DAY) * num_days * travelers 
+        misc_cost = Decimal(MISC_COST_PERCENTAGE) * (transport_cost + accommodation_cost + food_cost) 
         min_required_budget = transport_cost + accommodation_cost + food_cost + misc_cost
 
         # Validate budget
