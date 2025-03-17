@@ -38,20 +38,22 @@ def generate_trip_plan(trip):
         plan.append({
             "date": date.strftime("%Y-%m-%d"),
             "activity": activity,
-            "budget_remaining": remaining_budget / num_days
+            "budget_remaining": float(remaining_budget) / num_days
         })
 
-    return {
+    plan_data = {
         "destination": destination,
         "theme": theme,
-        "days": plan,
+        "itinerary": plan,
         "cost_breakdown": {
-            "accommodation": accommodation_cost,
-            "transport": transport_cost,
-            "food": food_cost,
-            "misc": misc_cost,
-            "total": total_cost,
-            "remaining_budget": remaining_budget
+            "accommodation": float(accommodation_cost),
+            "transport": float(transport_cost),
+            "food": float(food_cost),
+            "misc": float(misc_cost),
+            "total": float(total_cost),
+            "remaining_budget": float(remaining_budget)
         }
     }
+
+    return plan_data
 

@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 
-from .models import Trip
-from .serializers import TripSerializer
+from .models import Trip, TripPlan
+from .serializers import TripSerializer, TripPlanSerializer
 
 from .services import engine
 
@@ -46,11 +46,10 @@ def trip_list(request):
         serializer = TripSerializer(data=request.data)
 
         if serializer.is_valid():
-            trip = serializer.save()
+            serializer.save()
 
             return Response({
                 "message": "Trip created",
-                "trip_id": trip.id,
                 "trip_details": serializer.data
             }, status=status.HTTP_201_CREATED)
         
@@ -70,19 +69,50 @@ def trip_detail(request, id):
     return Response(trip_data, status=status.HTTP_200_OK)
 
 
-@api_view(["POST"])
+@api_view(["GET", "POST"])
 def trip_plan(request, id):
     """
-    Generate a trip plan
+    GET: Retrieve a generated trip plan.
+    POST: Create a trip plan.
     """
+    if request.method == "GET":
+        trip = get_object_or_404(Trip, id=id)
+        trip_plan = get_object_or_404(TripPlan, trip=trip)
 
-    trip = get_object_or_404(Trip, id=id)
+        serializer = TripPlanSerializer(trip_plan)
 
-    try:
-        plan = engine.generate_trip_plan(trip)
-    except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    if request.method == "POST":
+        trip = get_object_or_404(Trip, id=id)
 
-    return Response(plan, status=status.HTTP_200_OK)
+        try:
+            plan_data = engine.generate_trip_plan(trip)
+
+            trip_plan, created = TripPlan.objects.get_or_create(
+                trip = trip,
+                defaults = {
+                    "itinerary": plan_data["itinerary"],
+                    "cost_breakdown": plan_data["cost_breakdown"]
+                }
+            )
+
+            serializer = TripPlanSerializer(trip_plan)
+
+            if created:
+                message = "Trip plan created"
+                status_code = status.HTTP_201_CREATED
+            else:
+                message = "Trip plan already exists"
+                status_code = status.HTTP_200_OK
+
+            return Response({
+                "message": message,
+                "trip_plan": serializer.data
+            }, status=status_code)
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 

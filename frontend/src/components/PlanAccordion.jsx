@@ -116,7 +116,7 @@ const PlanAccordion = () => {
       if (response.status === 200) {
         console.log(response.data);
 
-        setValidationErrors(""); // Clear error if valid
+        setSerializerErrors(""); // Clear error if valid
         setActiveStep((prev) => prev + 1);
       }
     } catch (error) {
@@ -129,12 +129,34 @@ const PlanAccordion = () => {
     }
   };
 
-  const handleSubmit = () => {
-    const tripId = Date.now().toString();
+  const handleSubmit = async () => {
+    try {
+      const payload = mapFormData(formData);
 
-    localStorage.setItem(`trip-${tripId}`, JSON.stringify(formData));
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/trips/",
+        payload
+      );
 
-    navigate(`/trips/${tripId}`);
+      if (response.status == 201) {
+        console.log(response.data);
+        const trip_id = response.data.trip_details.id;
+
+        try {
+          const response = await axios.post(
+            `http://127.0.0.1:8000/api/trips/${trip_id}/plan/`
+          );
+
+          if (response.status == 201) {
+            console.log(response.data);
+          }
+        } catch (error) {
+          console.log(error.response);
+        }
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   return (

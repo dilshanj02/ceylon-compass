@@ -2,7 +2,7 @@ from rest_framework import serializers
 from datetime import date, timedelta
 from decimal import Decimal
 
-from .models import Trip
+from .models import Trip, TripPlan
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
 class TripSerializer(serializers.ModelSerializer):
@@ -61,4 +61,7 @@ class TripSerializer(serializers.ModelSerializer):
 
         return data
         
-
+class TripPlanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TripPlan
+        fields = "__all__"

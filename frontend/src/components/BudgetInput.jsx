@@ -23,14 +23,12 @@ const BudgetInput = ({
           }}
         />
         {validationErrors.budget && (
-          <p className="text-red-500 tsext-xs mt-1 pl-4">
+          <p className="text-red-500 text-xs mt-1 pl-4">
             {validationErrors.budget}
           </p>
         )}
         {serializerErrors.budget && (
-          <p className="text-red-500 tsext-xs mt-1 pl-4">
-            {serializerErrors.budget}
-          </p>
+          <p className="text-red-500 mt-1 pl-4">{serializerErrors.budget}</p>
         )}
       </div>
     </fieldset>

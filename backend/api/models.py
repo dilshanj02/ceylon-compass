@@ -27,8 +27,6 @@ class Trip(models.Model):
             ("Hotel", "Hotel"),
             ("Villa", "Villa"),
             ("Guesthouse", "Guesthouse"),
-            ("Hostel", "Hostel"),
-            ("B&B", "B&B"),
             ("Resort", "Resort")
         ]
 
@@ -50,3 +48,12 @@ class Trip(models.Model):
 
     def __str__(self):
         return f"{self.destination} - {self.theme}"
+
+class TripPlan(models.Model):
+    trip = models.OneToOneField(Trip, on_delete=models.CASCADE, related_name="plan")
+    created_at = models.DateTimeField(auto_now_add=True)
+    itinerary = models.JSONField()
+    cost_breakdown = models.JSONField()
+
+    def __str__(self):
+        return f"{self.created_at} - {self.trip.destination}"
