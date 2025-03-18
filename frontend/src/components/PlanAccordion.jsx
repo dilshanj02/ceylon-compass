@@ -144,11 +144,13 @@ const PlanAccordion = () => {
 
         try {
           const response = await axios.post(
-            `http://127.0.0.1:8000/api/trips/${trip_id}/plan/`
+            "http://127.0.0.1:8000/api/plans/",
+            { trip_id: trip_id }
           );
 
           if (response.status == 201) {
             console.log(response.data);
+            navigate(`/trips/${response.data.trip_plan.id}`);
           }
         } catch (error) {
           console.log(error.response);

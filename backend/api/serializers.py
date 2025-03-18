@@ -62,6 +62,37 @@ class TripSerializer(serializers.ModelSerializer):
         return data
         
 class TripPlanSerializer(serializers.ModelSerializer):
+    trip = TripSerializer()
+    cost_breakdown = serializers.SerializerMethodField()
+    itinerary = serializers.SerializerMethodField()
     class Meta:
         model = TripPlan
         fields = "__all__"
+
+    def get_cost_breakdown(self, obj):
+        cost = obj.cost_breakdown
+        formatted_cost = {}
+
+        for key, value in cost.items():
+            try:
+                formatted_cost[key] = f"{float(value):.2f}"
+            except ValueError:
+                formatted_cost[key] = value
+
+        return formatted_cost
+    
+    def get_itinerary(self, obj):
+        itinerary = obj.itinerary
+        formatted_itinerary = []
+
+        for item in itinerary:
+            formatted_item = item.copy()
+
+            try:
+                formatted_item["budget_remaining"] = f"{float(item["budget_remaining"]):.2f}"
+            except (ValueError, TypeError):
+                pass
+
+            formatted_itinerary.append(formatted_item)
+
+        return formatted_itinerary

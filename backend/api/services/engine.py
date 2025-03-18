@@ -51,7 +51,7 @@ def generate_trip_plan(trip):
             "food": float(food_cost),
             "misc": float(misc_cost),
             "total": float(total_cost),
-            "remaining_budget": float(remaining_budget)
+            "remaining_budget": f"{float(remaining_budget):.2f}"
         }
     }
 
