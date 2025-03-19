@@ -1,22 +1,38 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Trip, TripPlan
-from .serializers import TripSerializer, TripPlanSerializer
+from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer
 
 from .services import engine
 
-@api_view(['GET'])
-def api_overview(request):
-    api_endpoints = {
-        "get token": "api/token/",
-        "refresh token": "api/refresh",
-        "list/create trip": "api/trip",
-    }
 
-    return Response(api_endpoints)
+class RegisterView(APIView):
+    def post(self, request):
+        serializer = RegisterSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                "message": "User created"
+            }, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# @api_view(['GET'])
+# def api_overview(request):
+#     api_endpoints = {
+#         "get token": "api/token/",
+#         "refresh token": "api/refresh",
+#         "list/create trip": "api/trip",
+#     }
+
+#     return Response(api_endpoints)
 
 @api_view(["POST"])
 def trip_validate(request):

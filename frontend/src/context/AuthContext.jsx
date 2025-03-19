@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
       : null
   );
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   useEffect(() => {
     if (authTokens) {
@@ -32,7 +33,11 @@ export const AuthProvider = ({ children }) => {
       setUser(jwtDecode(response.data.access));
       localStorage.setItem("authTokens", JSON.stringify(response.data));
     } catch (error) {
-      console.error("Login failed", error);
+      if (error.response && error.response.status === 401) {
+        setLoginError("Invalid username or password.");
+      } else {
+        setLoginError("Something went wrong. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -45,7 +50,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, authTokens, login, logout, loading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        authTokens,
+        login,
+        logout,
+        loading,
+        loginError,
+        setLoginError,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

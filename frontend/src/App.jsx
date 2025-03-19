@@ -6,6 +6,7 @@ import SignupPage from "./pages/SignupPage";
 import TripsPage from "./pages/TripsPage";
 import TripPage from "./pages/TripPage";
 import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./utils/PrivateRoute";
 
 export default function App() {
   return (
@@ -20,6 +21,12 @@ export default function App() {
             <Route path="/plan" element={<PlanPage />} />
             <Route path="/trips" element={<TripsPage />} />
             <Route path="/trips/:id" element={<TripPage />} />
+            {/* Protected Routes */}
+            {/* <Route element={<PrivateRoute />}>
+              <Route path="/plan" element={<PlanPage />} />
+              <Route path="/trips" element={<TripsPage />} />
+              <Route path="/trips/:id" element={<TripPage />} />
+            </Route> */}
             <Route
               path="/community"
               element={<h1 className="text-4xl font-bold p-6">Community</h1>}

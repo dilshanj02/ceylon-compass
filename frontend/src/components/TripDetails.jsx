@@ -25,6 +25,24 @@ const TripDetails = () => {
   if (loading) return <p>Loading...</p>;
   if (!tripPlan) return <p>Trip not found.</p>;
 
+  const labelMap = {
+    accommodation: "Accommodation",
+    transport: "Transport",
+    food: "Food",
+    misc: "Miscellaneous",
+    total: "Total Cost",
+    remaining_budget: "Remaining Budget",
+  };
+
+  const orderedKeys = [
+    "accommodation",
+    "transport",
+    "food",
+    "misc",
+    "total",
+    "remaining_budget",
+  ];
+
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-12">
       {/* Trip Heading */}
@@ -80,11 +98,11 @@ const TripDetails = () => {
       <div>
         <h3 className="text-2xl font-semibold mb-4">Cost Breakdown</h3>
         <ul className="divide-y divide-base-300">
-          {Object.entries(tripPlan.cost_breakdown).map(([key, value]) => (
+          {orderedKeys.map((key) => (
             <li key={key} className="py-3 flex justify-between">
-              <span className="capitalize">{key}</span>
+              <span>{labelMap[key]}</span>
               <span className="badge badge-primary badge-outline">
-                LKR {value}
+                LKR {tripPlan.cost_breakdown[key]}
               </span>
             </li>
           ))}

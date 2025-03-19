@@ -1,10 +1,45 @@
 from rest_framework import serializers
-from datetime import date, timedelta
+from datetime import date
 from decimal import Decimal
+from django.contrib.auth.models import User
+from rest_framework.exceptions import ValidationError
+from rest_framework.validators import UniqueValidator
 
 from .models import Trip, TripPlan
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
+class RegisterSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(
+        required = True,
+        validators = [
+            UniqueValidator(queryset=User.objects.all(), message="User with this username already exists")
+        ]
+    )
+    email = serializers.EmailField(
+        required=True,
+        validators=[
+            UniqueValidator(queryset=User.objects.all(), message="User with this email already exists")
+        ]
+    )
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "password"]
+
+    def create(self, validated_data):
+        if User.objects.filter(username=validated_data["username"]).exists():
+            raise ValidationError({"username": "Username is already taken."})
+
+        if User.objects.filter(email=validated_data["email"]).exists():
+            raise ValidationError({"email": "Email is already taken."})
+
+        user = User.objects.create_user(
+            username = validated_data["username"],
+            email = validated_data["email"],
+            password = validated_data["password"]
+        )
+        return user
 class TripSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trip

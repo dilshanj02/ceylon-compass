@@ -5,11 +5,20 @@ import AuthContext from "../context/AuthContext";
 const SigninForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login, user, loading } = useContext(AuthContext);
+  const [formError, setFormError] = useState("");
+  const { login, user, loading, loginError, setLoginError } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!username || !password) {
+      setFormError("Please enter both username and password");
+      return;
+    }
+
+    setFormError("");
 
     await login(username, password);
   };
@@ -23,7 +32,7 @@ const SigninForm = () => {
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign in
           </h5>
@@ -32,7 +41,7 @@ const SigninForm = () => {
               htmlFor="username"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Your username
+              Username
             </label>
             <input
               type="text"
@@ -41,7 +50,11 @@ const SigninForm = () => {
               placeholder="username"
               required
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => {
+                setUsername(e.target.value);
+                setFormError("");
+                setLoginError("");
+              }}
             />
           </div>
           <div>
@@ -49,7 +62,7 @@ const SigninForm = () => {
               htmlFor="password"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Your password
+              Password
             </label>
             <div className="relative">
               <input
@@ -59,10 +72,16 @@ const SigninForm = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setFormError("");
+                  setLoginError("");
+                }}
               />
             </div>
           </div>
+          {formError && <p className="text-red-500 text-sm">{formError}</p>}
+          {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
           <div className="flex items-start">
             <a
               href="#"
@@ -72,8 +91,8 @@ const SigninForm = () => {
             </a>
           </div>
           <button
-            type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={handleSubmit}
           >
             Login to your account
           </button>
