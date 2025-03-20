@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import BasicInputs from "./BasicInputs";
 import ProgressIndicator from "./ProgressIndicator";
 import PreferencesInputs from "./PreferencesInputs";
-
-import axios from "axios";
+import useAxios from "../utils/useAxios";
 
 const PlanAccordion = () => {
   const navigate = useNavigate();
 
+  const axios = useAxios();
   const [activeStep, setActiveStep] = useState(1);
   const [formData, setFormData] = useState({
     destination: "",
