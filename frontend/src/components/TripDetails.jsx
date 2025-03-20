@@ -1,16 +1,20 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import useAxios from "../utils/useAxios";
 
 const TripDetails = () => {
   const { id } = useParams();
   const [tripPlan, setTripPlan] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axios = useAxios();
 
   useEffect(() => {
     const fetchTripPlan = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/plans/${id}/`);
-        const data = await response.json();
+        const response = await axios.get(
+          `http://127.0.0.1:8000/api/plans/${id}/`
+        );
+        const data = response.data;
         setTripPlan(data);
       } catch (error) {
         console.error("Error fetching trip details:", error);
