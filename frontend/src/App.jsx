@@ -16,15 +16,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="/plan" element={<PlanPage />} />
-            <Route path="/trips" element={<TripsPage />} />
-            <Route path="/trips/:id" element={<TripPage />} />
-            {/* Protected Routes */}
-            {/* <Route element={<PrivateRoute />}>
+            <Route element={<PrivateRoute />}>
               <Route path="/plan" element={<PlanPage />} />
               <Route path="/trips" element={<TripsPage />} />
               <Route path="/trips/:id" element={<TripPage />} />
-            </Route> */}
+            </Route>
             <Route
               path="/community"
               element={<h1 className="text-4xl font-bold p-6">Community</h1>}

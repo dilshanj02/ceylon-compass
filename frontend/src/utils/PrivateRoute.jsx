@@ -1,11 +1,17 @@
 import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import isTokenExpired from "./isTokenExpired";
 
 const PrivateRoute = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
-  return user ? <Outlet /> : <Navigate to="/signin" />;
+  if (!user || isTokenExpired()) {
+    logout();
+    return <Navigate to="/signin" />;
+  }
+
+  return <Outlet />;
 };
 
 export default PrivateRoute;

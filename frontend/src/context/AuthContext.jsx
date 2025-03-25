@@ -6,7 +6,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("access_token"));
-  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (token) {
@@ -19,6 +18,17 @@ export const AuthProvider = ({ children }) => {
         .catch((error) => console.log(error));
     }
   }, [token]);
+
+  // Axios Interceptor: Logs out user if API call fails due to 401 error
+  axios.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response && error.response.status === 401) {
+        logout();
+      }
+      return Promise.reject(error);
+    }
+  );
 
   const login = (newToken) => {
     setToken(newToken);

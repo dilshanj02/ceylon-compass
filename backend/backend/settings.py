@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 from pathlib import Path
 
@@ -132,3 +133,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),  # Set to 7 days or any duration you want
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),  # Refresh token lifetime (optional)
+    'ROTATE_REFRESH_TOKENS': False,  # Set to True if you want to rotate the refresh tokens
+    'BLACKLIST_AFTER_ROTATION': False,  # Set to True if you want to blacklist tokens after rotation
+}
