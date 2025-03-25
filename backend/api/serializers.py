@@ -41,6 +41,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         return user
 class TripSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     class Meta:
         model = Trip
         fields = "__all__"
@@ -93,8 +94,15 @@ class TripSerializer(serializers.ModelSerializer):
         # Raise all validation errors at once
         if errors:
             raise serializers.ValidationError(errors)
-
+        
         return data
+        
+    def create(self, validated_data):
+        request = self.context.get("request", None)
+        if request and hasattr(request, 'user'):
+            validated_data['user'] = request.user  # Set the logged-in user
+        return super().create(validated_data)
+
         
 class TripPlanSerializer(serializers.ModelSerializer):
     trip = TripSerializer()

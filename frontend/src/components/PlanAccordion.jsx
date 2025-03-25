@@ -82,7 +82,7 @@ const PlanAccordion = () => {
     setActiveStep((prev) => prev - 1);
   };
 
-  const handleReview = async () => {
+  const handleReview = () => {
     if (activeStep === 2) {
       let errors = {};
 
@@ -105,60 +105,54 @@ const PlanAccordion = () => {
       }
     }
 
-    try {
-      const payload = mapFormData(formData);
+    const payload = mapFormData(formData);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/trips/validate/",
-        payload
-      );
+    axios
+      .post("http://127.0.0.1:8000/api/trips/validate/", payload)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data);
 
-      if (response.status === 200) {
-        console.log(response.data);
-
-        setSerializerErrors(""); // Clear error if valid
-        setActiveStep((prev) => prev + 1);
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        console.log("Validation error:", error.response.data);
-        setSerializerErrors(error.response.data);
-      } else {
-        console.error("Unexpected error:", error.message);
-      }
-    }
+          setSerializerErrors(""); // Clear error if valid
+          setActiveStep((prev) => prev + 1);
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          console.log("Validation error:", error.response.data);
+          setSerializerErrors(error.response.data);
+        } else {
+          console.error("Unexpected error:", error.message);
+        }
+      });
   };
 
-  const handleSubmit = async () => {
-    try {
-      const payload = mapFormData(formData);
+  const handleSubmit = () => {
+    const payload = mapFormData(formData);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/trips/",
-        payload
-      );
+    axios
+      .post("http://127.0.0.1:8000/api/trips/", payload)
+      .then((response) => {
+        if (response.status === 201) {
+          console.log(response.data);
+          const trip_id = response.data.trip_details.id;
 
-      if (response.status == 201) {
-        console.log(response.data);
-        const trip_id = response.data.trip_details.id;
-
-        try {
-          const response = await axios.post(
-            "http://127.0.0.1:8000/api/plans/",
-            { trip_id: trip_id }
-          );
-
-          if (response.status == 201) {
-            console.log(response.data);
-            navigate(`/trips/${response.data.trip_plan.id}`);
-          }
-        } catch (error) {
-          console.log(error.response);
+          axios
+            .post("http://127.0.0.1:8000/api/plans/", { trip_id: trip_id })
+            .then((response) => {
+              if (response.status === 201) {
+                console.log(response.data);
+                navigate(`/trips/${response.data.trip_plan.id}`);
+              }
+            })
+            .catch((error) => {
+              console.log(error.response);
+            });
         }
-      }
-    } catch (error) {
-      console.log(error.response);
-    }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
 
   return (

@@ -10,6 +10,18 @@ from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer
 
 from .services import engine
 
+# A protected view to test authentication
+class ProtectedView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email
+        })
+
 
 class RegisterView(APIView):
     def post(self, request):
@@ -24,19 +36,9 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view(['GET'])
-# def api_overview(request):
-#     api_endpoints = {
-#         "get token": "api/token/",
-#         "refresh token": "api/refresh",
-#         "list/create trip": "api/trip",
-#     }
-
-#     return Response(api_endpoints)
-
 @api_view(["POST"])
 def trip_validate(request):
-    serializer = TripSerializer(data=request.data)
+    serializer = TripSerializer(data=request.data, context={"request": request})
 
     if serializer.is_valid():
         return Response({
@@ -45,6 +47,7 @@ def trip_validate(request):
         }, status=status.HTTP_200_OK)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(["GET", "POST"])
 def trip_list(request):
@@ -59,7 +62,7 @@ def trip_list(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     elif request.method == "POST":
-        serializer = TripSerializer(data=request.data)
+        serializer = TripSerializer(data=request.data, context={"request": request})
 
         if serializer.is_valid():
             serializer.save()
@@ -147,52 +150,4 @@ def plan_detail(request, id):
     plan_data = TripPlanSerializer(plan).data
 
     return Response(plan_data, status=status.HTTP_200_OK)
-
-
-# @api_view(["GET", "POST"])
-# def trip_plan(request, id):
-#     """
-#     GET: Retrieve a generated trip plan.
-#     POST: Create a trip plan.
-#     """
-#     if request.method == "GET":
-#         trip = get_object_or_404(Trip, id=id)
-#         trip_plan = get_object_or_404(TripPlan, trip=trip)
-
-#         serializer = TripPlanSerializer(trip_plan)
-
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-    
-#     if request.method == "POST":
-#         trip = get_object_or_404(Trip, id=id)
-
-#         try:
-#             plan_data = engine.generate_trip_plan(trip)
-
-#             trip_plan, created = TripPlan.objects.get_or_create(
-#                 trip = trip,
-#                 defaults = {
-#                     "itinerary": plan_data["itinerary"],
-#                     "cost_breakdown": plan_data["cost_breakdown"]
-#                 }
-#             )
-
-#             serializer = TripPlanSerializer(trip_plan)
-
-#             if created:
-#                 message = "Trip plan created"
-#                 status_code = status.HTTP_201_CREATED
-#             else:
-#                 message = "Trip plan already exists"
-#                 status_code = status.HTTP_200_OK
-
-#             return Response({
-#                 "message": message,
-#                 "trip_plan": serializer.data
-#             }, status=status_code)
-
-#         except Exception as e:
-#             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
 

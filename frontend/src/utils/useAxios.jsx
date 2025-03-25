@@ -1,17 +1,14 @@
 import axios from "axios";
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
 
 const useAxios = () => {
-  const { authTokens } = useContext(AuthContext);
-
   const axiosInstance = axios.create({
     baseURL: "http://127.0.0.1:8000",
   });
 
   axiosInstance.interceptors.request.use((config) => {
-    if (authTokens) {
-      config.headers.Authorization = `Bearer ${authTokens.access}`;
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   });

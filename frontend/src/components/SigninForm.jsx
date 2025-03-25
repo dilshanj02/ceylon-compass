@@ -1,33 +1,35 @@
 import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import axios from "axios";
 
 const SigninForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState("");
-  const { login, user, loading, loginError, setLoginError } =
-    useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!username || !password) {
-      setFormError("Please enter both username and password");
-      return;
-    }
-
-    setFormError("");
-
-    await login(username, password);
-  };
-
   useEffect(() => {
-    if (!loading && user) {
+    if (user) {
       navigate("/");
+      console.log("User is logged in", user.username);
     }
   }, [user]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://127.0.0.1:8000/api/token/", { username, password })
+      .then((response) => {
+        login(response.data.access);
+      })
+      .catch((error) => {
+        setFormError("Invalid credentials");
+      });
+  };
 
   return (
     <div className="flex justify-center">
@@ -53,7 +55,6 @@ const SigninForm = () => {
               onChange={(e) => {
                 setUsername(e.target.value);
                 setFormError("");
-                setLoginError("");
               }}
             />
           </div>
@@ -75,13 +76,11 @@ const SigninForm = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                   setFormError("");
-                  setLoginError("");
                 }}
               />
             </div>
           </div>
           {formError && <p className="text-red-500 text-sm">{formError}</p>}
-          {loginError && <p className="text-red-500 text-sm">{loginError}</p>}
           <div className="flex items-start">
             <a
               href="#"

@@ -36,6 +36,7 @@ class Trip(models.Model):
         ("Budget", "Budget")
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='trips')
     destination = models.CharField(max_length=50, choices=DESTINATION_CHOICES)
     theme = models.CharField(max_length=50, choices=THEME_CHOICES)
     check_in = models.DateField()
