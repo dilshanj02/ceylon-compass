@@ -98,7 +98,7 @@ def plan_list(request):
     POST: Create a new plan.
     """
     if request.method == "GET":
-        trips = TripPlan.objects.all().order_by("-id")
+        trips = TripPlan.objects.filter(trip__user=request.user).order_by("-id")
         serializer = TripPlanSerializer(trips, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
