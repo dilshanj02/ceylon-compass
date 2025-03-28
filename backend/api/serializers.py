@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from .models import Trip, TripPlan
+from .models import Trip, TripPlan, Review
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -139,3 +139,18 @@ class TripPlanSerializer(serializers.ModelSerializer):
             formatted_itinerary.append(formatted_item)
 
         return formatted_itinerary
+    
+
+class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+    username = serializers.CharField(source='user.username', read_only=True)
+    destination = serializers.CharField(source='trip_plan.trip.destination', read_only=True)
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+    def create(self, validated_data):
+        request = self.context.get("request", None)
+        if request and hasattr(request, 'user'):
+            validated_data['user'] = request.user
+        return super().create(validated_data)

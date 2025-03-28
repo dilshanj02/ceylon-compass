@@ -58,3 +58,17 @@ class TripPlan(models.Model):
 
     def __str__(self):
         return f"{self.created_at} - {self.trip.destination}"
+    
+
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviews")
+    trip_plan = models.ForeignKey("TripPlan", on_delete=models.CASCADE, related_name="reviews")
+    rating = models.PositiveSmallIntegerField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"Review by {self.user.username} for {self.destination}"

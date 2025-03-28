@@ -1,9 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import useAxios from "../utils/useAxios";
 
 import TripList from "../components/TripList";
 
-export default function TripPage() {
+const TripPage = () => {
   const [tripPlans, setTripPlans] = useState([]);
   const axios = useAxios();
 
@@ -26,4 +26,6 @@ export default function TripPage() {
       <TripList tripPlans={tripPlans} />
     </section>
   );
-}
+};
+
+export default TripPage;

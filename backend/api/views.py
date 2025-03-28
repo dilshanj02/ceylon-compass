@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Trip, TripPlan
-from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer
+from .models import Trip, TripPlan, Review
+from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer
 
 from .services import engine
 
@@ -151,3 +151,17 @@ def plan_detail(request, id):
 
     return Response(plan_data, status=status.HTTP_200_OK)
 
+
+@api_view(["GET", "POST"]) 
+def review_list(request):
+    if request.method == 'GET':
+        reviews = Review.objects.all().order_by("-created_at")
+        serializer = ReviewSerializer(reviews, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = ReviewSerializer(data=request.data, context={"request": request})
+        if serializer.is_valid():
+            serializer.save(user=request.user)  # 👈 Attach logged-in user
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
