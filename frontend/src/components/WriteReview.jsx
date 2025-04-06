@@ -66,7 +66,7 @@ const WriteReview = ({ tripPlans, reviews, setReviews }) => {
       <h2 className="text-xl font-semibold mb-2">Write a Review</h2>
       <div className="space-y-4">
         <select
-          className="select select-bordered w-full"
+          className="select select-bordered w-full focus:outline-none"
           value={form.tripPlanId || ""}
           onChange={handleTripSelect}
         >
@@ -80,7 +80,7 @@ const WriteReview = ({ tripPlans, reviews, setReviews }) => {
 
         <textarea
           placeholder="Your thoughts about the destination..."
-          className="textarea textarea-bordered w-full"
+          className="textarea textarea-bordered w-full focus:outline-none"
           value={form.comment || ""}
           onChange={(e) => setForm({ ...form, comment: e.target.value })}
         ></textarea>
