@@ -58,7 +58,6 @@ class TripPlan(models.Model):
 
     def __str__(self):
         return f"{self.created_at} - {self.trip.destination}"
-    
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviews")
@@ -72,3 +71,23 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.user.username} for {self.destination}"
+    
+
+class EmergencyContact(models.Model):
+    DESTINATION_CHOICES = [
+        ("Colombo", "Colombo"),
+        ("Kandy", "Kandy"),
+        ("Galle", "Galle"),
+        ("Nuwara Eliya", "Nuwara Eliya"),
+        ("Ella", "Ella"),
+        ("Jaffna", "Jaffna")
+    ]
+
+    location = models.CharField(max_length=100, choices=DESTINATION_CHOICES)
+    service_type = models.CharField(max_length=100)
+    name = models.CharField(max_length=150)
+    phone_number = models.CharField(max_length=20)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.service_type} - {self.name} ({self.location})"
