@@ -5,6 +5,7 @@ import useAxios from "../utils/useAxios";
 const TripDetails = () => {
   const { id } = useParams();
   const [tripPlan, setTripPlan] = useState(null);
+  const [emergencyContacts, setEmergencyContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const axios = useAxios();
 
@@ -25,6 +26,19 @@ const TripDetails = () => {
 
     fetchTripPlan();
   }, [id]);
+
+  useEffect(() => {
+    if (tripPlan?.trip?.destination) {
+      axios
+        .get(
+          `http://127.0.0.1:8000/api/emergency/?destination=${tripPlan.trip.destination}`
+        )
+        .then((response) => setEmergencyContacts(response.data))
+        .catch((error) =>
+          console.error("Error fetching emergency contacts:", error)
+        );
+    }
+  }, [tripPlan]);
 
   if (loading) return <p>Loading...</p>;
   if (!tripPlan) return <p>Trip not found.</p>;
@@ -111,6 +125,40 @@ const TripDetails = () => {
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Emergency Assistance */}
+      <div>
+        <h3 className="text-2xl font-semibold mb-4">Emergency Assistance</h3>
+        <div className="collapse collapse-arrow border border-base-300 bg-base-100">
+          <input type="checkbox" />
+          <div className="collapse-title font-semibold flex justify-center items-center text-center p-4">
+            View Emergency Contacts for {tripPlan.trip.destination}
+          </div>
+          <div className="collapse-content space-y-4">
+            {emergencyContacts.length === 0 ? (
+              <p>No emergency contacts available.</p>
+            ) : (
+              emergencyContacts.map((contact) => (
+                <div
+                  key={contact.id}
+                  className="border p-4 rounded-md shadow-sm"
+                >
+                  <h4 className="font-semibold">{contact.name}</h4>
+                  <p className="text-sm text-gray-600">
+                    {contact.service_type}
+                  </p>
+                  <p className="text-sm">📞 {contact.phone_number}</p>
+                  {contact.description && (
+                    <p className="text-sm text-gray-500 mt-1">
+                      {contact.description}
+                    </p>
+                  )}
+                </div>
+              ))
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Trip, TripPlan, Review
-from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer
+from .models import Trip, TripPlan, Review, EmergencyContact
+from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer, EmergencyContactSerializer
 
 from .services import engine
 
@@ -165,3 +165,15 @@ def review_list(request):
             serializer.save(user=request.user)  # 👈 Attach logged-in user
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(["GET"])
+def emergency_contacts(request):
+    destination = request.query_params.get("destination")
+    if destination:
+        contacts = EmergencyContact.objects.filter(destination=destination)
+    else:
+        contacts = EmergencyContact.objects.all()
+
+    serializer = EmergencyContactSerializer(contacts, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

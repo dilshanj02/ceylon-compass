@@ -163,7 +163,7 @@ const PlanAccordion = () => {
       <div className="collapse bg-base-100 border border-base-300">
         <input
           type="radio"
-          name="my-accordion"
+          name="plan-accordion"
           checked={activeStep === 1}
           readOnly
         />
@@ -195,7 +195,7 @@ const PlanAccordion = () => {
       <div className="collapse bg-base-100 border border-base-300">
         <input
           type="radio"
-          name="my-accordion"
+          name="plan-accordion"
           checked={activeStep === 2}
           readOnly
         />
@@ -235,7 +235,7 @@ const PlanAccordion = () => {
       <div className="collapse bg-base-100 border border-base-300">
         <input
           type="radio"
-          name="my-accordion"
+          name="plan-accordion"
           checked={activeStep === 3}
           readOnly
         />

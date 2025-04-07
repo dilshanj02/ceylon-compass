@@ -19,4 +19,6 @@ urlpatterns = [
     path("plans/<int:id>/", views.plan_detail, name="plan_detail"),
 
     path("reviews/", views.review_list, name="review_list"),
+
+    path("emergency/", views.emergency_contacts, name="emergency_contacts"),
 ]

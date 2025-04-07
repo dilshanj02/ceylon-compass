@@ -83,7 +83,7 @@ class EmergencyContact(models.Model):
         ("Jaffna", "Jaffna")
     ]
 
-    location = models.CharField(max_length=100, choices=DESTINATION_CHOICES)
+    destination = models.CharField(max_length=100, choices=DESTINATION_CHOICES)
     service_type = models.CharField(max_length=100)
     name = models.CharField(max_length=150)
     phone_number = models.CharField(max_length=20)
