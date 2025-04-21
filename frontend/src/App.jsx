@@ -6,6 +6,7 @@ import SignupPage from "./pages/SignupPage";
 import TripsPage from "./pages/TripsPage";
 import TripPage from "./pages/TripPage";
 import HomePage from "./pages/HomePage";
+import AboutUsPage from "./pages/AboutUsPage";
 import CommunityPage from "./pages/CommunityPage";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./utils/PrivateRoute";
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="/trips/:id" element={<TripPage />} />
             </Route>
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/about" element={<AboutUsPage />} />
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/signup" element={<SignupPage />} />
           </Route>

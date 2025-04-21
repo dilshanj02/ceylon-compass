@@ -3,6 +3,8 @@ from decimal import Decimal
 
 from api.constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, ACTIVITIES_BY_DESTINATION_THEME, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
+OPENTRIPMAP_API_KEY = "5ae2e3f221c38a28845f05b6c125fa319a54da9c6e05f9cf12bc1417"
+
 def get_activities(destination, theme):
     return ACTIVITIES_BY_DESTINATION_THEME.get(destination, {}).get(theme, [])
 

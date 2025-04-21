@@ -80,6 +80,7 @@ const Navbar = () => {
               { name: "Plan", path: "/plan" },
               { name: "Trips", path: "/trips" },
               { name: "Community", path: "/community" },
+              { name: "About Us", path: "/about" },
             ].map((item) => (
               <li key={item.path}>
                 <Link

@@ -3,25 +3,6 @@ import WriteReview from "../components/WriteReview";
 import ReviewList from "../components/ReviewList";
 import useAxios from "../utils/useAxios";
 
-const dummyReviews = [
-  {
-    id: 1,
-    user: "John Doe",
-    destination: "Ella",
-    rating: 4,
-    comment: "Beautiful place, loved the hiking!",
-    date: "3 days ago",
-  },
-  {
-    id: 2,
-    user: "Jane Smith",
-    destination: "Galle",
-    rating: 5,
-    comment: "The beaches were amazing and people were very friendly.",
-    date: "1 week ago",
-  },
-];
-
 const CommunityPage = () => {
   const [reviews, setReviews] = useState([]);
   const [tripPlans, setTripPlans] = useState([]);
