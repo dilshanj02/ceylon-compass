@@ -5,8 +5,15 @@ from django.contrib.auth.models import User
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from .models import Trip, TripPlan, Review, EmergencyContact
+from .models import Trip, TripPlan, Review, EmergencyContact, Destination
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
+
+
+class DestinationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Destination
+        fields = "__all__"
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     username = serializers.CharField(
