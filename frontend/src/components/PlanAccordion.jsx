@@ -41,10 +41,10 @@ const PlanAccordion = () => {
     if (activeStep === 1) {
       let errors = {};
 
-      if (formData.destination.trim() === "") {
+      if (!formData.destination) {
         errors.destination = "Destination is required";
       }
-      if (formData.theme.trim() === "") {
+      if (!formData.theme) {
         errors.theme = "Theme is required";
       }
       if (formData.checkIn.trim() === "") {

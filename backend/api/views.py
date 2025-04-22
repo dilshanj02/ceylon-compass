@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Trip, TripPlan, Review, EmergencyContact
-from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer, EmergencyContactSerializer
+from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme
+from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer, EmergencyContactSerializer, DestinationSerializer, ThemeSerializer
 
 from .services import engine
 
@@ -34,6 +34,30 @@ class RegisterView(APIView):
             }, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def destination_list(request):
+    """
+    GET: Retrieve all destinations.
+    """ 
+    destinations = Destination.objects.all().order_by("name")
+    serializer = DestinationSerializer(destinations, many=True)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def theme_list(request):
+    """
+    GET: Retrieve all themes.
+    """
+    themes = Theme.objects.all().order_by("name")
+    serializer = ThemeSerializer(themes, many=True)
+    
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(["POST"])

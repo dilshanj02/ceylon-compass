@@ -11,6 +11,8 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("protected/", views.ProtectedView.as_view(), name="protected_view"),
 
+    path("destinations/", views.destination_list, name="destination_list"),
+    path("themes/", views.theme_list, name="theme_list"),
     path("trips/", views.trip_list, name="trip_list"),
     path("trips/<int:id>/", views.trip_detail, name="trip_detail"),
     path("trips/validate/", views.trip_validate, name="trip_validate"),

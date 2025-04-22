@@ -11,7 +11,7 @@ const TripList = ({ tripPlans }) => {
           >
             <div>
               <div className="text-lg">
-                {tripPlan.trip.destination} : {tripPlan.trip.theme}
+                {tripPlan.trip.destination_name} : {tripPlan.trip.theme_name}
               </div>
               <div className="text-s uppercase font-semibold opacity-60">
                 {tripPlan.trip.check_in} - {tripPlan.trip.check_out}

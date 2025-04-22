@@ -5,13 +5,19 @@ from django.contrib.auth.models import User
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from .models import Trip, TripPlan, Review, EmergencyContact, Destination
+from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
 
 class DestinationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Destination
+        fields = "__all__"
+
+
+class ThemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Theme
         fields = "__all__"
 
 
@@ -47,11 +53,20 @@ class RegisterSerializer(serializers.ModelSerializer):
             password = validated_data["password"]
         )
         return user
+
+
 class TripSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
+    destination_name = serializers.CharField(source="destination.name", read_only=True)
+    theme_name = serializers.CharField(source="theme.name", read_only=True)
     class Meta:
         model = Trip
-        fields = "__all__"
+        fields = [
+            "id", "destination", "destination_name",
+            "theme", "theme_name", "check_in", "check_out",
+            "transport", "accommodation_type", "accommodation_tier",
+            "travelers", "budget", "user"
+        ]
 
     def validate(self, data):
         errors = {}

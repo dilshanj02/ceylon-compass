@@ -9,8 +9,8 @@ def get_activities(destination, theme):
     return ACTIVITIES_BY_DESTINATION_THEME.get(destination, {}).get(theme, [])
 
 def generate_trip_plan(trip):
-    destination = trip.destination
-    theme = trip.theme
+    destination = trip.destination.name
+    theme = trip.theme.name
     check_in = trip.check_in
     check_out = trip.check_out
     transport = trip.transport

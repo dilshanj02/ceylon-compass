@@ -61,7 +61,7 @@ const TripDetails = () => {
       {/* Trip Heading */}
       <div>
         <h2 className="text-4xl font-bold mb-20">
-          {tripPlan.trip.destination} - {tripPlan.trip.theme}
+          {tripPlan.trip.destination_name} - {tripPlan.trip.theme_name}
         </h2>
         <div className="border-b border-base-300 mb-6"></div>
 

@@ -9,23 +9,16 @@ class Destination(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Theme(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Trip(models.Model):
-    DESTINATION_CHOICES = [
-        ("Colombo", "Colombo"),
-        ("Kandy", "Kandy"),
-        ("Galle", "Galle"),
-        ("Nuwara Eliya", "Nuwara Eliya"),
-        ("Ella", "Ella"),
-        ("Jaffna", "Jaffna")
-    ]
-    
-    THEME_CHOICES = [
-        ("Adventure & Outdoors", "Adventure & Outdoors"),
-        ("Leisure & Relaxation", "Leisure & Relaxation"),
-        ("Culture & Heritage", "Culture & Heritage")
-    ]
-
     TRANSPORT_CHOICES = [
         ("Private", "Private"),
         ("Public", "Public"),
@@ -46,8 +39,8 @@ class Trip(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='trips')
-    destination = models.CharField(max_length=50, choices=DESTINATION_CHOICES)
-    theme = models.CharField(max_length=50, choices=THEME_CHOICES)
+    destination = models.ForeignKey("Destination", on_delete=models.CASCADE, related_name="trips")
+    theme = models.ForeignKey("Theme", on_delete=models.SET_NULL, null=True, related_name="trips")
     check_in = models.DateField()
     check_out = models.DateField()
     transport = models.CharField(max_length=50, choices=TRANSPORT_CHOICES)
