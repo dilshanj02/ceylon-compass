@@ -1,43 +1,46 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../utils/useAxios"; // Import the axios instance
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem("access_token"));
+  const [loading, setLoading] = useState(true);
 
+  // Auto-login if token exists
   useEffect(() => {
+    const token = localStorage.getItem("access_token");
     if (token) {
-      // Fetch user data if JWT is present
       axios
-        .get("http://127.0.0.1:8000/api/protected/", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => setUser(response.data))
-        .catch((error) => console.log(error));
+        .get("/api/protected/")
+        .then((res) => setUser(res.data))
+        .catch(() => logout()) // invalid token
+        .finally(() => setLoading(false)); // Set loading to false after the request
+    } else {
+      setLoading(false); // Set loading to false if no token
     }
-  }, [token]);
+  }, []);
 
   // Axios Interceptor: Logs out user if API call fails due to 401 error
-  axios.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      if (error.response && error.response.status === 401) {
-        logout();
-      }
-      return Promise.reject(error);
-    }
-  );
+  // axios.interceptors.response.use(
+  //   (response) => response,
+  //   (error) => {
+  //     if (error.response && error.response.status === 401) {
+  //       logout();
+  //     }
+  //     return Promise.reject(error);
+  //   }
+  // );
 
-  const login = (newToken) => {
-    setToken(newToken);
-    localStorage.setItem("access_token", newToken);
+  const login = (token) => {
+    localStorage.setItem("access_token", token);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.get("/api/protected/").then((res) => setUser(res.data));
   };
 
   const logout = () => {
     localStorage.removeItem("access_token");
-    setToken(null);
+    delete axios.defaults.headers.common["Authorization"];
     setUser(null);
   };
 
@@ -47,6 +50,7 @@ export const AuthProvider = ({ children }) => {
         user,
         login,
         logout,
+        loading,
       }}
     >
       {children}

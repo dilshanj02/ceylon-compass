@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
-import useAxios from "../utils/useAxios";
+import axios from "../utils/useAxios";
 
 const WriteReview = ({ tripPlans, reviews, setReviews }) => {
   const [form, setForm] = useState({
@@ -8,8 +8,6 @@ const WriteReview = ({ tripPlans, reviews, setReviews }) => {
     rating: 0,
     comment: "",
   });
-
-  const axios = useAxios();
 
   const handleTripSelect = (e) => {
     const selectedPlanId = parseInt(e.target.value);
@@ -26,7 +24,7 @@ const WriteReview = ({ tripPlans, reviews, setReviews }) => {
 
   const handleSubmit = () => {
     axios
-      .post("http://127.0.0.1:8000/api/reviews/", {
+      .post("/api/reviews/", {
         trip_plan: form.tripPlanId,
         rating: form.rating,
         comment: form.comment,

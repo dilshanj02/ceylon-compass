@@ -4,10 +4,11 @@ import AuthContext from "../context/AuthContext";
 import isTokenExpired from "./isTokenExpired";
 
 const PrivateRoute = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
+
+  if (loading) return <p>Loading...</p>;
 
   if (!user || isTokenExpired()) {
-    logout();
     return <Navigate to="/signin" />;
   }
 

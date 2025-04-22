@@ -1,20 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import useAxios from "../utils/useAxios";
+import axios from "../utils/useAxios";
 
 const TripDetails = () => {
   const { id } = useParams();
   const [tripPlan, setTripPlan] = useState(null);
   const [emergencyContacts, setEmergencyContacts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const axios = useAxios();
 
   useEffect(() => {
     const fetchTripPlan = async () => {
       try {
-        const response = await axios.get(
-          `http://127.0.0.1:8000/api/plans/${id}/`
-        );
+        const response = await axios.get(`/api/plans/${id}/`);
         const data = response.data;
         setTripPlan(data);
       } catch (error) {
@@ -30,9 +27,7 @@ const TripDetails = () => {
   useEffect(() => {
     if (tripPlan?.trip?.destination) {
       axios
-        .get(
-          `http://127.0.0.1:8000/api/emergency/?destination=${tripPlan.trip.destination}`
-        )
+        .get(`/api/emergency/?destination=${tripPlan.trip.destination}`)
         .then((response) => setEmergencyContacts(response.data))
         .catch((error) =>
           console.error("Error fetching emergency contacts:", error)

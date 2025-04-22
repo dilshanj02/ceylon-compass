@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import WriteReview from "../components/WriteReview";
 import ReviewList from "../components/ReviewList";
-import useAxios from "../utils/useAxios";
+import axios from "../utils/useAxios";
 
 const CommunityPage = () => {
   const [reviews, setReviews] = useState([]);
   const [tripPlans, setTripPlans] = useState([]);
-  const axios = useAxios();
 
   useEffect(() => {
     const fetchTrips = () => {
       axios
-        .get("http://127.0.0.1:8000/api/plans/")
+        .get("/api/plans/")
         .then((response) => {
           setTripPlans(response.data);
           console.log("Fetched trips:", response.data);
@@ -23,7 +22,7 @@ const CommunityPage = () => {
 
     const fetchReviews = () => {
       axios
-        .get("http://127.0.0.1:8000/api/reviews/")
+        .get("/api/reviews/")
         .then((response) => {
           setReviews(response.data);
           console.log("Fetched reviews:", response.data);

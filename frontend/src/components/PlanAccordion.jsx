@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import BasicInputs from "./BasicInputs";
 import ProgressIndicator from "./ProgressIndicator";
 import PreferencesInputs from "./PreferencesInputs";
-import useAxios from "../utils/useAxios";
+import axios from "../utils/useAxios";
 
 const PlanAccordion = () => {
   const navigate = useNavigate();
 
-  const axios = useAxios();
   const [activeStep, setActiveStep] = useState(1);
   const [formData, setFormData] = useState({
     destination: "",
@@ -108,7 +107,7 @@ const PlanAccordion = () => {
     const payload = mapFormData(formData);
 
     axios
-      .post("http://127.0.0.1:8000/api/trips/validate/", payload)
+      .post("/api/trips/validate/", payload)
       .then((response) => {
         if (response.status === 200) {
           console.log(response.data);
@@ -131,14 +130,14 @@ const PlanAccordion = () => {
     const payload = mapFormData(formData);
 
     axios
-      .post("http://127.0.0.1:8000/api/trips/", payload)
+      .post("/api/trips/", payload)
       .then((response) => {
         if (response.status === 201) {
           console.log(response.data);
           const trip_id = response.data.trip_details.id;
 
           axios
-            .post("http://127.0.0.1:8000/api/plans/", { trip_id: trip_id })
+            .post("/api/plans/", { trip_id: trip_id })
             .then((response) => {
               if (response.status === 201) {
                 console.log(response.data);

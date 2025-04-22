@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import axios from "axios";
+import axios from "../utils/useAxios";
 
 const SigninForm = () => {
   const [username, setUsername] = useState("");
@@ -22,7 +22,7 @@ const SigninForm = () => {
     e.preventDefault();
 
     axios
-      .post("http://127.0.0.1:8000/api/token/", { username, password })
+      .post("/api/token/", { username, password })
       .then((response) => {
         login(response.data.access);
       })
