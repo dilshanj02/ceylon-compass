@@ -128,7 +128,7 @@ const TripDetails = () => {
         <div className="collapse collapse-arrow border border-base-300 bg-base-100">
           <input type="checkbox" />
           <div className="collapse-title font-semibold flex justify-center items-center text-center p-4">
-            View Emergency Contacts for {tripPlan.trip.destination}
+            View Emergency Contacts for {tripPlan.trip.destination_name}
           </div>
           <div className="collapse-content space-y-4">
             {emergencyContacts.length === 0 ? (
