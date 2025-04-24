@@ -118,6 +118,7 @@ class TripSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
     destination_name = serializers.CharField(source="destination.name", read_only=True)
     theme_name = serializers.CharField(source="theme.name", read_only=True)
+
     class Meta:
         model = Trip
         fields = [
@@ -135,55 +136,68 @@ class TripSerializer(serializers.ModelSerializer):
         travelers = data.get("travelers")
         transport = data.get("transport")
         accommodation_type = data.get("accommodation_type")
-        accommodation_tier = data.get("accommodation_tier")       
+        accommodation_tier = data.get("accommodation_tier")
         budget = data.get("budget")
+        destination = data.get("destination")
 
-        MAX_TRIP_DAYS = 5 
+        MAX_TRIP_DAYS = 5
         MAX_TRAVELERS = 4
 
-        # Validate dates
+        # ✅ Validate check-in/check-out dates
         if check_in is None or check_out is None:
             errors["dates"] = "Check-in and Check-out dates are required."
         else:
             if check_in < date.today():
                 errors["check_in"] = "Check-in date cannot be in the past."
-            
             if check_out <= check_in:
-                errors["check_out"] = "Check-out date must be after check-in date."
-
+                errors["check_out"] = "Check-out date must be after check-in."
             if (check_out - check_in).days > MAX_TRIP_DAYS:
                 errors["trip_duration"] = f"Trip duration cannot exceed {MAX_TRIP_DAYS} days."
 
-        # Validate traveler count
+        # ✅ Validate number of travelers
         if travelers is None:
             errors["travelers"] = "Number of travelers is required."
-        if travelers < 1 or travelers > MAX_TRAVELERS:
+        elif travelers < 1 or travelers > MAX_TRAVELERS:
             errors["travelers"] = f"Number of travelers must be between 1 and {MAX_TRAVELERS}."
 
-        # Calulate minimum required budget
-        num_days = (check_out - check_in).days
-        transport_cost = Decimal(TRANSPORT_COSTS[transport]) * num_days # Transport cost considered as for the total travelers per day
-        accommodation_cost = Decimal(ACCOMMODATION_COSTS[accommodation_type][accommodation_tier]) * num_days * travelers 
-        food_cost = Decimal(FOOD_COST_PER_DAY) * num_days * travelers 
-        misc_cost = Decimal(MISC_COST_PERCENTAGE) * (transport_cost + accommodation_cost + food_cost) 
-        min_required_budget = transport_cost + accommodation_cost + food_cost + misc_cost
+        # ✅ Accommodation cost from DB
+        accommodation_cost = Decimal("0.0")
+        num_days = (check_out - check_in).days if check_in and check_out else 0
 
-        # Validate budget
-        if budget < min_required_budget:
-            errors["budget"] = f"Minimum required budget is LKR {min_required_budget:.2f}."
+        if destination and accommodation_type and accommodation_tier and num_days > 0:
+            qs = Accommodation.objects.filter(
+                destination=destination,
+                category=accommodation_type,
+                tier=accommodation_tier
+            ).order_by("price_per_night_per_person")
 
-        # Raise all validation errors at once
+            if not qs.exists():
+                errors["accommodation"] = f"No available {accommodation_tier} {accommodation_type} in {destination}."
+            else:
+                price_per_person = Decimal(qs.first().price_per_night_per_person)
+                accommodation_cost = price_per_person * num_days * travelers
+
+        # ✅ Calculate remaining components
+        if not errors and num_days > 0:
+            transport_cost = Decimal(TRANSPORT_COSTS[transport]) * num_days
+            food_cost = Decimal(FOOD_COST_PER_DAY) * num_days * travelers
+            misc_cost = Decimal(MISC_COST_PERCENTAGE) * (transport_cost + accommodation_cost + food_cost)
+            min_required_budget = transport_cost + accommodation_cost + food_cost + misc_cost
+
+            if budget < min_required_budget:
+                errors["budget"] = f"Minimum required budget is LKR {min_required_budget:.2f}."
+
         if errors:
             raise serializers.ValidationError(errors)
-        
+
         return data
-        
+
     def create(self, validated_data):
         request = self.context.get("request", None)
         if request and hasattr(request, 'user'):
-            validated_data['user'] = request.user  # Set the logged-in user
+            validated_data['user'] = request.user
         return super().create(validated_data)
-
+        
         
 class TripPlanSerializer(serializers.ModelSerializer):
     trip = TripSerializer()
