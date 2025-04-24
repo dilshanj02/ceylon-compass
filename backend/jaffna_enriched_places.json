@@ -1,0 +1,551 @@
+[
+    {
+        "name": "St. Mary's Cathedral Jaffna",
+        "beautified_name": "St. Mary's Cathedral",
+        "description": "Visit the principal church of the Roman Catholic Diocese of Jaffna, a significant religious and historical landmark in the city.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 60,
+        "google_place_id": "ChIJDZN_1qRW_joRZNRTHvgbK0U",
+        "lat": 9.656235900000002,
+        "lng": 80.02289859999999,
+        "rating": 4.5,
+        "types": [
+            "tourist_attraction",
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcLIEXMxB4R4XYgc4g2MSE9IhapXsXz8LoSXbRJ76ttE0IcXpDS3njj6KTccrT8IEGovCOwO2xAc5RrYfgytKHPwWmvyn3MlfUl8WiC2fWcJb6LSnb0iwF0IdJQoIZtSSx0wUsxn0uaZ3DJoS2tTEVqfje2J1F_gL0DXIcWf_04K0LwB0IU4e2x9PFjkoPNIMQy1svq0yqTGv2CGDUJytyfJwPZ8sc9KN7mwWMGYJhuox0gAJkYXViZcGG32OAqDRRpQvgqEV4wYT25GkOZErjG3DVgfYP9ZGhuggLmxt2FQ4PEBIplqlwDxdOrv1UPxccN1vyi86WRf3aGFgS0vGtPf_rVh95tqGYCCMiueNwW7H0r-ksL4veaYZv6pVtzxRjggcItGzOLye1_pe__NTVepCYKfuoAChVHeaE_N-K67211MW6LUgR17InSmhz4vtnRTWlOPcCC284zpE2xX_cEBPXn6a2oBmFYYfTM56YNbdkQZL0UsUjhlDk_2Sr94_LALBq6ge0lL2z0jfPOF7mqpxj2KUWKUmsekv1hbNY5ta3WJTb12Gjx_139YRNBGKrnf_qt2HqFB7nAUJ7MvZkC9efu6FFZLFnzGY2caqJ3eTMtxVtAQqhBjix6TgMnrB1cuAA",
+        "num_reviews": 201
+    },
+    {
+        "name": "Jaffna antiques shop",
+        "beautified_name": "Jaffna Antiques Shop",
+        "description": "Browse a fascinating collection of historical items and local artifacts. This shop offers a unique glimpse into the heritage of Jaffna.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 60,
+        "google_place_id": "ChIJ3xg5-B5U_joRS_3ELrjQgLw",
+        "lat": 9.6699247,
+        "lng": 80.0277175,
+        "rating": 3.9,
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcLL80eUviSVyYcz0fDk90KOR7LsdX_EQxDASHzWJ4-5ljM44ETUEkLDQ6tXHw_UlTxWIqXt18SVmF7WU3NfXjy-Z7iJ_MI_AMTqTG7nBUVJw-ddBchXHpqZDhjFDUWbZvgaKfvjcRj4zeGLg98AhWdRDDvnjWIreiIFPTVr6PMG-XwFUK0H6rUnuP5Vl9ndHuQx492frLYbEj7W6SVFNVnAmxKnxgTa_fkJqyENZWa22a0HveXWne1n_iYE_vwkcwSYnZlsp5CnACcoHhWCaRfmTk4KIcMe7l9T6RlRhYxhD0gP9I1BsnZuNS0zLkqtcI8KjHqkVMoWmKi3FVvK50Um8pTfZH-My9Ku9TL1inBXS6h82xTNGzVxro0ZQCSvEA7ulOSNITP0njTXJsc7bKQH2wsXMnLNondR0xe_KOPF_MXdCoq1btBI_qH1HnHiYuyBpLwc1fM9uXtvR3G6yawTDI3ti7-i80mYN5bC07lfN_II2ddfyHOAdwkA-moBFwWkbNOpTR9O3AsxmpKIWfN5ACEn6enjPjjbeLKN1TqUsb7Cn7bt17pZXWljA2Tw6izVJYJMUKCLh8-uuGSzPjOxf0THsCi9h3jENDq08jj9E66fEeSpM2_9zJqE_WONDy2itg",
+        "num_reviews": 29
+    },
+    {
+        "name": "Nallur Kandaswamy kovil",
+        "beautified_name": "Nallur Kandaswamy Kovil",
+        "description": "Visit one of Sri Lanka's most significant Hindu temples, dedicated to Lord Murugan. Known for its intricate architecture and vibrant festivals.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 90,
+        "google_place_id": "ChIJKxts7RhU_joRFhF5eEK7FXk",
+        "lat": 9.6749458,
+        "lng": 80.02967149999999,
+        "rating": 4.7,
+        "types": [
+            "hindu_temple",
+            "tourist_attraction",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcJm54_2_Hj-ejWgRVF8t-nJjXXrE-kk_MhxacqMm6UQPBLIaRC--FQm7_7_YpA5muiqYvLzMfkCR-T04T6rxZ2sNDC_L5EsKK1Yl2hEJgLkPlkFqJ6b691ztsZj2MWKlChA7ktyboPG2IyvzSOSqO8RyF4KUP2LJ6_kyPT-EFHvgzSui7xXOSUG087sSI35Z46PMobYR8mtEzsfAl4rxtLJMnstzIRxxhqCT_gSEHP8UQ6bd_dsENOB4FvJMxRduQR73RJO5Uc0lt9VLvizwS_jC_7-XM5AHT-0Z9fR1p0vOPf-ZKn2d___qEvVc_W-bONLgEBb36x3KofBMnvdv71V95_MpjptSVJEFliIhM8NJpKH9E53om2JifeUURNTezjXsLVYKLwg-TdsVLizLifyltDuQexI37IWUc31wEphhB9MDAJSfSZ-71nS3kqDLCh9-wIJ5k17P8cOOAY6EkOWv2nEPCXYNdLy2OvgkuXYcWz60piTI04XR9Pwheidxj3cm6hSFNxbMwAhDVqRAbpUio3qtHoSaWrBWXVi1SFCocEaSnh5Mn0H6TVHo8PgDRzoqWColQ9oa8wxgYRsjuLdqVD-E8QRUtAdkrmZjVw-vZSU7dmXKHjkL7KNofD4-VIjfsIp",
+        "num_reviews": 4858
+    },
+    {
+        "name": "Dutch Fort - Jaffna",
+        "beautified_name": "Jaffna Dutch Fort",
+        "description": "Explore the historic ramparts and colonial architecture of this significant fort, offering insights into Jaffna's past. Enjoy panoramic views over the lagoon from its walls.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 90,
+        "google_place_id": "ChIJAQAAtFRR_joR4N-SnYwXGkM",
+        "lat": 9.662030699999997,
+        "lng": 80.00842519999999,
+        "rating": 4.4,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcIK7Nj4NUgEr4hj5is8ROKl8Vu5M642Hh8M5llugTrY7E0xbSNOAIZUJC-HmjhPXx_gaSa_GQyVWE7yv98YSWItFLfn7zHXPlYJ01IEj2PR2XMGgohA1mt0wKULtMEZyhwOtb0rQQnee6uddKejvJihh5xqIBM44jAZrNEjHmHXWlWZFZF4W9QZdv8vMXUy17I6btc7fqfZC41CoU0v91C-zqgMnr29t4zbvqT8dytu0H6dq7PuaLIFbfKZFCamoZp3NbV7P1Ns1VDsP5f4QuyaUFoLGq05P3bwnzo2UqDj3BmP8WMSC5kFiRe3tHFu9Kuy53MaFnMbGSyFil8ZtdFrSWDQ7CVcY3bjPjMbQpvBcI8nJPlZbHlhIupE6Lpde_ezBGfBllqywuxUL60EzrApKgf7CD2495mkemP9QtHiK4hxOAITxZbuaqRAyrj5yziXlFI8fmAZJncm8Z3--FQa17PswkUpR7h1ZX0fF67jAHAP9OXphjeZhzzUUtSUN7zkn6x8Yte-qdIRVK8dj8SN_3Sk5ytT5KeezGQWlb2FUSKDO5YffkChQYyxUVl7_5PslcH3nEHrsendl-QJi90bXjLVgiloHstcb61OYT1CO8vgZHcc7-7xnUZt7OzER9IMvzoM",
+        "num_reviews": 3904
+    },
+    {
+        "name": "Old Park",
+        "beautified_name": "Old Park",
+        "description": "A historical public park in Jaffna, offering a peaceful escape with lush greenery and pathways.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 90,
+        "google_place_id": "ChIJlWoNtaNW_joRF-L60QfGprc",
+        "lat": 9.660109,
+        "lng": 80.02820539999999,
+        "rating": 4.2,
+        "types": [
+            "park",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcITD1HGaRR3Nheyp7udeIMX0huoQJcZVr89hvvfukQHA2H3YkTeBc8oVxdrA17Nr77MvoI_gIxE4jwzTFKTe_Y10B7UEtwtsownhaTtT7y3tnoKxiuBVdU2q543nvh0XkvMnbhc-fyhal6c2_DzSizqShPUFRAEXuOkkX1xIFhe2F4OSZ-KMmwdO6YqyqaNy9P6LKERcFI_DuCHlCoIYYiqTJ5L07TZUh3df31Y_DBMppQ2hDc2YmcGlfL5WPfzxFzOU421u2m5M_zC9VXbI8bfvyXW6D2RW1meb39Dj0jyzBLT8xGx3mbHdKGV-fRcPnd6CuBHFpQJw979r38Uv83LAwweMWlIBAvCfZPtKMVmQfJScEBqMxibha--FewDmhPn92od-hNl331_8eFkW6pAHXMwQk3TZ1GUrrgkDJcGtb9f5IYTaC8_vH7ZWLARccPghH3wBbFkeKb9TlG4i5JL7MNtFuKaY8jIFjq_XjcccYVXB-JYu1S7M45p2Qxl_oq-VZy2MLmRbObxppPuD-FvJ5rJvszfyDqnJOJozwS_l6tE87LB6msF_7rSMe1qM4Kx4g7J6kXQIPYnqje-hb3NZrAY8R4aYyXMcuAm2lDh29GPNPW4caFwmAxmD_9_ksa_mkB2",
+        "num_reviews": 665
+    },
+    {
+        "name": "2nd World War British Siren Tower",
+        "beautified_name": "British Siren Tower (WWII)",
+        "description": "A historical tower serving as a relic from the Second World War era in Jaffna.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 45,
+        "google_place_id": "ChIJXZgwIABX_joRFHWDH8k04l8",
+        "lat": 9.657382799999999,
+        "lng": 80.0261927,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 0
+    },
+    {
+        "name": "Jaffna Archeological Museum",
+        "beautified_name": "Jaffna Archeological Museum",
+        "description": "Explore ancient artifacts and learn about the rich history of Jaffna at this regional museum.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 90,
+        "google_place_id": "ChIJwQEzyx1U_joRsOI-AOxJkTU",
+        "lat": 9.669053500000002,
+        "lng": 80.0242099,
+        "rating": 4.2,
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcJec27N8hWuG4X28sA0JsS-ssRMucm80VbEux0bAiA3jQcUIfX-0aEHEcWEP0KI2giKvabcsRlQwox9rIvTzzuEh8PAcX8GQTt4pftWsyyhBHLCIzuwaPHJTiZkzJjdArl0KZ7pKQrkBYcBy54erkE0nv2y-L3hfsUITomCtWTWAHUhWbIM4Yp-wnwXHIGZ-sHu60x9jijduKBsaZgdR9JtRv_Tvvvsy3HTNdpNtFQSSDHjt89usloUnCZsk1xuFVbOO6TlSV9qckn-PRndPVCGgc3haVq2PgS226-N37oZatcuT8EF9VfBr3sTGIGRSUV0Fiy36kTezYw9GXvpOHSm0PzL6eGingN-1eBw04A6PhTrNN8zpUkH8LlS7iRXb8MPFe2dwnbESMWXLZU4ARrHkLzzZLQzndyk9Ms2NbSPe4Gmb8qye93uKL9kaLPCI1iUZHU-iIbo2xvtcf6BCONC-k0wrKhIiJQQyr99E5K38wEzEjx9fei83mif2ub1po_txE2B_yS4LJmYBoleN7tVRmJUQK0p4JkQbN0FVJaC1CQlP33nOFdobiq9vucnx5uEv-WaJWVp2NGRSKhyNZZRHedFQPwQL463jCNnZTCGr-1A_2bTkkaq6ZjF2czDPV1zGCHK",
+        "num_reviews": 454
+    },
+    {
+        "name": "Active Theatre Movement",
+        "beautified_name": "Active Theatre Movement",
+        "description": "Discover the vibrant world of performing arts at the Active Theatre Movement, a notable cultural point of interest in Jaffna.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 90,
+        "google_place_id": "ChIJedCJUSBU_joRNIlksCfMUpk",
+        "lat": 9.6696293,
+        "lng": 80.03334989999999,
+        "rating": 5,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcKdH2jyDU0osx-yxd20ibKlAoPhjoAYmxoUoEoRoeN0wIYNYBRtyi_N9jmXPI_utDAHGil3r7KKcor7hlFoU8dr5XJwb0QhHgPl4cLT6t8C5XAasBg54Mw92BmZdXPdu5poQQ4I17nK9t7FkDehjgtGpf81hOl6Kz0mbkVp8FQPk4AxqSF5Vrrw8BlM4qoQ7SZmqdSbNUPi4HFtUq2sWHqB1gI-AsagU9kbT7RnBDYl_fqRko9Qcxd_4pCuji2iJtTPLCxP45Gwfand3Q4LGOWkpVl2lLvIL7Nks0oD6RC4RCg5wDrGLQtLT54831CWAgTXCVZaj_R7dd5HHnbbR5DpZKbdbMQ755Y_VmgxCoOXzX3r86sNxj5VstF9wX0ZG4tX3mxmlIkYyBbjvEzg3lzrTFTAG6HnmV_gRVW4tl6wIWb03X6Os2A1qgS0U9NuWou2bAymInp2VhQDsZlwlB4UIchbjR4h4_JOQpd5dFq28PMYncd2-fDuINsbGZEUWd5-ORvgceLAxGJ-R7mTxgDeUy-lO0e877GO6Mhal4B9UnyDlk6f9zgez7hT3XG1ZE7ull5cq0ZegA9WEbA3njsjOfYHhaxjvgAV62I6-I2tKnpBTKQz4Y1wUW7Ze2_geqaZAg",
+        "num_reviews": 5
+    },
+    {
+        "name": "Indian caltural center",
+        "beautified_name": "Indian Cultural Center",
+        "description": "Explore the rich cultural connections and vibrant traditions at this center.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 90,
+        "google_place_id": "ChIJ34Eh1c1X_joRmvAy0Rz9KNg",
+        "lat": 9.6627631,
+        "lng": 80.0123086,
+        "rating": 4,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcJ4fBspGbJmF4ATnVEoyUYHWUpuvyCapuS1BCY6z5YdTjdXoo-nfTxvRU5Nme1fGgP1AJ0Gh5epAxhuTM34NFiVe3QthxKWzKsC-Uk05CZDk50duf_1se5scFVnIr6VTrTCABvCFhrL_vpk6p2fwuKS0-62G_kN4hRgrU_oHvJb_MDEeHdd8r7swCdWBD-hJprECLC6gHk1JHRsi4iaNYJ8H8c_kwmEuLPckl0CMpD5oiIgqlDU3yNzdI0EtsAOYgLIioQ4oZL2oQBvPVX7UY-3tWGKljvKQiVSdtptcL3p4rYiBjGbGRdcXOQkIOCCa47UG8QklIE9b7flRWs7jJJzX33C1le4t2AVF9nr3W-Gdi_Y7dLU3WyruAO4jHKiVFNrdce0m9P57_KsSmOZuse45IetQRo2Z4Xh-HwNkZfU6SmltdGqBqMABcJOC2pNbWXkW7iJFQNVz0yDQn3SBwZJ5WK9amJRTrFKmwrZaL2aJzj--evd9puw9P-jQ5rbIJzqWHheKQKqhJiqbx2XkBfRVHJ3Dcox56YPWKLFaOQ2ejpqpQV_0jUS8B9x_KG-gvD4b8raDlh0QX0bsqgNYm3iSokQUsIosofht7SJhMlJ97Y1o9QVlGhtgfnLOZbS",
+        "num_reviews": 2
+    },
+    {
+        "name": "Selfie Point",
+        "beautified_name": "Jaffna Selfie Point",
+        "description": "A popular viewpoint in Jaffna offering scenic vistas, perfect for capturing memorable photos.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 45,
+        "google_place_id": "ChIJPwNT7FlV_joRmbVsuxZE5A4",
+        "lat": 9.667305700000002,
+        "lng": 80.01071569999999,
+        "rating": 4.7,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcKoy0Mx8zBGblXPfZgyAf73xIs021qhbA7klyDcZG5NS_DYe0PXGrFRtneJcTFGGzDlpykOL6Rf7vzN1m3j5NtblkkQjppHblESDRYFwc2UgVH2hhpxv_k1Dm8RFfHEu5992qY3bxMXaMjScpZtMi-Pn2Bj-p31XNTumN-zNEGhJegNm-H379bQ-ZHiHlB2a7l0d2rvZeHmYb7UADNcXIsHRQmGxnoIChFlgTSN20sOigOyFZZ3Uo-BOFAN8OUt4TzVzLGhVrSeuPGias8nv97r5ccwLpXKDl-FFudZkM8SkAN6sZkdAR6-Kn1fizO1qX8nEuNBLiMNRFetuf3WWvH5-R1HTQOVyDXmCgGNAHbKJHuss3tKmohmCN3o2JoZ1nboO20Si50Iit6_xPewiBUIiNjJtuSaE8wyXts5h3estOAvhvdd17kJqPyhjyeZR3di0f7gAoIEHz06uxNVx8Wx7SWECscw2Se0Rh6rbK3rgOnBUhils3WRoN8U4PSGIrmp93szNciXrq5waK0PR17h4nF6NYtH3FQRqxGuB1Fu0r1878ZaeDC26mN2qCFiM5yFrqf6iANEf8RDnyjZpsFDOLAn-Cmmn7q1G6Z641PStFcx7hmxzVixp74T-OpgMtqTIA",
+        "num_reviews": 3
+    },
+    {
+        "name": "Jaffna Market",
+        "beautified_name": "Jaffna Market",
+        "description": "Explore the vibrant atmosphere of Jaffna's main market. Browse local produce, spices, and unique goods, and soak in the daily life of the city.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 75,
+        "google_place_id": "ChIJ3zgUFwBU_joRQPU_VWzmdF8",
+        "lat": 9.667351,
+        "lng": 80.0098731,
+        "rating": 4.1,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcKeRXMZ1pXgdHHeGhg8X5nE958KsmJwWlyUyKWYzYaAi4Ob0VLbG86sOk1wIbQGKSkIMXZ25SSTGegGIoLYmAvfPa7xNNC4i3RU4s_6UV-7y4TRssC5Hlx0nb2Qww_a75z_vd4ul3b3_WOhOqlQtIfZY6tgDQzL542H2fQYky8sx5TJLK1euJvZnIfkp8RvaItwg1syTWCHDjfCcWMKCnHgXxeAyXS4cjNDTiXt9NNzlgC4n1OTh758Ot-hO39itHbkmULHuTtrOKg2C5t1ER4N9kilaZvgyQn_T7FrvYD_AY7teE-TQ4qETM5rXFW7X4TRqu5ygyoBaP9BPfqi7qdEi9BeaXi8M0xwP1JIPwmoAYIyq1V11-1O-ur7MXMADxI27cpB6BhIpi8UC6my3V1JGksRZkYimHiEd5OxWGAIduoJ6IRl7LBCiYZNxOPjCJ9afkOXP8z92HK32AFAK5ldPvfW5VBCJOzrxXH81QT5yeR-N1ZNQ4AIeqnPJX6N89bnZLO_PyeVg9bY6c6XR4fh_cX4eOtQLRvhNMACSxoWNgMxLUDt1iG_AoGEcwcdL0VJjAs2lZi1_JdOeN3UsvDMM79LWvGSpWDLE7T3C7dbR_eCvSRaxwzawBYYi-UW3Cj76A",
+        "num_reviews": 2827
+    },
+    {
+        "name": "Pannai Walkway",
+        "beautified_name": "Pannai Walkway",
+        "description": "Enjoy a leisurely stroll along this scenic walkway in Jaffna, offering pleasant views.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 60,
+        "google_place_id": "ChIJ85ZAum1R_joRLGE7xjgeNtw",
+        "lat": 9.660237899999998,
+        "lng": 80.0079798,
+        "rating": 4.5,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcIQUHs1wIlHKMKQvk1UkPY-klpwd8QmELDBa2eLRzND7nu1w9LGzGbMIDLkDWe6et3ttR0Vy-2aj9_u9mk45UwCNt5eO7T9jdQF57IW9eFgBGYOuYH49N7BFTUNaiMMwSUl4QhfcbFImBZIG8hP_FWvJTkLPJRKd44G1hzW4AzwvUNmt4hjwSNahm9aGwLF90dU_zj5ViBHk8LDvCaoz8P8AANkWPAOKN_tcluPuLkDjns8wqifftpE064Pk5BVNs0FHfZ6WXgkCQ_Z7WfPRUspI-UBc54uZj9oAOhYeLrLMlHmlHWGZADsL3dCCd0p76EqsE570ABNxzfOJKszHgdGDjCUuiuY2imxhFiTowRof7dst1Y8xTULfrh-1uynRPlJPO1kNRPfQSJ_5lvIKK0Xkt-t-QV-dN-AYuNi7s3uUVLFoVnsNJfCGpN2Znb-cJtepfYyKJ25orZFsWcvH0vSNlqzpddasBSGcptdOC8mSdRldyNCbShyI2ueCfc4UReoFHV0reumT3OpEN5hlezVAEsNXL4iKUkXP_S-pWFGdAOvNDhT7zAinABg5q0HaCNZVUvKPpXMzpT64sJFOGGrgN2exLaaFnrIczASNiW7fzC2EYg3hdqmTSi-bv2Utj7b6zjM",
+        "num_reviews": 13
+    },
+    {
+        "name": "Well of jaffna fort",
+        "beautified_name": "Jaffna Fort Well",
+        "description": "An ancient well located within the historic Jaffna Fort, offering a glimpse into the site's past and providing water during sieges.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 30,
+        "google_place_id": "ChIJA35Dj-tR_joRkTVSe0YBGQ8",
+        "lat": 9.663807799999999,
+        "lng": 80.0077938,
+        "rating": 5,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcIBAPzd4zA7S4NWwzzFzZVE9srBSWmFFkwIJAc3i-Fp_y9NdZM_-x5RrorIyEyC7EYtwYJU5jgJR0m398107pRePedPgDbdpzgoURh4WH9O8VqFUoR2epsw_0bdck8J6Okoja2vmKaEPcyx-ysSV0h-7I_60hw7vql6pWhY2OdfBr2nFMFDCtAneLEoYbxKhqvFr47GKd0cKjaBFYrJiuhxVDF3XmWFX0eTY4i-OxExZTHU3JsZaYRmtTkluAE1_j0LvHx249OXn1OBOO5uqghGfjF42PRO0oK5rMrcIaG1hq1sI4KfSKhUPshMr-LN9SKpnijv5vRJ-qbwL1UUjjs3zoGGrfn3irWGymokClJU1MKgEpNsG3T4HW2b4FbMuUMSe8rUzd2kZAnlOL83JvFPgiI8Xcmx-s7gFhuzBQpMQ-pUfm_S1fruJBvf6Yw91eISiU6Z4tNw5INXLBkduDzQJxJh10iAQ9hqa-SlWU9lp2LzcCetZEXUi9emGMBj0AcGfznETVJO-B7hAbruW1wdxosWT1JgrHqnq0xGgGPW40Z7cF3mz559S6WYurx9Kf7_3bVxjcZyhf3-IonhEu7rvx0rAjWIlitnVQqltewCpSNTcYRzUbesyjjrEPlHbzy-GA",
+        "num_reviews": 1
+    },
+    {
+        "name": "Pannai Beach - Jaffna",
+        "beautified_name": "Pannai Beach",
+        "description": "A pleasant beach near Jaffna town, perfect for a relaxing stroll and enjoying the coastal views.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 90,
+        "google_place_id": "ChIJdcJK7spR_joRuzWanQSJx0U",
+        "lat": 9.662477800000001,
+        "lng": 80.0056024,
+        "rating": 4.3,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcLVEXpQvAm2_i04bXF9qZCMomjP1zngjyI9UciH3933RZX4Et62injj21GH2BS7nBh9iLUBJckj503Xs_0XW7j1A-JTrrBc058RZA0vVvcTUaO-Y7815bIIyu9XH_t3D2pN3XlCO0tQQgt7gn0VJBdAGaUtqhRgBVOyudWV5TqoSaH_Stksj5T13UYAikGrGSR8OHLJiGBOq2G_GtAj31Cc7ZJwbZUTdpBeAmdB4bTvbRjHSP-MRxeZpD-3BTcXH1V0l37okv0G_yZ2STiVfK-FbKuvWXWr4h7L4q-FUEh0HFY-TLmVy8K88fadmW0YFvKYa2633Cb20FSXE17QQ3WxbIGuCLx-pnB5HhHtJ63P1vWspxG3WYdSzd4oF3pWw6WfBpyL31m5rX601ORd-xNh_sLy44by1LssLLg1mOY4dU4FWX9eFbnJaDY31_Iny2ZwhOjHAzpMsUDhyDCV-0vyt7cbsWGGBbAe8v6T5Z4Cq8clfPp6puSGscDfPBpBMomK6EkQPQKhk0LugLE32ZsAyXPPcJuZFO7_DFboU1rG4TnYcfvqvCoT1U-JdBbBIif_C7B66EDgRLjti2nNWAKalWDZxuaWh0Gi0Bi2fnpA5KDj7goWdl33eiIvGUKp",
+        "num_reviews": 161
+    },
+    {
+        "name": "Jaffna Lagoon Area",
+        "beautified_name": "Jaffna Lagoon Area",
+        "description": "Enjoy the serene beauty of the Jaffna Lagoon. A peaceful spot offering scenic views and a glimpse into the local environment.",
+        "theme": "Adventure & Outdoors",
+        "visit_duration": 90,
+        "google_place_id": "ChIJVfBIkGdR_joROYOQvMulce4",
+        "lat": 9.657609199999998,
+        "lng": 80.00442799999999,
+        "rating": 4.1,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcIhEUTU1XA2wRa-_QzObeVMHyYagrIrOvW4DR0clfeHMO3L8YFamhihQieFUIVCggsuM2-i-L5qT-QDr2Po9XmFssTBaF7hH6gxTXYEKZ73KtBPxMngqs5HC49EUEKMCRRQ6yXFV7vXEjfpbT7viX0OrsXQ5NMiQLIbkn6E3zM6LzAdXdB35ENBoqUY83M6p6KmtPVgwB7WjhWo4HRwQnU4aNZXSOY3vUSml0mHFJ0JYlwyV5p-r0YFGE2nCnUcWL6D7gFbSBdz04OIpDETi5Uqs9IxtM2CMpV5Z9-FuIfUY7eKe3OFaTTW-LxRMiSDd41wNYia_BWTn1J5mSbNerpEYcYG6e3GQCrP-cEWOZN6rpryJhSygkXkvK6lqh3cATg51OxyyePPNztOwdBAwrMpeUzmslcaNbXkkHVRsPDp5eijsIpWWETUZ74IIsGcLpjk3NWC0fZ5Qg0MBjiHfbEWyPnh9s4IHCgvjckcUrqm-gn00foa8HRmpvLAAQ9Za9ErE-oR7gZ6uxAkABE_m0OgYnV-BF2NW5nOUqNtxhu1QpJhAd1fSsISOC_Vj5qfH7EM2fTEh1kBd_Ft-lAZLYjxzsPdzQSQlbExYzmX2R3s7NKJ0yB6Es9b0CznaXLWQjMOMQ",
+        "num_reviews": 16
+    },
+    {
+        "name": "Muniappar Kovil",
+        "beautified_name": "Muniappar Kovil",
+        "description": "A prominent Hindu temple in Jaffna, known for its religious significance and architectural style.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 60,
+        "google_place_id": "ChIJ-yWeaQlU_joRmXQBrubzZ0E",
+        "lat": 9.682234299999998,
+        "lng": 80.0127557,
+        "rating": 4.2,
+        "types": [
+            "hindu_temple",
+            "tourist_attraction",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 5
+    },
+    {
+        "name": "Baya Rest",
+        "beautified_name": "Baya Rest",
+        "description": "A point of interest or potential resting spot for visitors exploring the Jaffna area.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 30,
+        "google_place_id": "ChIJDdOv0edV_joR0VoFGVmeN0Q",
+        "lat": 9.690659699999998,
+        "lng": 80.01801449999999,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcI-43nuNGGNf_zpcpxiVyV8xLftYPFTQpj46na32CyHIvvvvLhyKqTD3Bi5C6swBJf6jqJk-28E6SOBCpcx-LWwnRgBZQstyeFoqJwrP4OwJoWrDxAY_6JaJP_A4HuiD6qQ1QEq9TOU5p2hgXhp9c_7y72BOfmXPedJgatnRk6eHDQC5aICCpj_47rAqM7_fmBwdK7FFJVyi5CMbDsyYRu2JmbiBNlxTKJkB5UMU0HoUodR1G13DLBUGr6STGIlHFn63EEq7JzVZuoDAFRw8Hpv6uj6vD2gF87PxBuXE1zvT0EiOi1fu9sQ6PtIie5ALk7bJV1KkjM",
+        "num_reviews": 0
+    },
+    {
+        "name": "Jaffna Obelisk Lighthouse",
+        "beautified_name": "Jaffna Obelisk Lighthouse",
+        "description": "A prominent landmark in Jaffna, the Obelisk Lighthouse offers scenic views and is a great spot for photographs.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 60,
+        "google_place_id": "ChIJc529HgBX_joRmd6Cq2ocPmg",
+        "lat": 9.626926,
+        "lng": 80.03284,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 0
+    },
+    {
+        "name": "Neithal Eco Park - Mandaitivu",
+        "beautified_name": "Neithal Eco Park",
+        "description": "A peaceful eco park located on Mandaitivu island, perfect for a relaxing stroll and enjoying the natural surroundings.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 90,
+        "google_place_id": "ChIJk3kw831R_joRDdoSq4iIQug",
+        "lat": 9.623380299999997,
+        "lng": 80.0039303,
+        "rating": 5,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcIrjbhtq4Qn6e2Gp3DKqDpQ5i6t_8BZrBvbDm6SHfLyAG9RyZ7ys3vUKdO6QdNb_cRHIJeYz4CkZQBEzHK6oemufCM9qO4epuqdCd1G71IPj0cbJmR2w2oq33jXgfQNM2wGC4efODqf1KpTeNfpWXCft2fe8V5r_PyST43v5y_PhZycFgP3Xc7_mh2_NeKTTxjNnJtUyGHkBcpGoNBRIXIMXZt5Q6VIHve7rgAYWK-UZHmJcQgWd5TMwTSFM9a4oSXREUfYS20nOnt3Sm-844yEbuFFv62pLQLyqQlhLsUxUHETDr07rGndFxffR8uiKsMWUvksu5cwzRYvCBHYZo8K-kiAa-Fp6vRiA_u-bHcaRZIIHw2aeHJ4LFn17EFJ3ETeTpUPBbSy5QdTbMoSs5N9bQTcve9RdPZ3rW5Dk_qpBymtF5LfcuGdNcv9MTWYwiyRPX4p1zaoJY0ZYiDzAEC9xyeL_vi8BYshc9NHx6yd7WNxj3Jtj_6fJOl9JELhM6xLHcLg2w0byHdsz6VjCxyax0dlVoKB5hRVgA8Bd-kZQZx3MIIqg4JK2itbetc_8EC2QpJ74gnrK4rgH6tjO3h3Ib0o9uPSzkjyE2aA3_hba_lY5TEsnlH2O5Yx9KSL6ja8ow28",
+        "num_reviews": 2
+    },
+    {
+        "name": "Ooriyan, Navatkuli",
+        "beautified_name": "Ooriyan",
+        "description": "A highly-rated point of interest in the Navatkuli area near Jaffna, popular with visitors.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 90,
+        "google_place_id": "ChIJMeWc6UJX_joRzlmKbKbmTfo",
+        "lat": 9.666710100000001,
+        "lng": 80.0869216,
+        "rating": 5,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcLEATSgUmzgHHGbbWI0N7qPGIALQGszJxwnL0JhowMuLVT3HPDw10BvHAFJdyIStuU-U7zvJ0GtK_rMn4x5lSZF046nxOMPzv0Kr00b9W3djda-pmSk10a4LcIQHDHyKd9j1Z9F67_RfeXMEu8XdA9HbCV7T8QLq9pj9pip9bHmb2mHb83bIz_nYzHNK0pEu9I46vv42mtTgjylmWwSEfqEpNGwXyaYhEZOKWqwgZcV3sJbE8ikiTp_PvRwcG3jZOVMblzyrxYb3CKZYJxmaAyIcjhcMThwXEbSInEnU1pWUWUEf3om2hXPOdV8nLqKamxWeu-_6aeCMXusY9iiHv1QSzFuM-msCpps_OrOGLURnrxbIZWFWGeDQ6ST-Qd66fffkeC8jZ3_xGn4ZsEqtvgn52KtEOtPminkRxTMvjxTA0UVGb8j5FTkKjUPQbOPOI30MVj9OB9vhbjAQhvSQBqj74qOYjIXc1jsN2o8D7K1aEQXgkAQH3cW3orBKsw5Bj9yS_xnIkhgoelnNWCh__HmqRb-MDO1qG3YNZ2-vxQKBuGkWU5vKX0XmnpFOcpdfyOdjKJEqIW9Z6t6FXfKJsQMJkkNkJ-glTYsaK9GfWGpxbave5u-jgiiIYtTCjTfvejsFw",
+        "num_reviews": 1
+    },
+    {
+        "name": "Kopay Beach",
+        "beautified_name": "Kopay Beach",
+        "description": "A scenic coastal spot near Jaffna, offering a tranquil setting to enjoy the sea and sand.",
+        "theme": "Adventure & Outdoors",
+        "visit_duration": 90,
+        "google_place_id": "ChIJYVftMgBV_joRbRCZzGhgAQ8",
+        "lat": 9.694878800000001,
+        "lng": 80.081935,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcJHmw7vzZA434dS7fAf6Hb9HBUANk5ypOakcTZr7wgOs3j-RL5iGFcUVYGFDXduQo6ELTwfXv1JsbNqdorFESF7E7EgfyupqcrBA8PgdW16HxRLND0pji9uQre082-6ex6Ivg3efQ35W3x2JFo82Ta14LKtSwqpe5ZdKRUF5D5vz9Dy4upk16N_whKP7jC9k6_fQSAN66LrJ1n8fAtENh0ny18RDwLhNkF-PnZolw_v-7ewkLquinVUquHq2uGsknV1gC7BgdCEfnmdlN5IG0hIo8sJJvmvulpffIg8XGRSHUZx5DjS9acQfr0BgXH5hyFHJhlFAwD3BarNCjYd9WhbibPTaRO7HMHa3QC-aeYbXWituZfUhfRVqxnpjyYcvO3Oy5SWXRte1_Nd8-OL5WdtYQLwMsimyX6H7qbmMIKO6x7OrtpSWcNYVFVLBIbhfllNS7CsJqId--_X8JEAtH-VRYQn7gHhwrwcyikXb3OxAYLlqDipNWZl42ogwvoEdftI_w--tJriRyQdsW9-9MUwpbbiZRzOg-ulIF_ECWnqUgB6z4gFt7WAT2KomJFo2UBJd60Q4nv3dg_I73iuXMrMFTvbbK47GqCQughr1K47HVZVJDLjlt0b37jryEZkAM_eNpiuDgympI9jq6pIM3cs3lM",
+        "num_reviews": 0
+    },
+    {
+        "name": "Smile Zone",
+        "beautified_name": "Smile Zone",
+        "description": "Enjoy a fun and relaxing time at Smile Zone, a popular spot in Jaffna.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 90,
+        "google_place_id": "ChIJqRVMrTtV_joR9RQYfF9iTWs",
+        "lat": 9.718265500000001,
+        "lng": 80.0638681,
+        "rating": 4.3,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcIqmpPLa0Owie62ZH5p5hG-7I_9WQzQyXhuf1VpBf4ND7ViPMKS9s5OXfQBGG-lwoi_WuClOS-zUAsyIZyGCZMOqn1uumgHh9fciusIBq2lnDsicjoIFhZOtDKhnjqANADdpJh1E8UUg1QmKbHbR9lq0urbV_qfShu6BERIUO6R6NLAWoIF1xfVZQ6MK4RU3EX3ECCX3nbvNOv4vlgWNsm7nJWlBXes70urEr6TgPsHIqHDyYRm48rgUuFnkmvYOdXBgDL6M9p2V5eP8gxZ1Tcx34G2NsQ6Lc6GYmn_Hi_iWbEac7lxNwX0wBaLeJTTAYE0YO7QDBYhJcBxosyTxEiDrStEBSgdxtUDV-D0tX5mSMvWPwEkSNBuzc8C7FrIHyLuRBrb5iwbBxkIQgNwE-xKjWHtNxva2C5jm7vT9sIQZar8cReydonSAI_CGaBnQLc3Lm2hWQ8ri8PJYNhnU4i9O2VAODw8avdPVIJTZSNJV_waR0BpOdu_a0--xON33PAr8EebOACP5iWjMJvO0L2A_Eg06c49Mmssu_XROPG8XrsbgAIXbtgliPxuoq_OgG_06cy7alpBzpFnvfxHmwgi1DbtmFteJpe-m70KBzPyFFYBodFONZhAGf7qgvtea5RuFrlz",
+        "num_reviews": 4
+    },
+    {
+        "name": "Addakiri Kulam",
+        "beautified_name": "Addakiri Kulam",
+        "description": "A scenic water body or tank, popular for its tranquil atmosphere.",
+        "theme": "Leisure & Relaxation",
+        "visit_duration": 60,
+        "google_place_id": "ChIJS5QUiUtT_joRt3zdPrVPsSY",
+        "lat": 9.7211932,
+        "lng": 79.9900439,
+        "rating": 4,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcLxZRYcdrGXM5Rz2Iq66civ4rMC_kJT8LuMJRKs8KQceYe3CkAXw6Bqij9aHfK1Lt6NKE7LztWaZkU3Pz74RdwwmOsx_5opiwEDzwL8OtDJnVh0vDT8oOpfOlPIALGyG54yzBjDO3cA-X9N74Y5guNbTQ6Tn1PnojrLQYUqekqJ0HNrWNLNCqcY5x7AK1iEiA-OXpLFolu9DMXAFFkoXw-SzjQSTTK-qDLPHVdzlEySxOq_BpHEoQXRE-stQB2K5dVMHNO_h8Axvhy-YtgGsfgQ4fE-GdzVQc2oWVAqNwXf0muq3AVGaRzp5Gpid7-twBITViMDYJiQEUAjqCJlbWNVDg88Tcpf1gzdGBFWu6M0XTpWGnnHxDUWTPvXD_bFKk022AKwArvmSp48P_3rTcHIPIwktpJ1LSZLH91jZj9p7MCzzR911guH6UJ3hj80CuJ1ZMKj-NW_6p33SaPJSE336mttJXiXD7GLbBzIXTScrMIheMTftJcecSmmiym3sXEMWVxh7_RQI6XE9x3bEC7mTvAXIQDVO8Su07ZPjOf4hLIuBS5ZctWPnH8bodc1ozouJSgzhqiHd7xcK_6RgJUGhim4Ow-PjetencBjk9xH0dwSIxSczlJ87w5NIMExpICebXf0",
+        "num_reviews": 1
+    },
+    {
+        "name": "Bharathiyar statue",
+        "beautified_name": "Bharathiyar Statue",
+        "description": "A prominent statue honoring the renowned Tamil poet Bharathiyar, located in Jaffna. A significant cultural landmark worth a quick visit.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 30,
+        "google_place_id": "ChIJJ7hveZ1V_joRUMgBZ__s-3I",
+        "lat": 9.670283299999998,
+        "lng": 80.0959006,
+        "rating": 5,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 1
+    },
+    {
+        "name": "Mandaiteevu vayal kulam",
+        "beautified_name": "Mandaiteevu Vayal Kulam",
+        "description": "A serene spot featuring a reservoir (kulam) and surrounding paddy fields (vayal) in Mandaiteevu. Provides a glimpse into the local rural landscape.",
+        "theme": "Adventure & Outdoors",
+        "visit_duration": 45,
+        "google_place_id": "ChIJA225VgBR_joRHARVnPdGzaI",
+        "lat": 9.60154,
+        "lng": 79.98909669999999,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 0
+    },
+    {
+        "name": "Thamarai kulam",
+        "beautified_name": "Thamarai Kulam",
+        "description": "A beautiful and historically significant lotus pond located near the famous Nallur Kandaswamy Temple.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 45,
+        "google_place_id": "ChIJEWCdG-xX_joR6HAdMSUfRMk",
+        "lat": 9.664565,
+        "lng": 80.1027862,
+        "rating": 4,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 1
+    },
+    {
+        "name": "Neithal Liberty Statue",
+        "beautified_name": "Neithal Liberty Statue",
+        "description": "Discover the Neithal Liberty Statue, a point of interest offering insights into local significance.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 45,
+        "google_place_id": "ChIJ4-cs_M75_joRq4jtQWwEUXw",
+        "lat": 9.643689199999999,
+        "lng": 80.1009512,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 0
+    },
+    {
+        "name": "Neithal Taj Mahal",
+        "beautified_name": "Neithal Taj Mahal",
+        "description": "A modern structure inspired by the iconic Taj Mahal, offering a unique sight in Jaffna.",
+        "theme": "Culture & Heritage",
+        "visit_duration": 60,
+        "google_place_id": "ChIJG2B2sKH5_joR_TWO9i7bUXY",
+        "lat": 9.6457336,
+        "lng": 80.1020147,
+        "rating": 4,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": "AeeoHcKI2JE4Uic7MIMXuAgwr8_Gr7xuyTVm0h-xvJU5aFDl8Xt0ShGeJDAkOE4Qi5Nk2F_bJgzVLF3rHHopFM6pWokEO997w75zVCGGAZthB60s99S_0ehnKdpJPYHqxz8YRJ3L0ODkDIrqRQS_AaNqktbhWOd0lt0G792Z_M-YYZuvN7JoUQRToiscyXbSDtQSOOl0DBn8WiqS6XcQEy3pN7hrkdgvC0pYNehNEr_2wVCbO1rLMbkPs3kt3mXV61PZ3jkeHZWJ1bRlG2KTZt4sGI_PY7hacJ1RXU46yX8LTZijDpNQH1yX6J4AjD9eQ3xwrPkiT-TVyjQKjrb0PlJDKGlehzb3P95itZi0NnURIL3b7S7bxYKoc3G1GqDKHkORMVM-ruHDGXMvrw6k501I8BrB8ybkOuc8wtvuB2QPHb-TDDN4fOLcEPymMP0xUfZPUWgm2v4higb5EyIzWykE3uS84kATSob6EyVbBr4P0OktkX-gIqAzcIW323xQyZuVsrsmUqkowSRAg455Q4z9kGV-dEvYOxEn553kEK1-fAVQq6mCTlcAhqGeEucnp2sGTp8psnI1R2m-YOLT49RAU_CAJVxS3rGNK6SJ4ogTU_epJSOT13EgbuVf-mQ7wCth",
+        "num_reviews": 5
+    },
+    {
+        "name": "Neithal Boating",
+        "beautified_name": "Neithal Boating",
+        "description": "Experience the local waters and scenery during a boat trip.",
+        "theme": "Adventure & Outdoors",
+        "visit_duration": 90,
+        "google_place_id": "ChIJz8zKCRr5_joRhRpD40GAb_Y",
+        "lat": 9.645230499999998,
+        "lng": 80.1021257,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 0
+    },
+    {
+        "name": "Neithal Archery",
+        "beautified_name": "Neithal Archery",
+        "description": "Test your aim and enjoy an engaging archery experience. Perfect for a fun activity during your visit.",
+        "theme": "Adventure & Outdoors",
+        "visit_duration": 60,
+        "google_place_id": "ChIJ9YvHrx75_joRIJU3iT16d7k",
+        "lat": 9.645667499999998,
+        "lng": 80.10252640000002,
+        "rating": 0.0,
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "photo_reference": null,
+        "num_reviews": 0
+    }
+]

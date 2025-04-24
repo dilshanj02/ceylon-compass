@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme, Place
+from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme, Place, Accommodation
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
 
@@ -24,7 +24,7 @@ class ThemeSerializer(serializers.ModelSerializer):
 class PlaceSerializer(serializers.ModelSerializer):
     destination = serializers.StringRelatedField()
     theme = serializers.StringRelatedField()
-    # photo_url = serializers.SerializerMethodField()
+    photo_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Place
@@ -41,17 +41,43 @@ class PlaceSerializer(serializers.ModelSerializer):
             "rating",
             "num_reviews",
             "types",
-            # "photo_url",
+            "photo_url"
         ]
 
-    # def get_photo_url(self, obj):
-    #     if obj.photo_reference:
-    #         return (
-    #             f"https://maps.googleapis.com/maps/api/place/photo?"
-    #             f"maxwidth=400&photoreference={obj.photo_reference}"
-    #             f"&key=YOUR_GOOGLE_API_KEY"
-    #         )
-    #     return None
+    def get_photo_url(self, obj):
+        if obj.image:
+            return obj.image.url
+        elif obj.photo_reference:
+            return obj.get_photo_url()
+        return "/static/images/placeholder.jpg"
+
+class AccommodationSerializer(serializers.ModelSerializer):
+    photo_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Accommodation
+        fields = [
+            "id",
+            "google_place_id",
+            "name",
+            "lat",
+            "lng",
+            "rating",
+            "types",
+            "photo_reference",
+            "photo_url",
+            "category",
+            "tier",
+            "price_per_night_per_person",
+            "destination",
+        ]
+
+    def get_photo_url(self, obj):
+        if obj.image:
+            return obj.image.url
+        elif obj.photo_reference:
+            return obj.get_photo_url()
+        return "/static/images/placeholder.jpg"
 
 
 class RegisterSerializer(serializers.ModelSerializer):

@@ -1,0 +1,342 @@
+[
+  {
+    "name": "Thilanka Hotel - Kandy",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJmbsZmjFm4zoR9PZk8jQQJ-U",
+    "rating": 4.2,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2912101,
+    "lng": 80.6461791,
+    "photo_reference": "AeeoHcLU5IpHIC4aFwQDOapQzSL1ycFFtYaV1ZGqjOH55jzBxpRA3v7QGeHJE75qLkCkDTPZDY_oBv8Hk5TXJNjWwge_F6mJRuSiTAM1S8EGZbzuqAUha1Ae54S5mZlxPZEOM8ReUm2Yb7ZhP9vXzV416xWHDXuWsa8us85pCphov3nRAdca8qJlGc17B2d5p4EYxHz27v3NfxXVDaiZPhzHJn5-dodfatJeocEju5VxpVdMd_RMf3L6DF6sPZ7YtOAdrF7xXQZOaKNs4LzmNUidXLPL3H7Na8HNm97U-FrmnjqXAoPQx1Iw6M4Qqdembd0dyOsJZpx_UK4"
+  },
+  {
+    "name": "Hotel Suisse Kandy",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJ9dvbxC9m4zoRuYSRDbw78uk",
+    "rating": 4,
+    "types": [
+      "park",
+      "spa",
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.288832600000001,
+    "lng": 80.64321609999999,
+    "photo_reference": "AeeoHcI__DWqkn4xCb-GhiQ3Ngm6vb6y61I6vYSLCyrHVNyGXG0cGghsyMajIh_GWlgIXQaCNTi8mmzwjMrEyeAVfXalGRrdLapjY70WNOhp8fssPTBv3DMM7DWAWwiImP9AxDhzVbnI9nlA8eC8uTWMh1VJJLCSdTLGGwXlBt_SCVIFBu0r_RXoOhdB8ZYa3nG_Axx2K--WzAVZU21TfYdrmXPLbW8JFTD5IfOxzJDiJrL2QqLt68HrV98jW2l8NlyaBNW826SZgKn91RvjufB42367_J2L_3GdlnoYwoXpwWLsDiOjIIYO5iXdWhAkvLlu-XdtiV4ZFiw"
+  },
+  {
+    "name": "Hotel Hill Top",
+    "category": "Hotel",
+    "tier": "Budget",
+    "price_per_night_per_person": 7000,
+    "google_place_id": "ChIJB68gnYRo4zoRjtuBU5O_Dg0",
+    "rating": 3.9,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.289268700000001,
+    "lng": 80.62842839999999,
+    "photo_reference": "AeeoHcL1Kkf7zQ-Oby29AiKCtGOomvpUd0701BSPsAaIyDy9DJRxgkG22s73c944e6IM-ma5hLDU41FHHuiPkvTfsNgCojiTDRAcEQmyyaODXgAzd5-q-BltWogImSZZ6U1Gy8A5V_RuTNEeP5JmH_Tdu__BO6aDaT0H2GZmJFqKJ1VnVnjntWEwYD1qSxVcUz8x5Q2KmYHkaQRy0swjhOgMijRhO8_4xL3F66-Cep66Xjp-nzJzC6HTBRaa6MkT8HZktuVlPKLCvieXN7e0a3w04sdf7O4alrlGRbjJf4qMK5gyQsutyrVQO2lUqAV5EDSIlNTdgJ3o_8HMvAUu0QxNugcMbXaLCbaTtYsdjiM7sLk0WXRZN0Ajlw-bpQiBHhlQIYtS8T2l5tiNNLNKXhUMbuEzwQW-SOF-rC7ZcDVCKFqyfj8Vs1MmQVpL72rM7CtawdalW36EqjLou0Le_x4cD56sg_YIhpU_rhBdBiZZLe6H8-xGRkdqp5dTmJYv68YfDVD-8GzRZ0s2NhwCDHtT-Zak1Zqr78dcBEYHiyEWDkH_tv7WcstfVIdUKcwnaR1UsrlhPtg43Cs4JHqJMCE3qxbD5ESL5QXKa5buPy8nVVCOiS6nRDfLk5g1fBTl8WRe"
+  },
+  {
+    "name": "Mount Randholee Resorts & Spa",
+    "category": "Resort",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJwUBQIbFo4zoRlgONvSIXFGY",
+    "rating": 4,
+    "types": [
+      "bar",
+      "spa",
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2627449,
+    "lng": 80.6166764,
+    "photo_reference": "AeeoHcJAgjkLR4Q5Avhhlf24z4wjxpzzHEWhPIQi6OAgPS0IisWnSNDCHbFj3OV1iVqLTfMfvfGlXSAHA-AUaujhvtiiXRr0oSUXDBRbUZNjVBFMfnFH3yCM9jUb4xIF8PB9QNKT4f-x5QWT-4OHyIuOBJOrk2oVuaxqwNIaryKvL-jlQdwCfvTa16C5-BsJW8iba1zCD-v5hlceIFhTAtN1XVG9DyP0B_jwPO5jMoNRnLMV96pUiIGuabpA9GWAUCwRmv8Wb6qsxDECgLkg79U8JwmlfHsjzJZo8m-eU-rNmW5er7t-d9QbTAl0g5XgXKaO5LaR6ZS0y4U"
+  },
+  {
+    "name": "Hotel Topaz Kandy",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJbSw4OIRo4zoR8Kqi2PtbYL4",
+    "rating": 4.3,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.290153999999999,
+    "lng": 80.624955,
+    "photo_reference": "AeeoHcKmyBBit6fKXIx9aJ1L2-A459OjUi-fCzq6BBwJsEXe6aaslDxyDb1yIUxXANKxBedOcUjxfe-THSD6lslHyhBPPqWmJd2xQUfchzNSiR-3FjjzrzYy8MPFUsByLQu3RLc2NY53TCfbQNArVk_vpdmdDLEZLksWc43NLWLJziE5qgXuw-PL2UMaNQ2465jRB_1nzzVZyINhiYKhY8-4HOjA_1jIZTCsxFGtBscf35xdMHtgwuGijugnj-bXr91x1LAAdI-jc8mgvgUti-Y5uaV8SqTxuiyde-e-XS9l8mhujJKP_JZFA5elJzelCEJ9QYwlVG231o-zegdKKBlBGZjXMSD_BBzenh3lw2sc4ZUSGiEKA3NehCP3TE668R4Sw9QDb7-UPGFusF-yYihGof4aiEZnWpLEsgA_EWEvLTRSC8V_RibJG5XV5lN662LtEOfVl8_INIyd0uHEjUGL16UOS9n-VJwNpLYKQ9UQrO1aZZAxWWhJm3vZB1uihwDYReDqDVmGgr7nCyDDiHt_yXuczCJ1BXmx0lfAetGzlk-70f_eS7Alinw1G65Ru5p5zjfFUwtJbBSFqESbAQbMSZrJuOA40TPv7uIOKomldUt3gjfpaSkt9y6Fmxf7uwuo5ZqUtA"
+  },
+  {
+    "name": "Hotel Casamara Kandy",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJZ9ak7Ctm4zoRIwcWI6sPdQo",
+    "rating": 4.1,
+    "types": [
+      "tourist_attraction",
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2935149,
+    "lng": 80.6372217,
+    "photo_reference": "AeeoHcJTuJi_Zh8EeJCxFJv5zZfPxQ47s8UYGDxM9fhbG6mGv-v0KJSb4HpBIkHO22J4__MfCSUoIuaQc-DrggfHmz8bQP9ZpUgI-sB2nqbNtK5CPiOdmvgUsysA-qohyvfh5FzIfoK61XM6RH44uw6F6f2yHcybnq2uOQpKFw8t918ix_USshRAYpSNVS0NwWKFcxvs-hUcwxshy3UwRJaeL5vIovQ-riSwPu6uxDH7NW_4HfENmAuzA8ks_zk_drVmqYez34u31tkAJWVQxkVa-xp_zrHKiBz7CzimjCyKyH8GQ_W1bZ0zn57T64Mws1lVwl0HRH7pPCD0V31CcmfAbuKw7RIFDXIS4fGDQI8emyTOXZz1QZBaKsuua405DRB5jfJpaeKdWXYjWzgKc84QzZW9wgSGcXMLJMtjcd_z8Z6qxJnDRYM-S7BGzIJGd5pgOMUkn9RPrIG_OnzkNIiNBAVGvH6LefZaLPPqqkdYqyJ4k6EI_sCDZ-Il4-1OFNhzNILnvIVguTsRddz9OT23xSMKdCZj3AU_YkvnSr5RAw8vruIJ8rdHnprkhTpso0CG_RsXH6xllRj_8cpwyz_QfamwqPLOQx5WI3KbLg-X_KfhSuCeArWNhKxQy3GTyc6H1lchhA"
+  },
+  {
+    "name": "Earl's Regency Hotel",
+    "category": "Hotel",
+    "tier": "Luxury",
+    "price_per_night_per_person": 25000,
+    "google_place_id": "ChIJ-QCUocNm4zoRGtZzkdexuD4",
+    "rating": 4.6,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.281784000000002,
+    "lng": 80.6695058,
+    "photo_reference": "AeeoHcJ1wXcXxQ9oJ7xbeWFoFPYWU1iJoeRNPpZ7eMjc57SbyA43IpwNZd4jUcNbvPZCQoPrPRwlK3DzeyNSY4WdNVpuFt9dNKVE202705A86ORUm-HenmmU-O_S4q2CzBAfaSuoMhnJHFAG6C0LwuggE9JBbEVB5-RYjA1FNqMGel1S2Bzy1cVAqvJWsWZyDRwdiQC-3BvPHux4m8ZIqIVMyROvWupmdRgfFSfCdSkkDVyg3_QnK15lLuQLyJY4pToiks4dBevmZn7SJmPV3Za9PAIps4E_naenTQZ6CkkhRlSPKR85QLrQ55eYLXGRSa2w6mFgNuzikGk"
+  },
+  {
+    "name": "Kandy View Hotel",
+    "category": "Hotel",
+    "tier": "Budget",
+    "price_per_night_per_person": 7000,
+    "google_place_id": "ChIJzTyVRzlm4zoRrOSw7wzpah8",
+    "rating": 3.6,
+    "types": [
+      "lodging",
+      "restaurant",
+      "point_of_interest",
+      "food",
+      "establishment"
+    ],
+    "lat": 7.282706399999999,
+    "lng": 80.64943579999999,
+    "photo_reference": "AeeoHcJnXVlpZs1Ev4Tn_VZ1808mqTLjIJEn71QuZIUXRMHHZlP5cIQErpKOWO9YXO6N6Wgp1k8LGtko4r9x5F8luy8lgKyXd0IHcAXISUTlh5r9us4f5a9ijjXpr-TJSdsDGcdlS6eo4HEYyUBXF3TJg4ph2vS0Fu8TI8cpTiqmDl4LqX7C4mSC4QNvGr6_W1D3T2AfvLSDc5gQXf9QbDdmywzOhUH8i6Bg6e0i6IJzd1bIZCZMKI-dYldhqa9cUPjNYu_HgsqI1IXEVo9MU8kqsNBdWlA3LSvY9zgCBUeGJW_r5g7nF3XvJJdy4ktlHkmHmmRDtQoRcTlv86TKnTamihRZrXWx3okwNPgcyTrO2yiS25tovai-vCiCmX_pUtRbUElBUF46xlpbn5Z-276Gp43pHWKoNQCY0eGyusFJPM84g9tVL7HVBNhIV8QEKCze1WFQgRXX7wPqFc6-l7-PemrBiscoP9C2IMilWzQFw7-QSWfIiGVmed7_2Wqzb2QcTqiRlLt5vCW1X1GsXugTVggnz24FZUZoIGxRvflYiSfg3464DpGKtlLZRL1J22_UwBAqPNXh6BB04Qh9Y-twS5-ajxx6w_8jc1vl8msEpDQiLSywxy_AhhanUeiYXs-T"
+  },
+  {
+    "name": "Charlton Kandy Rest",
+    "category": "Hotel",
+    "tier": "Budget",
+    "price_per_night_per_person": 7000,
+    "google_place_id": "ChIJ51NQdytm4zoRg-KtcwF8_VY",
+    "rating": 3.7,
+    "types": [
+      "lodging",
+      "restaurant",
+      "point_of_interest",
+      "food",
+      "establishment"
+    ],
+    "lat": 7.295045600000001,
+    "lng": 80.637524,
+    "photo_reference": "AeeoHcLfAgir9b0ftt58yDHvkraN6ZEtJvb4RE1cg1g_vMbJOF5eHnRZQyv-kj0O4gQSJKWUyuiqcs15RxJ2LT35ZqtMLG9runxh87Ws_zZWZHxgyhNSWraqv4V5sJovK7WQPENJqKisOEcR-Ij58vqu1moLFNkbYZdmVKtvv9Jo2Icc1gsCApC2OxN0cDeW0MTSGqziwqUn-eTcvTg-oR0GqUH1V036Y3KsdxAdcGEk2RVddWIDYpxNKwL-2XR7pqy4yEnzBAuLdBmDsUbdmcsf5iQM3Bkc_waBceFx4QnNRU9BJY3yR9LYZxQIoqgXSXQIcvUx8qJ0ENZ03CX1s1OsueQ81g8W7407EP5obzh0q6Q1_FBm7LTKAb-NIyvfJznW6FPpKE-SSFNH5lcfhqPaR95g7yDGdsqUMCXwjld9vsX-mM68ijXFwpmcQyuxwloNZOBtmJXL0LvK1VhuDsEgpMzw_fVkOLA-OQFd7AKpgKQmWgvEYPopL5c5kyx-W_hMlUe4IqQWbjyYGEbuAvEcMn9csooWtHOsCkcKLhQHYP_FQy-eOOlO_rkHwHqQJka3y8ybd1Sh1kNOEDLt_AcdM4MPDliuQ1PKio0E9syeSVaWM6AmyaxutMNP3Lr3dkq0hjYdzw"
+  },
+  {
+    "name": "Vino Villa - Tourists & Local Accommadations",
+    "category": "Villa",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJ723RQTpm4zoREi7Zn9d5HM8",
+    "rating": 4,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2851395,
+    "lng": 80.6478272,
+    "photo_reference": "AeeoHcKc952ShBmYDZgGic1jKeOfO_UJ1V6dle0u-CICqd9bE1ybdsDO8UkbmKZ-L_IH3z8kaYUa3AM-P74rKHhYywPe5K-NWntXuF2aE7ltxF27F1cyBgpJTRNTDY8K1YuqktC0Wn73xcr44epXp2fYK1pVJmoei2FWUzt1mVcPMwQrMKCNcs-Wfq4G9zA0WyaBEBK_Fh9JxDHojdxObv9JYemlPLMnO5HP7fZ6BJq-3B1EQWTpJUMTt4s-3LNMtiWWi_h_GpA8B7Q6_eyOcBQPi8IJ_l9xcSjfhZYYvQQiKfRNKmmo4CCea6SKPKwEZkH_6gUo2Wc9rq8"
+  },
+  {
+    "name": "Earl's Regent Hotel",
+    "category": "Hotel",
+    "tier": "Luxury",
+    "price_per_night_per_person": 20000,
+    "google_place_id": "ChIJT8hGOOpo4zoRfXjsrLEocAg",
+    "rating": 4.4,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.283161499999999,
+    "lng": 80.6100986,
+    "photo_reference": "AeeoHcJLFM7ypOaIJLY-SXa0uFHaJwC9DL1EEIteWhZCAsbsxF2uI9JUTHxM65M3I-vS3dN7W66HbexG26V9Zw5FDUW4k0fJjPl4qFncDeZRwfFcjOvaDkvOIt_orFRUB5xabNWr2JEEh2W3bo95zRVdIuL2RsvzmTqluqb11067yXYLYOKmXQ9gqbfmpXdQ5IfGyeNKp_onbi-c_djZfySRtfP95t0xMqHEf3N8L7XpJhuXsNlTkXQaFirSaL6WGoowL1MeIFSibFYnkdQuVeHGs_4Q2faWKvjy0YUf2SkUBUfdsERwZ_e515Iwb6uVtJ9tQjwGmZH2htg"
+  },
+  {
+    "name": "Hahaweli Spring Hotel",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJs-EQajVm4zoRKrtztzW_fCQ",
+    "rating": 4.1,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2970139,
+    "lng": 80.65442159999999,
+    "photo_reference": "AeeoHcKfK9u4OHTjSZNO2jGggrByckVYOk6cgwSEe1u-t-zyviwDmmeNTiS4k86qCC0EvPkcKYHeiHx1mmaWjudHd1kvWclC8n6tQw7f4h5VLaZaJAuQ00rTZzztFkLx0elJ7j_obhqvVsBbTOTrt9gerVhJRMJaGxCAgbJrDMk1U4-mUIPFmZtE0RIXHQFzhLtkrHnJ7vXobQZ-cK951dbJnLBD_zDTjqlmpzLv-bcqdVv8Hd0i36gfuqn68HCmjbkDB4QadoMm09VS1DVx45mF5ZUzw97RHVpuOV4xAjkk92NiUxjFOnS2Ur8kiZaG3DiLnPMKLZNmXp9Z8ZcEkA_nLjBu0Bw7Fm-zMh3vYM2hNpLU_hV2ExnKTraAZ94WQO5WhU30NI-C9kjL1jNFTYkAc3Yf3_IRNxaOxaFgdghFhZX1SUNlFhtRp0uyaFcDhSusoSyiNSkhp1yHAOlOp63O43qbqBOMbVxZle6202GC6hxqSPxobVFtfPKfu2IaSjruHqEmtYcqaIunbx_TDyL_xkOe2-vofpwViUd2nST6kLJ7pRcX_HKteOx90PpvYwjDn1BzMRtnzf6cSGPMQQ8BlLIEbAta8lmLqDKNgnsfa1id4jO86BXbvcLswXxo3YdQtZQ-mg"
+  },
+  {
+    "name": "Amaara Sky Hotel",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJ40GHU4Fo4zoRTDjZAIPP1ic",
+    "rating": 4.2,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.292238599999998,
+    "lng": 80.6273216,
+    "photo_reference": "AeeoHcInE3lLhXjvdPtCOzDLw-4OiSKO54oeL0aWa4_uUOYqXmxUuy1twxSXe2MfJAuKRXxCmUzmUKHR-JQlZHYNcJCAzz4XrgAv52WboWHqrGs2RvzKSTObd17gGwvGGUQP0Y_Of2bXGHy8NCreOMBJR7HIUjfSO8Gq9-Ycvh4JwOwLU8WGGXq9J0VyFsVyYJENhE2D-6MF7ipra_u1q2V9v1Kj_S18cKbfrpMI9QFXgzhgKSQLkszjKA4GvWzX5VewxzQ9rcbPLwjMCYSnHRnIWc73ynYX9Edpp_YNooz_4tZQziTyMlxU_JswRBil39gd6oRgSn8Y50Y"
+  },
+  {
+    "name": "Sharon Inn",
+    "category": "Guesthouse",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJResOjC9m4zoR7QEYrGMKCFQ",
+    "rating": 4.3,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2872307,
+    "lng": 80.64209009999999,
+    "photo_reference": "AeeoHcI1mI52JzecbdTsF0V75LkE9TAJQtVvMnzs4ezOK-sDioXafMTh_lHiXXw6Db4uw80F7vGFWNWewuogSMhnBiq6GSPHMBkttJBa8aeINax7aXscVT9524nTGR2imVXwtmDqDE-6GrR1I8wgs8xW551ehkkmnqlgktXl64a_25RET43TLngBhjonZouQ8p0dW1mtTWCbzGwQj9MCBjNHxUkTQ4tgtJi7X8PcUeo20CHVAcNDKmoOz7Lgc0Ugj_eIUSvCwQhgkFYd17lW_Ai2FvDcipCcGsSxxof7J4qocK73VIm_c9aZkGP8KC1UlvVer2dgNIxlgnvxSHLIncygx_cVGroc-Hb_7_Bi0EkRr_02bFX-BGBzTVCwXs3_ClpyWLvPRbh_xpa2ehSiwytq01H-zpSZY073gnSe3Z9-JyNsWtI1IxmPGToPja-ox7RUt1IYm7PezDkkyfeaPL3pF5NkqS2HvCjhkItk8iygsK2QYGnKW2_arlEP6uG1MWU090gRDnnByMy0Ijfz9i2HqkHwRA6MGUQ_-6kXDEC3bwhHK0farzk_RWmqPlHzJWTItRz6TMViPmGCG37Jy-AZTKGN11qyMPpwVk7v_qgBtirrkuDaVm_Hn9NDMpT8qIIWWrgiMcRB"
+  },
+  {
+    "name": "Hotel Sunray",
+    "category": "Hotel",
+    "tier": "Budget",
+    "price_per_night_per_person": 6500,
+    "google_place_id": "ChIJV4FZ6DNm4zoRuuAh3vrOuc0",
+    "rating": 3.5,
+    "types": [
+      "gym",
+      "night_club",
+      "bar",
+      "spa",
+      "lodging",
+      "health",
+      "restaurant",
+      "point_of_interest",
+      "food",
+      "establishment"
+    ],
+    "lat": 7.2926426,
+    "lng": 80.648009,
+    "photo_reference": "AeeoHcKWkBsiXU-1HAwMvtNCYFVbT7ADR23ni_MMHJ9YblIcyFjxkNzLulofKRGp0qEmV1d-YzJKTAycdg8_F7kBcfhCLIIQI24VAzUH1euHkyKp2upcjvcXFDUnqmXUqf_DamN32403YGhhsmZLLTkzR580RqYQe3_HZVBy3ieyT9195OixumuGp6pwmIwemlaQGg6QAXxEzlbRb6ou7j9xOYCOZW0yZ4m-kgTC93seV6y3gyaNjIXfpP_PKqtsOdnGMEi82RN316z43vYj4W3AuWko9CXF_rbot5_X97XxbsBISQnKtRTf4asOMsiitGWTo0czFUD9"
+  },
+  {
+    "name": "The Elephant Stables",
+    "category": "Hotel",
+    "tier": "Luxury",
+    "price_per_night_per_person": 25000,
+    "google_place_id": "ChIJL6sTId9n4zoRuLJ_6sJnW8Q",
+    "rating": 4.4,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.3150611,
+    "lng": 80.63496359999999,
+    "photo_reference": "AeeoHcIZAWCys-OyQh0zvFat1NNTyko6Z5e4kGaq8y8OE_YDnkUI3d3ZFpqtNf6jIe1L2gehQ4Y1_a5RzY2-g5Ds7lwSQiLh2jCDRvZYe7uEGyPolEo2zjHa1Spqe2gxlFWnSl7XdemX2NlwUAMMURvlZdvEHVXkm5erMXi0m8I04INNnbBt320BFO5EYiWk-mfDEavpBchoYls_2R61rLi_i33N0HyItV2gW9VlJwNi1GevUaYWJq2IIEXbE319AVcJSepuQnfXSTwhvBCo47hAwkLVnEIBObwX2XCDVK6TPvX_sphJlv_bv8ltxqtN0VqhzZwxWfyIw9c"
+  },
+  {
+    "name": "Eagle Rest Homestay",
+    "category": "Guesthouse",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJK3uAQB9m4zoRWJV4MLhSNT8",
+    "rating": 4.4,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2749706,
+    "lng": 80.63708419999999,
+    "photo_reference": "AeeoHcLw2YMwBfa68wUUasOIBL_snD6_Ah-0ct5mwJZrz4Y7bgKoQMrHkoOyZDUXiIN9cN_0GOg0m0Fn2n1nsFv4-lmUKxvKAQOA5XRQRTo5y-5pqL3UIb8fJEFr5Z_I3vc1b7QrIdGBNeUFuAU6wsTGTs4GSagzzqXoLxfYBzgNUNl2yR0IC0TwN74j4BnaIza4vKLIIIjvTG2dUpWEGygLNbJPTpMDuI6ryEuss3ZK-_g78TPeua86oZ6hN8UYhFqMF2sMTOqEmNcZZjMiK_ZDf2vFYprBYXz6ZHcYMsUVZPrCkIFvlZuQHPs_1RtwnyIYfpqZpbvy_48csrDHgzX_UleTTkuZLaSIGM2n-TrV8uauMcFWiHJt0aQzivaBXMAGlTKqwmoOz4gTfA7-KbiSASej2834z6l_3KilSFBwxtaB3OhnMfZ5zdVUgBJfRVjhkb4fWyTTbuSwiprsukPTcycMiRkxguvFA8Itrf__Bso-JMWJU6znCa4hTwUBLq6kStw8SFYJtjFf6dLSjGAb9McuWJT_IyQ68CqZJcn23DN5e-df66o355H_TDWltWfVr0Q48MU1p-5DYo59p8wI4_s9N_vB7MztUddzwGhTculeg3ot07vQRESrxRApRB-fS0Y5dQ"
+  },
+  {
+    "name": "Hanthana House Kandy",
+    "category": "Hotel",
+    "tier": "Luxury",
+    "price_per_night_per_person": 18000,
+    "google_place_id": "ChIJuxTiqqNo4zoR1WU1IbX5CNg",
+    "rating": 4.5,
+    "types": [
+      "lodging",
+      "point_of_interest",
+      "establishment"
+    ],
+    "lat": 7.2751669,
+    "lng": 80.62696199999999,
+    "photo_reference": "AeeoHcJv5wYE0flBs6qG3oyb9Il-o30t3VYx1GoU7xUY40023hdC6RrzKHfd2AcVlQzsjAT3xJgIuunGBbIKj4KkrB2m1GcXhMVJdzn7pchHsb-8dj-V2fjGqqK6GI3HHULC7-_Vh3SdzKYHSBIJacdKq4IPwSTkMGiQuMPenVWE49GrGcKCFW-Xgsv7r5O99UwhgAeFftDIt4l7VEyZfO_mRW_YZ1c4xQqlM5eKTYtqAP-Yg-T50v9kmiM7yjgPZ3eFpnvvwYxIATxgverLH_0UqkIM-Am_kc8Yg4tuKEO7qfieUDlrF76jQDYqeCtXtcwy8CHSqFDtPUc"
+  },
+  {
+    "name": "Kandy City Hotel by Earl's",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJ4WXKtitm4zoRSymYfDnuFqI",
+    "rating": 4,
+    "types": [
+      "lodging",
+      "restaurant",
+      "point_of_interest",
+      "food",
+      "establishment"
+    ],
+    "lat": 7.2939956,
+    "lng": 80.6358173,
+    "photo_reference": "AeeoHcLZ2UIVjJyX8RvGbnsnbPb-E5fN8Lo6M0pjYMjJI7IaCCSWQ_jZvl41d-kFUuA6I4rGNBNpCsm-lGslQE04GznWlX0ROIcLJqlrOJ6_bipd8BTCJYKesYjriopYiGxx24EeF_FV-HJsohyDhah4CBcOMVc1iE6uvFxJlBSdv_NNfnRuiVUeVq6vl-vGuKwrk3TRO4Qv1mymk1ZOhBtS6f4ri30PkDRJFB4fqyWC3sGouIyqj8ugAF5ad2cFctX72W6CxR6E-M59xLk72xkhwwVCPT8nmdUbyaltV3lWbHD-ODp-Z1ZQ7WuEJCjdUih3qalFI5PBP_E"
+  },
+  {
+    "name": "Senani Hotel",
+    "category": "Hotel",
+    "tier": "Mid-range",
+    "price_per_night_per_person": 12000,
+    "google_place_id": "ChIJ6d8xPy9m4zoRfIPAi_om-io",
+    "rating": 4.2,
+    "types": [
+      "lodging",
+      "restaurant",
+      "point_of_interest",
+      "food",
+      "establishment"
+    ],
+    "lat": 7.285211999999999,
+    "lng": 80.643444,
+    "photo_reference": "AeeoHcLF6WBRXtJv7kTn0bPf1GiaTRB0soRXXg-wJYevjhKo-9Vrx6OoYt2Wv47Egx8csGvuUROzlkXAPyboYxUGelUJC477RdS4fxQv6uhGy5rffz3lE1ZlKEzUmyZNj7_jJUHU88w-VKM2lTMOr7N9hnfxq2yf9enRnYmI6agnT_VRgO_RorbQfhFiDfqOhB2nNc4-5SOEywLpnYE5gV03U8c0eWnAhXhDRMgBrQwp9IBjYKIm7HmhehTwjx3FzWpL_MdXOxBaVoMRIfj6yxHTFTW6SbmIiKw4TJm4pXeMPvlfyAPYyKatho5xljAKK98JXCc6ELhx7hU"
+  }
+]

@@ -71,7 +71,7 @@ const WriteReview = ({ tripPlans, reviews, setReviews }) => {
           <option value="">Select a Trip Plan</option>
           {tripPlans.map((plan) => (
             <option key={plan.id} value={plan.id}>
-              {plan.trip.destination} - {plan.trip.theme}
+              {plan.trip.destination_name} - {plan.trip.theme_name}
             </option>
           ))}
         </select>

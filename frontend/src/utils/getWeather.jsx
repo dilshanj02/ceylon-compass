@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getOpenMeteoForecast = async (lat, lng) => {
+const getWeatherForecast = async (lat, lng) => {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const url = "https://api.open-meteo.com/v1/forecast";
@@ -15,6 +15,7 @@ const getOpenMeteoForecast = async (lat, lng) => {
       "weathercode",
     ].join(","),
     timezone,
+    forecast_days: 16,
   };
 
   try {
@@ -26,4 +27,4 @@ const getOpenMeteoForecast = async (lat, lng) => {
   }
 };
 
-export default getOpenMeteoForecast;
+export default getWeatherForecast;

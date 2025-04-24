@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Destination(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -35,13 +36,63 @@ class Place(models.Model):
     lng = models.FloatField()
     rating = models.FloatField(null=True, blank=True)
     num_reviews = models.IntegerField(default=0)
-    types = models.JSONField()  # stores list like ["tourist_attraction", "cave"]
+    types = models.JSONField()
     photo_reference = models.CharField(max_length=1024, blank=True, null=True)
+
+    # New field to store the actual image file
+    image = models.ImageField(upload_to="places/", blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def get_photo_url(self):
+        # Prefer the uploaded image if it exists
+        if self.image:
+            return f"{settings.BACKEND_BASE_URL}{self.image.url}"
+        else:
+            return "/static/images/placeholder.jpg"  # fallback placeholder
+
     def __str__(self):
         return self.beautified_name
+
+
+class Accommodation(models.Model):
+    CATEGORY_CHOICES = [
+        ("Hotel", "Hotel"),
+        ("Villa", "Villa"),
+        ("Guesthouse", "Guesthouse"),
+        ("Resort", "Resort"),
+    ]
+    TIER_CHOICES = [
+        ("Budget", "Budget"),
+        ("Mid-range", "Mid-range"),
+        ("Luxury", "Luxury"),
+    ]
+
+    google_place_id = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=255)
+    lat = models.FloatField()
+    lng = models.FloatField()
+    rating = models.FloatField(null=True, blank=True)
+    types = models.JSONField(default=list)
+    photo_reference = models.CharField(max_length=1024, blank=True, null=True)
+
+    image = models.ImageField(upload_to="accommodations/", blank=True, null=True)
+
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    tier = models.CharField(max_length=20, choices=TIER_CHOICES)
+    price_per_night_per_person = models.PositiveIntegerField(help_text="LKR")
+
+    destination = models.ForeignKey("Destination", on_delete=models.CASCADE)
+
+    def get_photo_url(self):
+        # Prefer the uploaded image if it exists
+        if self.image:
+            return f"{settings.BACKEND_BASE_URL}{self.image.url}"
+        else:
+            return "/static/images/placeholder.jpg"  # fallback placeholder
+
+    def __str__(self):
+        return f"{self.name} ({self.category})"
 
 
 class Trip(models.Model):
@@ -98,7 +149,7 @@ class Review(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return f"Review by {self.user.username} for {self.destination}"
+        return f"Review by {self.user.username} for {self.trip_plan.trip.destination.name}"
     
 
 class EmergencyContact(models.Model):

@@ -140,3 +140,10 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': False,  # Set to True if you want to rotate the refresh tokens
     'BLACKLIST_AFTER_ROTATION': False,  # Set to True if you want to blacklist tokens after rotation
 }
+
+GOOGLE_PLACES_API_KEY = "AIzaSyBkQxm4XRZUrzrYVYPNGj-tOUhL27uHi4A"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+BACKEND_BASE_URL = "http://127.0.0.1:8000"

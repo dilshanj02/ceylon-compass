@@ -1,5 +1,9 @@
 import json
+import requests
 from django.core.management.base import BaseCommand, CommandError
+from django.utils.text import slugify
+from django.core.files.base import ContentFile
+from django.conf import settings
 from api.models import Place, Destination, Theme
 
 
@@ -46,6 +50,13 @@ class Command(BaseCommand):
                     },
                 )
 
+                # If photo_reference is available and no image saved yet, try to fetch and save image
+                if data.get("photo_reference") and not place.image:
+                    result = self.download_google_place_image(data["photo_reference"], data["name"])
+                    if result:
+                        filename, content = result
+                        place.image.save(filename, ContentFile(content), save=True)
+
                 if created:
                     created_count += 1
                     self.stdout.write(f"[+] Created: {place.beautified_name}")
@@ -56,4 +67,37 @@ class Command(BaseCommand):
                 self.stderr.write(f"[!] Failed to import place {data.get('name')} — {e}")
                 continue
 
-        self.stdout.write(self.style.SUCCESS(f"\nImport complete! {created_count} created, {updated_count} updated."))
+        self.stdout.write(self.style.SUCCESS(f"\n✅ Import complete! {created_count} created, {updated_count} updated."))
+
+    def download_google_place_image(self, photo_reference, place_name, maxwidth=800):
+        if not photo_reference:
+            return None
+
+        base_url = "https://maps.googleapis.com/maps/api/place/photo"
+        params = {
+            "maxwidth": maxwidth,
+            "photoreference": photo_reference,
+            "key": settings.GOOGLE_PLACES_API_KEY,
+        }
+
+        try:
+            # Step 1: get redirect URL
+            r = requests.get(base_url, params=params, allow_redirects=False, timeout=10)
+            if r.status_code != 302:
+                return None
+
+            image_url = r.headers.get("Location")
+            if not image_url:
+                return None
+
+            # Step 2: fetch image bytes
+            image_response = requests.get(image_url, timeout=10)
+            if image_response.status_code != 200:
+                return None
+
+            filename = f"{slugify(place_name)}.jpg"
+            return filename, image_response.content
+
+        except requests.RequestException as e:
+            self.stderr.write(f"Image fetch error for {place_name}: {e}")
+            return None

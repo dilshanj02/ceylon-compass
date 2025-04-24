@@ -1,5 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -24,4 +26,6 @@ urlpatterns = [
     path("reviews/", views.review_list, name="review_list"),
 
     path("emergency/", views.emergency_contacts, name="emergency_contacts"),
+
+    path("proxy/", views.proxy_google_photo, name="proxy_google_photo"),
 ]

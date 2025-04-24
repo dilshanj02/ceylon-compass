@@ -86,7 +86,7 @@ def get_places_by_location(lat: float, lng: float, radius: int = 10000, limit: i
         "type": "tourist_attraction",
         "key": GOOGLE_PLACES_API_KEY
     }
-
+    
     all_results = []
     seen_names = set()
 
@@ -196,7 +196,7 @@ Place:
             "visit_duration": 0
         }
 
-destination = "Kandy"
+destination = "Jaffna"
 lat, lng = get_lat_lon(destination)
 
 raw_places = get_places_by_location(lat, lng)

@@ -88,25 +88,12 @@ const TripDetails = () => {
     }
 
     if (tripPlan?.itinerary?.length) {
-      const { lat, lng } = tripPlan.itinerary[0];
+      const { lat, lng } = tripPlan.itinerary[0].activities[0];
       getWeatherForecast(lat, lng).then(setWeather);
     }
 
-    const grouped = groupItineraryByDate(tripPlan.itinerary);
-    setOpenDays(grouped.map(() => true));
+    setOpenDays(tripPlan.itinerary.map(() => true));
   }, [tripPlan]);
-
-  const groupItineraryByDate = (itinerary) => {
-    const grouped = {};
-    itinerary.forEach((item) => {
-      if (!grouped[item.date]) grouped[item.date] = [];
-      grouped[item.date].push(item);
-    });
-    return Object.entries(grouped).map(([date, activities]) => ({
-      date,
-      activities,
-    }));
-  };
 
   const toggleDay = (index) => {
     setOpenDays((prev) => prev.map((open, i) => (i === index ? !open : open)));
@@ -136,8 +123,6 @@ const TripDetails = () => {
         })
     : [];
 
-  const groupedItinerary = groupItineraryByDate(tripPlan.itinerary);
-
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-12">
       {/* Header */}
@@ -154,7 +139,6 @@ const TripDetails = () => {
           </div>
         </div>
 
-        {/* Trip Info */}
         <div className="flex flex-col md:flex-row md:justify-between gap-8">
           <div className="space-y-2">
             <div>
@@ -177,7 +161,9 @@ const TripDetails = () => {
 
       {/* Weather Forecast */}
       <div>
-        <h3 className="text-3xl font-semibold mb-4">🌦️ Weather Forecast</h3>
+        <h3 className="text-3xl font-semibold mb-4 text-sky-800">
+          🌦️ Weather Forecast
+        </h3>
         {!isForecastAvailable ? (
           <p className="text-gray-600">
             Weather forecast is not available yet for your travel dates.
@@ -207,7 +193,6 @@ const TripDetails = () => {
                   <div className="text-sm text-gray-700">
                     🌡️ {day.minTemp}°C - {day.maxTemp}°C
                   </div>
-
                   <div className="text-sm text-blue-800 font-semibold">
                     💧 {day.rainChance}% rain chance
                   </div>
@@ -218,74 +203,69 @@ const TripDetails = () => {
         )}
       </div>
 
-      {/* Modern Accordion Itinerary */}
-      <div>
-        <h3 className="text-3xl font-semibold mb-4">🗓️ Itinerary</h3>
+      {/* Modern Itinerary Redesign */}
+      <div className="space-y-10">
+        <h3 className="text-3xl font-semibold text-sky-800">
+          Your Personalized Itinerary
+        </h3>
 
-        <div className="space-y-4">
-          {groupedItinerary.map((group, i) => (
-            <div
-              key={i}
-              className="border border-gray-200 rounded-xl shadow-sm"
-            >
-              {/* Day header */}
-              <button
-                className="flex items-center justify-between w-full px-5 py-4 bg-gradient-to-r from-sky-100 to-blue-50 hover:from-sky-200 transition rounded-t-xl"
-                onClick={() => toggleDay(i)}
-              >
-                <div className="font-semibold text-sky-900 text-lg">
-                  📅 Day {i + 1} – {group.date}
-                </div>
-                <svg
-                  className={`w-5 h-5 text-sky-700 transform transition-transform ${
-                    openDays[i] ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              {/* Activities */}
-              {openDays[i] && (
-                <div className="p-4 bg-white rounded-b-xl space-y-4">
-                  {group.activities.map((item, j) => (
-                    <div
-                      key={j}
-                      className="flex gap-4 items-start p-4 bg-gray-50 hover:bg-gray-100 border rounded-lg transition"
-                    >
-                      {item.photo && (
-                        <img
-                          src={item.photo}
-                          alt={item.activity}
-                          className="w-24 h-20 object-cover rounded border"
-                        />
-                      )}
-                      <div className="flex-1">
-                        <div className="font-semibold text-gray-800 mb-1">
-                          📍 {item.activity}
-                        </div>
-                        <p className="text-sm text-gray-600">
-                          {item.description}
-                        </p>
-                        <p className="text-xs text-right text-emerald-600 mt-1">
-                          💰 LKR {item.budget_remaining} left
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+        {tripPlan.itinerary.map((group, i) => (
+          <div
+            key={i}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200"
+          >
+            {/* Header */}
+            <div className="flex justify-between items-center bg-gradient-to-r from-cyan-50 to-blue-100 px-6 py-5">
+              <div className="text-lg md:text-xl font-semibold text-gray-800">
+                <span className="text-blue-600">Day {i + 1}</span> —{" "}
+                {group.date}
+              </div>
+              <span className="text-xs text-gray-500">
+                {group.activities.length}{" "}
+                {group.activities.length > 1 ? "activities" : "activity"}
+              </span>
             </div>
-          ))}
-        </div>
+
+            {/* Timeline layout for activities */}
+            <div className="divide-y divide-gray-100">
+              {group.activities.map((item, j) => (
+                <div
+                  key={j}
+                  className="flex flex-col md:flex-row gap-4 p-6 hover:bg-gray-50 transition-all"
+                >
+                  {/* Place image */}
+                  {item.photo && (
+                    <div className="w-full md:w-40 h-28 flex-shrink-0 rounded-xl overflow-hidden border">
+                      <img
+                        src={item.photo}
+                        alt={item.activity}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+
+                  {/* Place info */}
+                  <div className="flex flex-col justify-between flex-grow">
+                    <div>
+                      <h4 className="text-lg font-bold text-gray-800 mb-1">
+                        📍 {item.name}
+                      </h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center mt-3 text-xs text-gray-500">
+                      <span>💰 LKR {group.budget_remaining}</span>
+                      {item.duration && (
+                        <span>⏱️ {item.duration} min visit</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Cost Breakdown */}
@@ -306,7 +286,9 @@ const TripDetails = () => {
       {/* Itinerary Map */}
       <div>
         <h3 className="text-2xl font-semibold mb-4">Itinerary Map</h3>
-        <ItineraryMap places={tripPlan.itinerary} />
+        <ItineraryMap
+          places={tripPlan.itinerary.flatMap((day) => day.activities)}
+        />
       </div>
 
       {/* Emergency Contacts */}

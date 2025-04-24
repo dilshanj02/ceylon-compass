@@ -2,8 +2,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from rest_framework.permissions import IsAuthenticated
+from django.http import HttpResponseRedirect
 
 from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme, Place
 from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer, EmergencyContactSerializer, DestinationSerializer, ThemeSerializer, PlaceSerializer
@@ -218,3 +219,17 @@ def emergency_contacts(request):
 
     serializer = EmergencyContactSerializer(contacts, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+
+
+# # Proxy view for Google Photos
+@api_view(["GET"])
+def proxy_google_photo(request):
+    ref = request.GET.get("ref")
+    if not ref:
+        return redirect("/static/images/placeholder.jpg")
+    return HttpResponseRedirect(
+        f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={ref}&key=YOUR_API_KEY"
+    )# 
