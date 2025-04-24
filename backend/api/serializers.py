@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueValidator
 
-from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme
+from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme, Place
 from .constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
 
 
@@ -19,6 +19,39 @@ class ThemeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Theme
         fields = "__all__"
+
+
+class PlaceSerializer(serializers.ModelSerializer):
+    destination = serializers.StringRelatedField()
+    theme = serializers.StringRelatedField()
+    # photo_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Place
+        fields = [
+            "id",
+            "google_place_id",
+            "name",
+            "beautified_name",
+            "description",
+            "theme",
+            "destination",
+            "lat",
+            "lng",
+            "rating",
+            "num_reviews",
+            "types",
+            # "photo_url",
+        ]
+
+    # def get_photo_url(self, obj):
+    #     if obj.photo_reference:
+    #         return (
+    #             f"https://maps.googleapis.com/maps/api/place/photo?"
+    #             f"maxwidth=400&photoreference={obj.photo_reference}"
+    #             f"&key=YOUR_GOOGLE_API_KEY"
+    #         )
+    #     return None
 
 
 class RegisterSerializer(serializers.ModelSerializer):

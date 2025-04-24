@@ -13,6 +13,7 @@ urlpatterns = [
 
     path("destinations/", views.destination_list, name="destination_list"),
     path("themes/", views.theme_list, name="theme_list"),
+    path("suggest_places/", views.suggested_places, name="suggested_places"),
     path("trips/", views.trip_list, name="trip_list"),
     path("trips/<int:id>/", views.trip_detail, name="trip_detail"),
     path("trips/validate/", views.trip_validate, name="trip_validate"),

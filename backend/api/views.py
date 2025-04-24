@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme
-from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer, EmergencyContactSerializer, DestinationSerializer, ThemeSerializer
+from .models import Trip, TripPlan, Review, EmergencyContact, Destination, Theme, Place
+from .serializers import TripSerializer, TripPlanSerializer, RegisterSerializer, ReviewSerializer, EmergencyContactSerializer, DestinationSerializer, ThemeSerializer, PlaceSerializer
 
 from .services import engine
 
@@ -58,6 +58,23 @@ def theme_list(request):
     serializer = ThemeSerializer(themes, many=True)
     
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def suggested_places(request):
+    """
+    GET: Retrieve suggested places based on destination and theme.
+    """
+    dest_name = request.GET.get("destination")
+    theme_name = request.GET.get("theme")
+
+    destination = get_object_or_404(Destination, name__iexact=dest_name)
+    theme = get_object_or_404(Theme, name__iexact=theme_name)
+
+    places = Place.objects.filter(destination=destination, theme=theme)[:6]
+    serializer = PlaceSerializer(places, many=True)
+    return Response(serializer.data)
 
 
 @api_view(["POST"])

@@ -16,6 +16,32 @@ class Theme(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Place(models.Model):
+    google_place_id = models.CharField(max_length=100, unique=True)
+    destination = models.ForeignKey("Destination", on_delete=models.CASCADE)
+    theme = models.ForeignKey("Theme", on_delete=models.SET_NULL, null=True)
+
+    name = models.CharField(max_length=255)
+    beautified_name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    visit_duration = models.PositiveIntegerField(
+        default=60,
+        help_text="Estimated visit duration in minutes"
+    )
+
+    lat = models.FloatField()
+    lng = models.FloatField()
+    rating = models.FloatField(null=True, blank=True)
+    num_reviews = models.IntegerField(default=0)
+    types = models.JSONField()  # stores list like ["tourist_attraction", "cave"]
+    photo_reference = models.CharField(max_length=1024, blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.beautified_name
 
 
 class Trip(models.Model):

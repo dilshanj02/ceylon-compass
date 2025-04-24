@@ -1,9 +1,8 @@
 from datetime import timedelta
 from decimal import Decimal
+from api.models import Place
 
 from api.constants import ACCOMMODATION_COSTS, TRANSPORT_COSTS, ACTIVITIES_BY_DESTINATION_THEME, FOOD_COST_PER_DAY, MISC_COST_PERCENTAGE
-
-OPENTRIPMAP_API_KEY = "5ae2e3f221c38a28845f05b6c125fa319a54da9c6e05f9cf12bc1417"
 
 def get_activities(destination, theme):
     return ACTIVITIES_BY_DESTINATION_THEME.get(destination, {}).get(theme, [])
@@ -20,9 +19,14 @@ def generate_trip_plan(trip):
     budget = trip.budget
 
     num_days = (check_out - check_in).days
-    plan = []
     
-    activities = get_activities(destination, theme)
+    # Get enriched places instead of static activities
+    places = list(
+        Place.objects.filter(destination=trip.destination, theme=trip.theme)
+        .order_by("-rating", "-num_reviews")
+    )
+    if not places:
+        raise Exception("No suitable places found for this destination and theme.")
 
     # Budget distribution
     accommodation_cost = Decimal(ACCOMMODATION_COSTS[accommodation_type][accommodation_tier]) * num_days * travelers
@@ -33,20 +37,25 @@ def generate_trip_plan(trip):
     total_cost = accommodation_cost + food_cost + transport_cost + misc_cost
     remaining_budget = budget - total_cost
 
+    # Construct itinerary with enriched places
+    itinerary = []
     for i in range(num_days):
+        place = places[i % len(places)]
         date = check_in + timedelta(days=i)
-        activity = activities[i % len(activities)] # Cycle through activities
 
-        plan.append({
+        itinerary.append({
             "date": date.strftime("%Y-%m-%d"),
-            "activity": activity,
+            "activity": place.beautified_name,
+            "description": place.description,
+            "lat": place.lat,
+            "lng": place.lng,
             "budget_remaining": float(remaining_budget) / num_days
         })
 
-    plan_data = {
+    return {
         "destination": destination,
         "theme": theme,
-        "itinerary": plan,
+        "itinerary": itinerary,
         "cost_breakdown": {
             "accommodation": float(accommodation_cost),
             "transport": float(transport_cost),
@@ -56,6 +65,4 @@ def generate_trip_plan(trip):
             "remaining_budget": f"{float(remaining_budget):.2f}"
         }
     }
-
-    return plan_data
 

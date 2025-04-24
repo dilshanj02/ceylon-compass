@@ -11,6 +11,8 @@ import CommunityPage from "./pages/CommunityPage";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./utils/PrivateRoute";
 
+import "leaflet/dist/leaflet.css";
+
 export default function App() {
   return (
     <AuthProvider>

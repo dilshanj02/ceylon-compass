@@ -101,7 +101,7 @@ def get_places_by_location(lat: float, lng: float, radius: int = 10000, limit: i
             place_id = place.get("place_id")
             lat = place.get("geometry", {}).get("location", {}).get("lat")
             lng = place.get("geometry", {}).get("location", {}).get("lng")
-            total_reviews = place.get("user_ratings_total", 0)
+            num_reviews = place.get("user_ratings_total", 0)
 
 
             if not name or not lat or not lng:
@@ -122,7 +122,7 @@ def get_places_by_location(lat: float, lng: float, radius: int = 10000, limit: i
                 "lat": lat,
                 "lng": lng,
                 "photo_reference": place.get("photos", [{}])[0].get("photo_reference"),
-                "total_reviews": total_reviews
+                "num_reviews": num_reviews
             })
 
             if len(all_results) >= limit:
@@ -151,14 +151,25 @@ Given a place's name, types, and rating, return a strict JSON object like this (
   "name": "Original Place Name",
   "beautified_name": "Improved display name",
   "description": "Short, friendly 1-2 sentence description",
-  "theme": "Adventure & Outdoors" | "Culture & Heritage" | "Leisure & Relaxation" | "Unrelated"
+  "theme": "Adventure & Outdoors" | "Culture & Heritage" | "Leisure & Relaxation" | "Unrelated",
+  "visit_duration": 90  // in minutes, estimated based on the place type and theme
 }}
 
-If the place is not suitable for a tourist itinerary (e.g., a travel service, accommodation, restaurant, taxi/tuk tuk, etc.), classify its theme as "Unrelated".
+If the place is not suitable for a tourist itinerary (e.g., a travel service, accommodation, restaurant, taxi/tuk tuk, etc.), classify its theme as "Unrelated" and return 0 for visit_duration.
+If the place name includes a person's name like "John's Cafe", or if it contains non-English characters like "تلة جوزة ادم", classify its theme as "Unrelated" and return 0 for visit_duration.
+
+Estimate visit_duration using common sense:
+- Hike = 120–240 minutes
+- Viewpoint = 30–60 minutes
+- Museum = 60–90 minutes
+- Temple = 45–90 minutes
+- Waterfall = 45–90 minutes
+- Garden/Park = 60–120 minutes
+- Scenic bridge = 20–40 minutes
 
 Rules:
-- Always return strict JSON (double quotes, valid syntax)
-- Do not include explanation, just the JSON
+- Always return valid strict JSON (double quotes only)
+- No explanation, just the JSON
 
 Destination: {destination}
 Place:
@@ -166,6 +177,7 @@ Place:
 - Types: {types}
 - Rating: {rating}
 """
+
 
     try:
         response = gemini_model.generate_content(prompt)
@@ -180,10 +192,11 @@ Place:
             "name": name,
             "beautified_name": name,
             "description": "",
-            "theme": "Unrelated"
+            "theme": "Unrelated",
+            "visit_duration": 0
         }
 
-destination = "Ella"
+destination = "Kandy"
 lat, lng = get_lat_lon(destination)
 
 raw_places = get_places_by_location(lat, lng)
@@ -207,7 +220,7 @@ for place in tqdm(raw_places, desc="Enriching places"):
         enriched_place["rating"] = place.get("rating")
         enriched_place["types"] = place.get("types")
         enriched_place["photo_reference"] = place.get("photo_reference")
-        enriched_place["total_reviews"] = place.get("total_reviews")
+        enriched_place["num_reviews"] = place.get("num_reviews")
 
         enriched_places.append(enriched_place)
     else:
@@ -219,4 +232,4 @@ with open(f"{destination.lower()}_enriched_places.json", "w") as f:
 
 # Save skipped places to a JSON file to review
 with open(f"{destination.lower()}_skipped_places.json", "w") as f:
-    json.dump(skipped_places, f, indent=4) 
+    json.dump(skipped_places, f, indent=4)
