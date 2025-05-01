@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %} {% load static %} {% block content %}
+
+<!-- Add Reports Button -->
+<div class="mb-8">
+  <a
+    href="{% url 'admin:reports_dashboard' %}"
+    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow transition"
+  >
+    📊 View Reports Dashboard
+  </a>
+</div>
+
+<!-- 🔥 THIS IS MANDATORY -->
+{{ block.super }} {% endblock %}

@@ -198,11 +198,12 @@ class TripSerializer(serializers.ModelSerializer):
             validated_data['user'] = request.user
         return super().create(validated_data)
         
-        
+
 class TripPlanSerializer(serializers.ModelSerializer):
     trip = TripSerializer()
     cost_breakdown = serializers.SerializerMethodField()
     itinerary = serializers.SerializerMethodField()
+    # accommodation = serializers.SerializerMethodField()
     class Meta:
         model = TripPlan
         fields = "__all__"

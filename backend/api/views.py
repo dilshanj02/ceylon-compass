@@ -156,6 +156,7 @@ def plan_list(request):
                 trip = trip,
                 defaults = {
                     "itinerary": plan_data["itinerary"],
+                    "accommodation": plan_data["accommodation"],
                     "cost_breakdown": plan_data["cost_breakdown"]
                 }
             )

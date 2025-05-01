@@ -125,51 +125,74 @@ const TripDetails = () => {
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-12">
-      {/* Header */}
-      <div>
+      {/* Trip Header */}
+      <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+        {/* Image Header */}
         <div
-          className="h-64 w-full bg-cover bg-center rounded-lg shadow-md mb-10"
-          style={{ backgroundImage: `url("/kandy.jpg")` }}
+          className="h-64 w-full bg-cover bg-center relative"
+          style={{
+            backgroundImage: `url(/${tripPlan.trip.destination_name}.jpg)`,
+          }}
         >
-          <div className="h-full w-full bg-black bg-opacity-40 flex flex-col justify-center items-center text-white">
-            <h1 className="text-4xl font-bold">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30"></div>
+          <div className="relative h-full flex flex-col justify-center items-center text-white text-center px-4">
+            <h1 className="text-4xl font-bold drop-shadow-md">
               {tripPlan.trip.destination_name}
             </h1>
-            <p className="text-lg mt-2">{tripPlan.trip.theme_name}</p>
+            <p className="text-lg mt-2 drop-shadow-sm">
+              {tripPlan.trip.theme_name}
+            </p>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-between gap-8">
+        {/* Trip Info Section */}
+        <div className="p-6 bg-white grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-10 text-sm text-gray-700">
+          {/* Left column */}
           <div className="space-y-2">
-            <div>
-              <strong>Check-in:</strong> {tripPlan.trip.check_in}
+            <div className="flex items-center gap-2">
+              <span className="font-medium w-28">📅 Check-in:</span>
+              <span className="bg-gray-100 px-3 py-1 rounded-full">
+                {tripPlan.trip.check_in}
+              </span>
             </div>
-            <div>
-              <strong>Check-out:</strong> {tripPlan.trip.check_out}
+            <div className="flex items-center gap-2">
+              <span className="font-medium w-28">📅 Check-out:</span>
+              <span className="bg-gray-100 px-3 py-1 rounded-full">
+                {tripPlan.trip.check_out}
+              </span>
             </div>
           </div>
+
+          {/* Right column */}
           <div className="space-y-2">
-            <div>
-              <strong>Travelers:</strong> {tripPlan.trip.travelers}
+            <div className="flex items-center gap-2 md:justify-end">
+              <span className="font-medium w-28 text-right">👥 Travelers:</span>
+              <span className="bg-gray-100 px-3 py-1 rounded-full">
+                {tripPlan.trip.travelers}
+              </span>
             </div>
-            <div>
-              <strong>Budget:</strong> LKR {tripPlan.trip.budget}
+            <div className="flex items-center gap-2 md:justify-end">
+              <span className="font-medium w-28 text-right">💰 Budget:</span>
+              <span className="bg-gray-100 px-3 py-1 rounded-full">
+                LKR {tripPlan.trip.budget}
+              </span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Weather Forecast */}
-      <div>
-        <h3 className="text-3xl font-semibold mb-4 text-sky-800">
-          🌦️ Weather Forecast
-        </h3>
-        {!isForecastAvailable ? (
-          <p className="text-gray-600">
-            Weather forecast is not available yet for your travel dates.
-          </p>
-        ) : (
-          <div className="flex flex-wrap justify-center gap-6">
+      {isForecastAvailable && (
+        <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-sky-50 to-sky-100 px-6 py-4 text-center">
+            <h3 className="text-2xl font-semibold text-sky-800 flex items-center justify-center gap-2">
+              🌦️ Weather Forecast
+            </h3>
+          </div>
+
+          {/* Forecast Grid */}
+          <div className="flex flex-wrap justify-center gap-6 p-6 bg-white">
             {filteredForecast.map((day, i) => {
               const formattedDate = new Date(day.date).toLocaleDateString(
                 "en-US",
@@ -179,6 +202,7 @@ const TripDetails = () => {
                   day: "numeric",
                 }
               );
+
               return (
                 <div
                   key={i}
@@ -200,8 +224,73 @@ const TripDetails = () => {
               );
             })}
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Fallback if weather is not available */}
+      {!isForecastAvailable && (
+        <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+          <div className="bg-gradient-to-r from-sky-50 to-sky-100 px-6 py-4 text-center">
+            <h3 className="text-2xl font-semibold text-sky-800 flex items-center justify-center gap-2">
+              🌦️ Weather Forecast
+            </h3>
+          </div>
+          <div className="p-6 bg-white text-center text-gray-600">
+            Weather forecast is not available yet for your travel dates.
+          </div>
+        </div>
+      )}
+
+      {/* Accommodation Details */}
+      {tripPlan.accommodation && (
+        <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-amber-50 to-yellow-100 px-6 py-4 text-center">
+            <h3 className="text-2xl font-semibold text-yellow-800 flex items-center justify-center gap-2">
+              🏨 Selected Accommodation
+            </h3>
+          </div>
+
+          {/* Content */}
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 p-6 bg-white">
+            {/* Image */}
+            <div className="w-full md:w-64 h-40 rounded-xl overflow-hidden border flex-shrink-0 shadow-sm">
+              <img
+                src={tripPlan.accommodation.photo}
+                alt={tripPlan.accommodation.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Info */}
+            <div className="flex-1 text-center md:text-left space-y-4">
+              <h4 className="text-xl font-bold text-gray-800">
+                {tripPlan.accommodation.name}
+              </h4>
+
+              {/* Tags */}
+              <div className="flex flex-wrap justify-center md:justify-start items-center gap-3 text-sm">
+                <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-800 font-medium">
+                  {tripPlan.accommodation.category}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-medium">
+                  {tripPlan.accommodation.tier}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-800 font-medium">
+                  LKR {tripPlan.accommodation.price_per_night_per_person} /
+                  night / person
+                </span>
+              </div>
+
+              {/* Location */}
+              <p className="text-sm text-gray-600">
+                📍 <span className="font-medium">Coordinates:</span>{" "}
+                {tripPlan.accommodation.lat}, {tripPlan.accommodation.lng}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Modern Itinerary Redesign */}
       <div className="space-y-10">
@@ -255,7 +344,7 @@ const TripDetails = () => {
                       </p>
                     </div>
                     <div className="flex justify-between items-center mt-3 text-xs text-gray-500">
-                      <span>💰 LKR {group.budget_remaining}</span>
+                      {/* <span>💰 LKR {group.budget_remaining}</span> */}
                       {item.duration && (
                         <span>⏱️ {item.duration} min visit</span>
                       )}
@@ -269,61 +358,124 @@ const TripDetails = () => {
       </div>
 
       {/* Cost Breakdown */}
-      <div>
-        <h3 className="text-2xl font-semibold mb-4">Cost Breakdown</h3>
-        <ul className="divide-y divide-base-300">
-          {orderedKeys.map((key) => (
-            <li key={key} className="py-3 flex justify-between">
-              <span>{labelMap[key]}</span>
-              <span className="badge badge-primary badge-outline">
-                LKR {tripPlan.cost_breakdown[key]}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-indigo-50 to-indigo-100 px-6 py-4 text-center">
+          <h3 className="text-2xl font-semibold text-indigo-800 flex items-center justify-center gap-2">
+            💸 Cost Breakdown
+          </h3>
+        </div>
+
+        {/* Breakdown List */}
+        <div className="bg-white p-6">
+          <ul className="divide-y divide-gray-200 text-sm text-gray-700">
+            {orderedKeys.map((key) => (
+              <li key={key} className="py-3 flex justify-between">
+                <span className="font-medium">{labelMap[key]}</span>
+                <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 font-semibold">
+                  LKR {tripPlan.cost_breakdown[key]}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Itinerary Map */}
-      <div>
-        <h3 className="text-2xl font-semibold mb-4">Itinerary Map</h3>
-        <ItineraryMap
-          places={tripPlan.itinerary.flatMap((day) => day.activities)}
-        />
+      <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-green-50 to-green-100 px-6 py-4 text-center">
+          <h3 className="text-2xl font-semibold text-green-800 flex items-center justify-center gap-2">
+            🗺️ Itinerary Map
+          </h3>
+        </div>
+
+        {/* Map Container */}
+        <div className="bg-white p-4">
+          <ItineraryMap
+            places={[
+              ...tripPlan.itinerary.flatMap((day) => day.activities),
+              {
+                name: tripPlan.accommodation.name,
+                lat: tripPlan.accommodation.lat,
+                lng: tripPlan.accommodation.lng,
+                description: "Accommodation",
+                photo: tripPlan.accommodation.photo,
+                type: "accommodation", // 👈 you already have this!
+              },
+              ...emergencyContacts.map((contact) => ({
+                name: contact.name,
+                lat: contact.lat,
+                lng: contact.lng,
+                description: contact.description || contact.service_type,
+                photo: null, // optional
+                type: "emergency",
+              })),
+            ]}
+          />
+        </div>
       </div>
 
       {/* Emergency Contacts */}
-      <div>
-        <h3 className="text-2xl font-semibold mb-4">Emergency Assistance</h3>
-        <div className="collapse collapse-arrow border border-base-300 bg-base-100">
-          <input type="checkbox" />
-          <div className="collapse-title font-semibold text-center p-4">
-            View Emergency Contacts for {tripPlan.trip.destination_name}
+      {emergencyContacts.length > 0 && (
+        <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-red-50 to-red-100 px-6 py-4 text-center">
+            <h3 className="text-2xl font-semibold text-red-800 flex items-center justify-center gap-2">
+              🚨 Emergency Assistance
+            </h3>
           </div>
-          <div className="collapse-content space-y-4">
-            {emergencyContacts.length === 0 ? (
-              <p>No emergency contacts available.</p>
-            ) : (
-              emergencyContacts.map((contact) => (
-                <div
-                  key={contact.id}
-                  className="border p-4 rounded-md shadow-sm"
-                >
-                  <h4 className="font-semibold">{contact.name}</h4>
-                  <p className="text-sm text-gray-600">
-                    {contact.service_type}
-                  </p>
-                  <p className="text-sm">📞 {contact.phone_number}</p>
-                  {contact.description && (
-                    <p className="text-sm text-gray-500 mt-1">
-                      {contact.description}
+
+          {/* Scrollable Contact List */}
+          <div className="p-6 bg-white space-y-4 max-h-[450px] overflow-y-auto custom-scrollbar">
+            {emergencyContacts.map((contact) => (
+              <div
+                key={contact.id}
+                className="border rounded-xl p-4 shadow-sm hover:shadow-md transition"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+                  {/* Left Column */}
+                  <div className="space-y-1 text-left">
+                    <h4 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                      {contact.name}
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      🧭 <span className="font-medium">Type:</span>{" "}
+                      {contact.service_type}
                     </p>
-                  )}
+                    {contact.description && (
+                      <p className="text-sm text-gray-500">
+                        📝 <span className="font-medium">Note:</span>{" "}
+                        {contact.description}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Right Column */}
+                  <div className="flex md:justify-end items-center h-full">
+                    <p className="text-sm bg-red-100 text-red-700 px-4 py-2 rounded-full font-semibold">
+                      📞 {contact.phone_number}
+                    </p>
+                  </div>
                 </div>
-              ))
-            )}
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      )}
+
+      {emergencyContacts.length === 0 && (
+        <div className="rounded-2xl shadow-md overflow-hidden border border-gray-200">
+          <div className="bg-gradient-to-r from-red-50 to-red-100 px-6 py-4 text-center">
+            <h3 className="text-2xl font-semibold text-red-800 flex items-center justify-center gap-2">
+              🚨 Emergency Assistance
+            </h3>
+          </div>
+          <div className="p-6 bg-white text-center text-gray-600">
+            No emergency contacts available for this destination.
+          </div>
+        </div>
+      )}
     </div>
   );
 };

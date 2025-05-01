@@ -132,6 +132,7 @@ class Trip(models.Model):
 class TripPlan(models.Model):
     trip = models.OneToOneField(Trip, on_delete=models.CASCADE, related_name="plan")
     created_at = models.DateTimeField(auto_now_add=True)
+    accommodation = models.JSONField()
     itinerary = models.JSONField()
     cost_breakdown = models.JSONField()
 
@@ -153,20 +154,20 @@ class Review(models.Model):
     
 
 class EmergencyContact(models.Model):
-    DESTINATION_CHOICES = [
-        ("Colombo", "Colombo"),
-        ("Kandy", "Kandy"),
-        ("Galle", "Galle"),
-        ("Nuwara Eliya", "Nuwara Eliya"),
-        ("Ella", "Ella"),
-        ("Jaffna", "Jaffna")
-    ]
-
-    destination = models.CharField(max_length=100, choices=DESTINATION_CHOICES)
-    service_type = models.CharField(max_length=100)
-    name = models.CharField(max_length=150)
+    google_place_id = models.CharField(max_length=100, unique=True)
+    destination = models.ForeignKey("Destination", on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
-    description = models.TextField(blank=True, null=True)
+    service_type = models.CharField(max_length=50)  # e.g., Police, Ambulance
+    description = models.TextField(blank=True)
+
+    lat = models.FloatField(null=True, blank=True)
+    lng = models.FloatField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.service_type} - {self.name} ({self.location})"
+        return f"{self.name} ({self.service_type})"
+    
+
+class ReportEntry:
+    """A dummy object for Admin Reports."""
+    pass

@@ -159,13 +159,13 @@ If the place is not suitable for a tourist itinerary (e.g., a travel service, ac
 If the place name includes a person's name like "John's Cafe", or if it contains non-English characters like "تلة جوزة ادم", classify its theme as "Unrelated" and return 0 for visit_duration.
 
 Estimate visit_duration using common sense:
-- Hike = 120–240 minutes
-- Viewpoint = 30–60 minutes
-- Museum = 60–90 minutes
-- Temple = 45–90 minutes
-- Waterfall = 45–90 minutes
-- Garden/Park = 60–120 minutes
-- Scenic bridge = 20–40 minutes
+- Hike = 180-300 minutes
+- Viewpoint = 60-90 minutes
+- Museum = 60–120 minutes
+- Temple = 60–120 minutes
+- Waterfall = 60–90 minutes
+- Garden/Park = 90–120 minutes
+- Scenic bridge = 45–60 minutes
 
 Rules:
 - Always return valid strict JSON (double quotes only)

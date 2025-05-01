@@ -1,0 +1,186 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+
+<style>
+  .dashboard-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  .dashboard-table th, .dashboard-table td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+  }
+  .dashboard-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+  }
+  .dashboard-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+  }
+</style>
+
+<h1 style="font-size: 32px; font-weight: bold; margin-bottom: 30px;">📊 Reports Dashboard</h1>
+
+<div style="margin-bottom: 20px;">
+  <a
+    href="{% url 'custom_admin:export_report_csv' %}?{{ request.GET.urlencode }}"
+    class="default"
+  >
+    ⬇️ Download CSV
+  </a>
+</div>
+
+<!-- Filters -->
+<div class="dashboard-card">
+  <h2 style="margin-bottom: 15px;">🔎 Filter Trips</h2>
+  <form method="get" class="form-row" style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div>
+      <label>Start Date:</label><br>
+      <input type="date" name="start_date" value="{{ active_filters.start_date }}">
+    </div>
+    <div>
+      <label>End Date:</label><br>
+      <input type="date" name="end_date" value="{{ active_filters.end_date }}">
+    </div>
+    <div>
+      <label>Destination:</label><br>
+      <select name="destination">
+        <option value="">All</option>
+        {% for dest in all_destinations %}
+        <option value="{{ dest.name }}" {% if active_filters.destination == dest.name %}selected{% endif %}>
+          {{ dest.name }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label>Theme:</label><br>
+      <select name="theme">
+        <option value="">All</option>
+        {% for theme in all_themes %}
+        <option value="{{ theme.name }}" {% if active_filters.theme == theme.name %}selected{% endif %}>
+          {{ theme.name }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div style="align-self: flex-end;">
+      <button type="submit" class="default">🔍 Filter</button>
+    </div>
+  </form>
+</div>
+
+<!-- Quick Stats -->
+<div class="dashboard-card">
+  <h2>📋 Quick Stats</h2>
+  <ul style="list-style: none; padding-left: 0; margin-top: 15px;">
+    <li><strong>Total Trips:</strong> {{ total_trips }}</li>
+    <li><strong>Trips This Month:</strong> {{ trips_this_month }}</li>
+    <li><strong>Trips in Last 30 Days:</strong> {{ trips_last_30 }}</li>
+  </ul>
+</div>
+
+<!-- Total Trips Created -->
+<div class="dashboard-card">
+  <h2>🗺️ Total Trips Created (Destination / Theme)</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <div style="flex: 1;">
+      <table class="dashboard-table">
+        <thead>
+          <tr><th>Destination</th><th>Trips</th></tr>
+        </thead>
+        <tbody>
+          {% for item in trips_per_destination %}
+          <tr>
+            <td>{{ item.destination__name }}</td>
+            <td>{{ item.count }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div style="flex: 1;">
+      <table class="dashboard-table">
+        <thead>
+          <tr><th>Theme</th><th>Trips</th></tr>
+        </thead>
+        <tbody>
+          {% for item in trips_by_theme %}
+          <tr>
+            <td>{{ item.theme__name }}</td>
+            <td>{{ item.count }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Average Budget -->
+<div class="dashboard-card">
+  <h2>💰 Average Budget per Destination</h2>
+  <table class="dashboard-table">
+    <thead>
+      <tr><th>Destination</th><th>Average Budget (LKR)</th></tr>
+    </thead>
+    <tbody>
+      {% for dest, avg in avg_budget_per_destination.items %}
+      <tr>
+        <td>{{ dest }}</td>
+        <td>{{ avg|floatformat:2 }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Popular Destinations -->
+<div class="dashboard-card">
+  <h2>🏖️ Popular Destinations (Most Visited)</h2>
+  <table class="dashboard-table">
+    <thead>
+      <tr><th>Destination</th><th>Trips</th></tr>
+    </thead>
+    <tbody>
+      {% for dest, count in destination_counts.items %}
+      <tr>
+        <td>{{ dest }}</td>
+        <td>{{ count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Accommodation Preferences -->
+<div class="dashboard-card">
+  <h2>🏨 Accommodation Preferences</h2>
+  <table class="dashboard-table">
+    <thead>
+      <tr><th>Category</th><th>Tier</th><th>Count</th></tr>
+    </thead>
+    <tbody>
+      {% for acc in accommodation_counts %}
+      <tr>
+        <td>{{ acc.category }}</td>
+        <td>{{ acc.tier }}</td>
+        <td>{{ acc.count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
