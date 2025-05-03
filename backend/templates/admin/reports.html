@@ -1,4 +1,10 @@
 {% extends "admin/base_site.html" %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
 {% block content %}
 
 <style>
@@ -89,6 +95,74 @@
     <li><strong>Trips in Last 30 Days:</strong> {{ trips_last_30 }}</li>
   </ul>
 </div>
+
+<!-- Chart Row -->
+<fieldset class="module aligned">
+  <legend><strong>📊 Visual Insights</strong></legend>
+  <div style="display: flex; gap: 40px; justify-content: space-between; flex-wrap: wrap;">
+
+    <!-- Popular Destinations Chart -->
+    <div style="flex: 1; min-width: 300px; max-width: 600px;">
+      <h4 style="margin-bottom: 10px;">Popular Destinations (Bar)</h4>
+      <canvas id="popularDestinationsChart" height="300"></canvas>
+    </div>
+
+    <!-- Accommodation Preferences Chart -->
+    <div style="flex: 1; min-width: 300px; max-width: 500px;">
+      <h4 style="margin-bottom: 10px;">Accommodation Preferences (Pie)</h4>
+      <canvas id="accommodationChart" height="300"></canvas>
+    </div>
+
+  </div>
+
+  <script>
+    const ctxDest = document.getElementById("popularDestinationsChart").getContext("2d");
+    new Chart(ctxDest, {
+      type: "bar",
+      data: {
+        labels: {{ chart_labels|safe }},
+        datasets: [{
+          label: "Trips",
+          data: {{ chart_values|safe }},
+          backgroundColor: "#4e73df",
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
+          }
+        }
+      }
+    });
+
+    const ctxAcc = document.getElementById("accommodationChart").getContext("2d");
+    new Chart(ctxAcc, {
+      type: "pie",
+      data: {
+        labels: {{ acc_pref_labels|safe }},
+        datasets: [{
+          data: {{ acc_pref_counts|safe }},
+          backgroundColor: ["#60a5fa", "#f87171", "#34d399", "#fbbf24", "#a78bfa"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    });
+  </script>
+</fieldset>
+
+
 
 <!-- Total Trips Created -->
 <div class="dashboard-card">

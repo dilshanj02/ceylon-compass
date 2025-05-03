@@ -1,13 +1,14 @@
-# backend/api/views_admin.py
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
 from django.utils import timezone
 from django.db import models
+from django.http import HttpResponse
 from datetime import timedelta
+import csv
+import json
+
 from .models import Trip, Accommodation, Destination, Theme
 
-import csv
-from django.http import HttpResponse
 
 @staff_member_required
 def reports_dashboard(request):
@@ -20,10 +21,8 @@ def reports_dashboard(request):
     selected_destination = request.GET.get('destination')
     selected_theme = request.GET.get('theme')
 
-    # Get All Trips
+    # Filter trips
     trips = Trip.objects.all()
-
-    # Apply Filters
     if start_date:
         trips = trips.filter(check_in__gte=start_date)
     if end_date:
@@ -51,16 +50,20 @@ def reports_dashboard(request):
         dest: sum(budgets) / len(budgets) for dest, budgets in avg_budget_per_destination.items()
     }
 
-    # Popular destinations
+    # Popular destination counts (for chart)
     destination_counts = {}
     for trip in trips:
         dest = trip.destination.name
         destination_counts[dest] = destination_counts.get(dest, 0) + 1
+    chart_labels = list(destination_counts.keys())
+    chart_values = list(destination_counts.values())
 
-    # Accommodation Preferences
+    # Accommodation preferences
     accommodation_counts = Accommodation.objects.values('category', 'tier').annotate(count=models.Count('id')).order_by('-count')
+    acc_pref_labels = [f"{a['category']} ({a['tier']})" for a in accommodation_counts]
+    acc_pref_counts = [a['count'] for a in accommodation_counts]
 
-    # All Destinations and Themes for filter dropdowns
+    # All options for filters
     all_destinations = Destination.objects.all()
     all_themes = Theme.objects.all()
 
@@ -75,6 +78,10 @@ def reports_dashboard(request):
         "accommodation_counts": accommodation_counts,
         "all_destinations": all_destinations,
         "all_themes": all_themes,
+        "chart_labels": json.dumps(chart_labels),
+        "chart_values": json.dumps(chart_values),
+        "acc_pref_labels": json.dumps(acc_pref_labels),
+        "acc_pref_counts": json.dumps(acc_pref_counts),
         "active_filters": {
             "start_date": start_date,
             "end_date": end_date,
@@ -92,7 +99,6 @@ def export_reports_csv(request):
     theme = request.GET.get('theme')
 
     trips = Trip.objects.all()
-
     if start_date:
         trips = trips.filter(check_in__gte=start_date)
     if end_date:
