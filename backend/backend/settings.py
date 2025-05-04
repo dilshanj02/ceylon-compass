@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ceylon_compass_db',
         'USER': 'ceylon_user',
-        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'PASSWORD': '4512',
         'HOST': 'localhost',
         'PORT': '5432',
     }
