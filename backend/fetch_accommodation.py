@@ -7,7 +7,7 @@ from typing import Tuple, List
 from tqdm import tqdm
 from django.conf import settings
 
-GOOGLE_PLACES_API_KEY = "AIzaSyBkQxm4XRZUrzrYVYPNGj-tOUhL27uHi4A"
+GOOGLE_PLACES_API_KEY = settings.GOOGLE_PLACES_API_KEY
 
 # Gemini init
 vertexai.init(project="astute-synapse-457413-g1", location="us-central1")
