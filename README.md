@@ -56,7 +56,19 @@ ALTER SCHEMA public OWNER TO ceylon_user;`
 psql -U ceylon_user -d ceylon_compass_db -f ceylon_compass_backup.sql
 ```
 
-### 3. Backend Setup (Django)
+### 3. Environment Variables
+
+Create a `.env` file in the `backend/` folder with:
+```bash
+GOOGLE_PLACES_API_KEY=your-google-api-key
+```
+
+Create a `.env` file in the `frontend/` folder with:
+```bash
+VITE_GOOGLE_PLACES_API_KEY=your-google-api-key
+```
+
+### 4. Backend Setup (Django)
 ```bash
 cd backend
 python -m venv env
@@ -67,7 +79,7 @@ Start the Django server:
 ```bash
 python manage.py runserver
 ```
-### 4. Frontend Setup (React)
+### 5. Frontend Setup (React)
 ```bash
 cd ../frontend
 npm install
