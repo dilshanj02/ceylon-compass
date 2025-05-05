@@ -1,6 +1,6 @@
 # Ceylon Compass
 
-A web-based travel planning platform for Sri Lanka. Ceylon Compass helps users plan customized trips using smart itinerary planning, personalized recommendations, real-time travel alerts, and more.
+A web-based travel planning platform for Sri Lanka. Ceylon Compass helps users plan customized trips using smart itinerary planning.
 
 ---
 
