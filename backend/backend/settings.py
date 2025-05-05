@@ -143,7 +143,7 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': False,  # Set to True if you want to blacklist tokens after rotation
 }
 
-GOOGLE_PLACES_API_KEY = "AIzaSyBkQxm4XRZUrzrYVYPNGj-tOUhL27uHi4A"
+GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
