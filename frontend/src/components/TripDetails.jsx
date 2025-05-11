@@ -323,15 +323,29 @@ const TripDetails = () => {
                   className="flex flex-col md:flex-row gap-4 p-6 hover:bg-gray-50 transition-all"
                 >
                   {/* Place image */}
-                  {item.photo && (
-                    <div className="w-full md:w-40 h-28 flex-shrink-0 rounded-xl overflow-hidden border">
-                      <img
-                        src={item.photo}
-                        alt={item.activity}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
+                  <div className="w-full md:w-40 h-28 flex-shrink-0 rounded-xl overflow-hidden border">
+                    <img
+                      src={
+                        item.photo
+                          ? item.photo
+                          : (() => {
+                              const themeMap = {
+                                "Adventure & Outdoors":
+                                  "fallback_adventure.png",
+                                "Culture & Heritage": "fallback_culture.png",
+                                "Leisure & Relaxation": "fallback_leisure.png",
+                              };
+                              const fallback = `/images/${
+                                themeMap[tripPlan.trip.theme_name] ||
+                                "fallback_generic.png"
+                              }`;
+                              return fallback;
+                            })()
+                      }
+                      alt={item.name || "Place"}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
                   {/* Place info */}
                   <div className="flex flex-col justify-between flex-grow">
@@ -393,25 +407,8 @@ const TripDetails = () => {
         {/* Map Container */}
         <div className="bg-white p-4">
           <ItineraryMap
-            places={[
-              ...tripPlan.itinerary.flatMap((day) => day.activities),
-              {
-                name: tripPlan.accommodation.name,
-                lat: tripPlan.accommodation.lat,
-                lng: tripPlan.accommodation.lng,
-                description: "Accommodation",
-                photo: tripPlan.accommodation.photo,
-                type: "accommodation", // 👈 you already have this!
-              },
-              ...emergencyContacts.map((contact) => ({
-                name: contact.name,
-                lat: contact.lat,
-                lng: contact.lng,
-                description: contact.description || contact.service_type,
-                photo: null, // optional
-                type: "emergency",
-              })),
-            ]}
+            accommodation={tripPlan.accommodation}
+            itinerary={tripPlan.itinerary}
           />
         </div>
       </div>

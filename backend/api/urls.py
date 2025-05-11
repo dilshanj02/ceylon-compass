@@ -20,8 +20,10 @@ urlpatterns = [
     path("trips/<int:id>/", views.trip_detail, name="trip_detail"),
     path("trips/validate/", views.trip_validate, name="trip_validate"),
     
+    
     path("plans/", views.plan_list, name="plan_list"),
     path("plans/<int:id>/", views.plan_detail, name="plan_detail"),
+    path("plans/<int:id>/delete/", views.delete_trip_plan, name="delete_trip_plan"),
 
     path("reviews/", views.review_list, name="review_list"),
 

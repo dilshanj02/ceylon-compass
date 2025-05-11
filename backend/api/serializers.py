@@ -49,7 +49,7 @@ class PlaceSerializer(serializers.ModelSerializer):
             return obj.image.url
         elif obj.photo_reference:
             return obj.get_photo_url()
-        return "/static/images/placeholder.jpg"
+        return "/images/placeholder.jpg"
 
 class AccommodationSerializer(serializers.ModelSerializer):
     photo_url = serializers.SerializerMethodField()

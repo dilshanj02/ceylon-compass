@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../utils/useAxios";
-
 import TripList from "../components/TripList";
 
 const TripPage = () => {
@@ -25,7 +24,7 @@ const TripPage = () => {
       <h1 className="text-4xl md:text-5xl font-bold mb-8">Your Trips</h1>
 
       {tripPlans.length > 0 ? (
-        <TripList tripPlans={tripPlans} />
+        <TripList tripPlans={tripPlans} setTripPlans={setTripPlans} />
       ) : (
         <div className="flex flex-col items-center gap-6">
           <p className="text-lg text-gray-600">

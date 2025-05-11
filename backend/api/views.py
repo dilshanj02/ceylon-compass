@@ -195,6 +195,17 @@ def plan_detail(request, id):
     return Response(plan_data, status=status.HTTP_200_OK)
 
 
+@api_view(['DELETE'])
+def delete_trip_plan(request, id):
+    try:
+        trip_plan = TripPlan.objects.get(id=id, trip__user=request.user)
+    except TripPlan.DoesNotExist:
+        return Response({"error": "Trip not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    trip_plan.delete()
+    return Response({"message": "Trip deleted."}, status=status.HTTP_204_NO_CONTENT)
+
+
 @api_view(["GET", "POST"]) 
 def review_list(request):
     if request.method == 'GET':

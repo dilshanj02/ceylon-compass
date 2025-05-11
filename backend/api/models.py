@@ -49,7 +49,13 @@ class Place(models.Model):
         if self.image:
             return f"{settings.BACKEND_BASE_URL}{self.image.url}"
         else:
-            return "/static/images/placeholder.jpg"  # fallback placeholder
+            theme_map = {
+            "Adventure & Outdoors": "fallback_adventure.png",
+            "Culture & Heritage": "fallback_culture.png",
+            "Leisure & Relaxation": "fallback_leisure.png",
+        }
+        fallback = theme_map.get(self.theme.name, "fallback_generic.png")
+        return f"/images/{fallback}"   # fallback placeholder
 
     def __str__(self):
         return self.beautified_name
