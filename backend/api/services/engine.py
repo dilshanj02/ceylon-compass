@@ -7,7 +7,7 @@ from api.constants import (
     MISC_COST_PERCENTAGE,
 )
 
-MAX_DAILY_VISIT_MINUTES = 180  # 6 hours
+MAX_DAILY_VISIT_MINUTES = 180  # 3 hours
 
 def generate_trip_plan(trip):
     destination = trip.destination
@@ -22,30 +22,44 @@ def generate_trip_plan(trip):
 
     num_days = (check_out - check_in).days
 
-    # 1. Fetch suitable accommodation
+    # 1. Fetch and score accommodations
     accommodations = Accommodation.objects.filter(
         destination=destination,
         category=accommodation_type,
         tier=accommodation_tier
-    ).order_by("price_per_night_per_person", "-rating")
+    )
 
     if not accommodations.exists():
         raise Exception("No matching accommodations available for your preferences.")
 
-    accommodation = accommodations.first()
+    def score(acc):
+        return (
+            (float(acc.rating or 0) * 2)  -
+            (float(acc.price_per_night_per_person) * 0.1)
+        )
 
-    # 2. Budget breakdown (using real price)
-    accommodation_cost = Decimal(accommodation.price_per_night_per_person) * num_days * travelers
-    transport_cost = Decimal(TRANSPORT_COSTS[transport]) * num_days
-    food_cost = Decimal(FOOD_COST_PER_DAY) * num_days * travelers
-    misc_cost = Decimal(MISC_COST_PERCENTAGE) * (accommodation_cost + transport_cost + food_cost)
-    total_cost = accommodation_cost + transport_cost + food_cost + misc_cost
-    remaining_budget = budget - total_cost
+    # Try best-scoring accommodation first
+    best_accommodation = sorted(accommodations, key=score, reverse=True)[0]
 
+    def calculate_costs(accommodation_obj):
+        acc_cost = Decimal(accommodation_obj.price_per_night_per_person) * num_days * travelers
+        trans_cost = Decimal(TRANSPORT_COSTS[transport]) * num_days
+        food_cost = Decimal(FOOD_COST_PER_DAY) * num_days * travelers
+        misc_cost = Decimal(MISC_COST_PERCENTAGE) * (acc_cost + trans_cost + food_cost)
+        total = acc_cost + trans_cost + food_cost + misc_cost
+        remaining = budget - total
+        return acc_cost, trans_cost, food_cost, misc_cost, total, remaining
+
+    # Calculate costs for best option
+    accommodation_cost, transport_cost, food_cost, misc_cost, total_cost, remaining_budget = calculate_costs(best_accommodation)
+
+    # Fallback to cheapest if over budget
     if remaining_budget < 0:
-        raise Exception("Budget is too low for the selected options.")
+        fallback_accommodation = accommodations.order_by("price_per_night_per_person", "-rating").first()
+        best_accommodation = fallback_accommodation
+        accommodation_cost, transport_cost, food_cost, misc_cost, total_cost, remaining_budget = calculate_costs(best_accommodation)
 
-    # 3. Fetch places for itinerary
+    # 2. Fetch places
     places = list(
         Place.objects.filter(destination=destination, theme=theme)
         .order_by("-rating", "-num_reviews")
@@ -53,7 +67,7 @@ def generate_trip_plan(trip):
     if not places:
         raise Exception("No suitable places found for this destination and theme.")
 
-    # 4. Create itinerary
+    # 3. Create itinerary
     itinerary = []
     current_place_index = 0
     for i in range(num_days):
@@ -61,7 +75,7 @@ def generate_trip_plan(trip):
         time_left = MAX_DAILY_VISIT_MINUTES
         daily_activities = []
 
-        while current_place_index < len(places):
+        while current_place_index < len(places) and len(daily_activities) < 3:
             place = places[current_place_index]
             duration = place.visit_duration or 60
             if time_left - duration >= 0:
@@ -84,18 +98,18 @@ def generate_trip_plan(trip):
             "budget_remaining": float(remaining_budget) / num_days
         })
 
-    # 5. Return structured plan
+    # 4. Return structured plan
     return {
         "destination": destination.name,
         "theme": theme.name,
         "accommodation": {
-            "name": accommodation.name,
-            "category": accommodation.category,
-            "tier": accommodation.tier,
-            "price_per_night_per_person": accommodation.price_per_night_per_person,
-            "photo": accommodation.get_photo_url(),
-            "lat": accommodation.lat,
-            "lng": accommodation.lng,
+            "name": best_accommodation.name,
+            "category": best_accommodation.category,
+            "tier": best_accommodation.tier,
+            "price_per_night_per_person": best_accommodation.price_per_night_per_person,
+            "photo": best_accommodation.get_photo_url(),
+            "lat": best_accommodation.lat,
+            "lng": best_accommodation.lng,
         },
         "itinerary": itinerary,
         "cost_breakdown": {

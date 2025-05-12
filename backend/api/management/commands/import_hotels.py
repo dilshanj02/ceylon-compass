@@ -20,7 +20,7 @@ class Command(BaseCommand):
     help = "Fetch and enrich hotel data for multiple destinations and insert directly into DB"
 
     def handle(self, *args, **options):
-        destinations = ["Kandy", "Galle", "Ella", "Jaffna"]  # Customize this list
+        destinations = ["Colombo", "Nuwara Eliya", "Polonnaruwa", "Anuradhapura"]   # Customize this list
 
         for destination_name in destinations:
             self.stdout.write(f"\n📍 Processing destination: {destination_name}")

@@ -4,14 +4,7 @@ from api.models import Destination
 
 GOOGLE_PLACES_API_KEY = "AIzaSyBkQxm4XRZUrzrYVYPNGj-tOUhL27uHi4A"
 
-DESTINATION_NAMES = [
-    "Colombo",
-    "Kandy",
-    "Galle",
-    "Nuwara Eliya",
-    "Ella",
-    "Jaffna",
-]
+DESTINATION_NAMES = ["Colombo", "Nuwara Eliya", "Polonnaruwa", "Anuradhapura"] 
 
 def fetch_lat_lon_from_google(name):
     url = "https://maps.googleapis.com/maps/api/place/textsearch/json"

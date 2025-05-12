@@ -21,7 +21,7 @@ class Command(BaseCommand):
     help = "Fetch emergency contacts (police, hospital, etc.) for destinations and save to DB"
 
     def handle(self, *args, **kwargs):
-        destinations = ["Kandy", "Galle", "Ella", "Jaffna"]
+        destinations = ["Colombo", "Nuwara Eliya", "Polonnaruwa", "Anuradhapura"] 
 
         for destination_name in destinations:
             self.stdout.write(f"\n📍 Processing: {destination_name}")

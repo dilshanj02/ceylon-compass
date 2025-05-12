@@ -28,6 +28,4 @@ urlpatterns = [
     path("reviews/", views.review_list, name="review_list"),
 
     path("emergency/", views.emergency_contacts, name="emergency_contacts"),
-
-    path("proxy/", views.proxy_google_photo, name="proxy_google_photo"),
 ]

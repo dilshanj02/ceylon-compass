@@ -216,7 +216,7 @@ def review_list(request):
     elif request.method == 'POST':
         serializer = ReviewSerializer(data=request.data, context={"request": request})
         if serializer.is_valid():
-            serializer.save(user=request.user)  # 👈 Attach logged-in user
+            serializer.save(user=request.user) # Attach logged-in user
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
@@ -235,13 +235,3 @@ def emergency_contacts(request):
 
 
 
-
-# # Proxy view for Google Photos
-@api_view(["GET"])
-def proxy_google_photo(request):
-    ref = request.GET.get("ref")
-    if not ref:
-        return redirect("/static/images/placeholder.jpg")
-    return HttpResponseRedirect(
-        f"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={ref}&key=YOUR_API_KEY"
-    )# 
