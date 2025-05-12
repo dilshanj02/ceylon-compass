@@ -14,7 +14,9 @@ const PlanAccordion = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [formData, setFormData] = useState({
     destination: "",
+    destinationName: "",
     theme: "",
+    themeName: "",
     checkIn: "",
     checkOut: "",
     travelers: 1,
@@ -220,12 +222,12 @@ const PlanAccordion = () => {
           <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg shadow-sm">
               <p className="text-gray-500 text-sm">Destination</p>
-              <p className="font-semibold">{formData.destination}</p>
+              <p className="font-semibold">{formData.destinationName}</p>
             </div>
 
             <div className="p-4 border rounded-lg shadow-sm">
               <p className="text-gray-500 text-sm">Theme</p>
-              <p className="font-semibold">{formData.theme}</p>
+              <p className="font-semibold">{formData.themeName}</p>
             </div>
 
             <div className="p-4 border rounded-lg shadow-sm">

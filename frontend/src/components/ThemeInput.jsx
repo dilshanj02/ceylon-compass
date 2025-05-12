@@ -11,7 +11,7 @@ const ThemeInput = ({ theme, setTheme, validationErrors }) => {
         setThemes(res.data);
         // Auto-select the first theme if none is selected
         if (!theme && res.data.length > 0) {
-          setTheme(res.data[0].id); // store the ID, not name
+          setTheme({ id: res.data[0].id, name: res.data[0].name }); // includes name
         }
       })
       .catch((err) => {
@@ -29,7 +29,14 @@ const ThemeInput = ({ theme, setTheme, validationErrors }) => {
       <select
         className="select select-bordered w-full rounded-full focus:outline-none"
         value={theme}
-        onChange={(e) => setTheme(parseInt(e.target.value))}
+        onChange={(e) => {
+          const selected = themes.find(
+            (t) => t.id === parseInt(e.target.value)
+          );
+          if (selected) {
+            setTheme({ id: selected.id, name: selected.name });
+          }
+        }}
       >
         <option disabled value="">
           Select a theme

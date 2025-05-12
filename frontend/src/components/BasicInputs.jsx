@@ -17,7 +17,11 @@ const BasicInputs = ({
         <DestinationInput
           selectedDestination={formData.destination}
           setSelectedDestination={(value) =>
-            setFormData((prev) => ({ ...prev, destination: value }))
+            setFormData((prev) => ({
+              ...prev,
+              destination: value.id,
+              destinationName: value.name,
+            }))
           }
           validationErrors={validationErrors}
           setValidationErrors={setValidationErrors}
@@ -25,7 +29,11 @@ const BasicInputs = ({
         <ThemeInput
           theme={formData.theme}
           setTheme={(value) =>
-            setFormData((prev) => ({ ...prev, theme: value }))
+            setFormData((prev) => ({
+              ...prev,
+              theme: value.id,
+              themeName: value.name,
+            }))
           }
           validationErrors={validationErrors}
         />

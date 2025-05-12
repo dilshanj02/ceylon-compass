@@ -134,7 +134,9 @@ const TripDetails = () => {
         <div
           className="h-64 w-full bg-cover bg-center relative"
           style={{
-            backgroundImage: `url(/${tripPlan.trip.destination_name.toLowerCase()}.jpg)`,
+            backgroundImage: `url(/${tripPlan.trip.destination_name
+              .toLowerCase()
+              .replace(/\s+/g, "-")}.jpg)`,
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30"></div>

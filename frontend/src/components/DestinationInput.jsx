@@ -66,7 +66,10 @@ const DestinationInput = ({
               key={destination.id}
               className="p-3 text-gray-700 cursor-pointer hover:bg-gray-200"
               onClick={() => {
-                setSelectedDestination(destination.id); // use ID
+                setSelectedDestination({
+                  id: destination.id,
+                  name: destination.name,
+                }); // use ID
                 setSearchQuery(destination.name); // show name
                 setIsDropdownOpen(false);
               }}
