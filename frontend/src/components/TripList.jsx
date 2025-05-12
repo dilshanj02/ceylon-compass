@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import axios from "../utils/useAxios";
+import { useContext } from "react";
+import CurrencyContext from "../context/CurrencyContext";
 
 const TripList = ({ tripPlans, setTripPlans }) => {
+  const { currency, convert } = useContext(CurrencyContext);
+
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this trip?"
@@ -33,8 +37,13 @@ const TripList = ({ tripPlans, setTripPlans }) => {
                 {tripPlan.trip.check_in} - {tripPlan.trip.check_out}
               </div>
             </div>
+
             <p className="text-sm">👥 {tripPlan.trip.travelers} Travelers</p>
-            <p className="text-sm">💰 LKR {tripPlan.trip.budget}</p>
+
+            <p className="text-sm">
+              💰 {currency} {convert(tripPlan.trip.budget)}
+            </p>
+
             <div className="flex gap-2">
               <Link to={`/trips/${tripPlan.id}`}>
                 <button className="btn btn-error">View</button>

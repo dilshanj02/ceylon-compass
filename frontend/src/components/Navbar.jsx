@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import CurrencyContext from "../context/CurrencyContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation(); // Get current path
   const { user, logout } = useContext(AuthContext);
+  const { currency, setCurrency } = useContext(CurrencyContext);
   const navigate = useNavigate();
 
   const handleSignin = () => {
@@ -27,7 +29,16 @@ const Navbar = () => {
         </Link>
 
         {/* Right-side buttons */}
-        <div className="flex md:order-2 space-x-3 md:space-x-0">
+        <div className="flex md:order-2 space-x-3 md:space-x-2">
+          <select
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+            className="ml-4 border-gray-300 text-sm rounded-md"
+          >
+            <option value="LKR">LKR</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
           <button
             onClick={handleSignin}
             className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 

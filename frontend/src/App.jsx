@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import CommunityPage from "./pages/CommunityPage";
 import { AuthProvider } from "./context/AuthContext";
+import { CurrencyProvider } from "./context/CurrencyContext";
 import PrivateRoute from "./utils/PrivateRoute";
 
 import "leaflet/dist/leaflet.css";
@@ -16,22 +17,26 @@ import "leaflet/dist/leaflet.css";
 export default function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<HomePage />} />
-            <Route element={<PrivateRoute />}>
-              <Route path="/plan" element={<PlanPage />} />
-              <Route path="/trips" element={<TripsPage />} />
-              <Route path="/trips/:id" element={<TripPage />} />
+      <CurrencyProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<HomePage />} />
+
+              <Route element={<PrivateRoute />}>
+                <Route path="/plan" element={<PlanPage />} />
+                <Route path="/trips" element={<TripsPage />} />
+                <Route path="/trips/:id" element={<TripPage />} />
+              </Route>
+
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/signin" element={<SigninPage />} />
+              <Route path="/signup" element={<SignupPage />} />
             </Route>
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/signin" element={<SigninPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-          </Route>
-        </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </CurrencyProvider>
     </AuthProvider>
   );
 }

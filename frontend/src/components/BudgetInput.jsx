@@ -4,7 +4,17 @@ const BudgetInput = ({
   validationErrors,
   setValidationErrors,
   serializerErrors,
+  currency,
 }) => {
+  const conversionRates = {
+    LKR: 1,
+    USD: 1 / 300,
+    EUR: 1 / 330,
+  };
+
+  const convertLKR = (amountInLKR) =>
+    (amountInLKR * conversionRates[currency]).toFixed(2);
+
   return (
     <fieldset className="relative">
       <legend className="text-sm font-semibold text-gray-600 pl-4">
@@ -14,7 +24,7 @@ const BudgetInput = ({
         {/* Budget input */}
         <input
           className="input input-bordered w-full rounded-full focus:outline-none"
-          placeholder="Enter budget (LKR)"
+          placeholder="Enter budget"
           value={budget ? Number(budget).toLocaleString() : ""}
           onChange={(e) => {
             const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
@@ -28,7 +38,10 @@ const BudgetInput = ({
           </p>
         )}
         {serializerErrors.budget && (
-          <p className="text-red-500 mt-1 pl-4">{serializerErrors.budget}</p>
+          <p className="text-red-500 mt-1 pl-4">
+            Your budget must be at least {convertLKR(serializerErrors.budget)}{" "}
+            {currency}
+          </p>
         )}
       </div>
     </fieldset>

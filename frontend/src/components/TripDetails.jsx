@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "../utils/useAxios";
 import ItineraryMap from "./itineraryMap";
 import getWeatherForecast from "../utils/getWeather";
+import CurrencyContext from "../context/CurrencyContext";
 
 const TripDetails = () => {
   const { id } = useParams();
@@ -11,6 +12,8 @@ const TripDetails = () => {
   const [loading, setLoading] = useState(true);
   const [weather, setWeather] = useState(null);
   const [openDays, setOpenDays] = useState([]);
+
+  const { currency, convert } = useContext(CurrencyContext);
 
   const labelMap = {
     accommodation: "Accommodation",
@@ -131,7 +134,7 @@ const TripDetails = () => {
         <div
           className="h-64 w-full bg-cover bg-center relative"
           style={{
-            backgroundImage: `url(/${tripPlan.trip.destination_name}.jpg)`,
+            backgroundImage: `url(/${tripPlan.trip.destination_name.toLowerCase()}.jpg)`,
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30"></div>
@@ -174,7 +177,7 @@ const TripDetails = () => {
             <div className="flex items-center gap-2 md:justify-end">
               <span className="font-medium w-28 text-right">💰 Budget:</span>
               <span className="bg-gray-100 px-3 py-1 rounded-full">
-                LKR {tripPlan.trip.budget}
+                {currency} {convert(tripPlan.trip.budget)}
               </span>
             </div>
           </div>
@@ -277,7 +280,8 @@ const TripDetails = () => {
                   {tripPlan.accommodation.tier}
                 </span>
                 <span className="px-3 py-1 rounded-full bg-orange-100 text-orange-800 font-medium">
-                  LKR {tripPlan.accommodation.price_per_night_per_person} /
+                  {currency}{" "}
+                  {convert(tripPlan.accommodation.price_per_night_per_person)} /
                   night / person
                 </span>
               </div>
@@ -387,7 +391,7 @@ const TripDetails = () => {
               <li key={key} className="py-3 flex justify-between">
                 <span className="font-medium">{labelMap[key]}</span>
                 <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 font-semibold">
-                  LKR {tripPlan.cost_breakdown[key]}
+                  {currency} {convert(tripPlan.cost_breakdown[key])}
                 </span>
               </li>
             ))}

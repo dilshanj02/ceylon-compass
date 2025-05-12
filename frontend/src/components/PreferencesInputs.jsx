@@ -9,6 +9,7 @@ const PreferencesInputs = ({
   validationErrors,
   setValidationErrors,
   serializerErrors,
+  currency,
 }) => {
   return (
     <div className="max-w-3xl mx-auto">
@@ -32,6 +33,7 @@ const PreferencesInputs = ({
               setFormData((prev) => ({ ...prev, accommodationTier: value }))
             }
             validationErrors={validationErrors}
+            serializerErrors={serializerErrors}
           />
         </div>
 
@@ -51,6 +53,7 @@ const PreferencesInputs = ({
           validationErrors={validationErrors}
           setValidationErrors={setValidationErrors}
           serializerErrors={serializerErrors}
+          currency={currency}
         />
       </div>
     </div>

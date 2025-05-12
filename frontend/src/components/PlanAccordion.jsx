@@ -5,6 +5,9 @@ import ProgressIndicator from "./ProgressIndicator";
 import PreferencesInputs from "./PreferencesInputs";
 import axios from "../utils/useAxios";
 
+import { useContext } from "react";
+import CurrencyContext from "../context/CurrencyContext";
+
 const PlanAccordion = () => {
   const navigate = useNavigate();
 
@@ -20,50 +23,37 @@ const PlanAccordion = () => {
     accommodationType: "",
     accommodationTier: "",
   });
-  const [validationErrors, setValidationErrors] = useState({}); // Frontend validation
-  const [serializerErrors, setSerializerErrors] = useState({}); // Backend validation
+
+  const [validationErrors, setValidationErrors] = useState({});
+  const [serializerErrors, setSerializerErrors] = useState({});
+
+  const { currency, setCurrency, convert, rates } = useContext(CurrencyContext);
 
   const mapFormData = (formData) => {
     return {
-      destination: formData.destination,
-      theme: formData.theme,
+      ...formData,
       check_in: formData.checkIn,
       check_out: formData.checkOut,
       accommodation_type: formData.accommodationType,
       accommodation_tier: formData.accommodationTier,
-      transport: formData.transport,
-      travelers: formData.travelers,
-      budget: formData.budget,
+      currency: currency,
     };
   };
 
   const handleNext = () => {
     if (activeStep === 1) {
       let errors = {};
-
-      if (!formData.destination) {
-        errors.destination = "Destination is required";
-      }
-      if (!formData.theme) {
-        errors.theme = "Theme is required";
-      }
-      if (formData.checkIn.trim() === "") {
-        errors.checkIn = "Check-in date is required";
-      }
-      if (formData.checkOut.trim() === "") {
-        errors.checkOut = "Check-out date is required";
-      }
+      if (!formData.destination) errors.destination = "Destination is required";
+      if (!formData.theme) errors.theme = "Theme is required";
+      if (!formData.checkIn) errors.checkIn = "Check-in is required";
+      if (!formData.checkOut) errors.checkOut = "Check-out is required";
 
       if (formData.checkIn && formData.checkOut) {
-        const checkInDate = new Date(formData.checkIn);
-        const checkOutDate = new Date(formData.checkOut);
-
-        const duration = (checkOutDate - checkInDate) / (1000 * 3600 * 24);
-
-        // Max trip days is 5
-        if (duration > 5) {
-          errors.duration = "Trip duration cannot be greater than 5 days";
-        }
+        const duration =
+          (new Date(formData.checkOut) - new Date(formData.checkIn)) /
+          (1000 * 3600 * 24);
+        if (duration > 5)
+          errors.duration = "Trip duration cannot exceed 5 days";
       }
 
       if (Object.keys(errors).length > 0) {
@@ -72,7 +62,7 @@ const PlanAccordion = () => {
       }
     }
 
-    setValidationErrors(""); // Clear error if valid
+    setValidationErrors("");
     setActiveStep((prev) => prev + 1);
   };
 
@@ -84,19 +74,12 @@ const PlanAccordion = () => {
   const handleReview = () => {
     if (activeStep === 2) {
       let errors = {};
-
-      if (formData.transport.trim() === "") {
-        errors.transport = "Transport is required";
-      }
-      if (formData.accommodationType.trim() === "") {
-        errors.accommodationType = "Accomodation type is required";
-      }
-      if (formData.accommodationTier.trim() === "") {
-        errors.accommodationTier = "Accomodation tier is required";
-      }
-      if (formData.budget.trim() === "") {
-        errors.budget = "Budget is required";
-      }
+      if (!formData.transport) errors.transport = "Transport is required";
+      if (!formData.accommodationType)
+        errors.accommodationType = "Accommodation type is required";
+      if (!formData.accommodationTier)
+        errors.accommodationTier = "Accommodation tier is required";
+      if (!formData.budget) errors.budget = "Budget is required";
 
       if (Object.keys(errors).length > 0) {
         setValidationErrors(errors);
@@ -104,54 +87,43 @@ const PlanAccordion = () => {
       }
     }
 
-    const payload = mapFormData(formData);
+    // Clone and convert budget before sending to API
+    const payload = {
+      ...mapFormData(formData),
+      budget: parseFloat(formData.budget) / rates[currency],
+    };
 
     axios
       .post("/api/trips/validate/", payload)
-      .then((response) => {
-        if (response.status === 200) {
-          console.log(response.data);
-
-          setSerializerErrors(""); // Clear error if valid
-          setActiveStep((prev) => prev + 1);
-        }
+      .then(() => {
+        setSerializerErrors("");
+        setActiveStep((prev) => prev + 1);
       })
       .catch((error) => {
-        if (error.response && error.response.status === 400) {
-          console.log("Validation error:", error.response.data);
+        if (error.response?.status === 400) {
           setSerializerErrors(error.response.data);
         } else {
-          console.error("Unexpected error:", error.message);
+          console.error(error);
         }
       });
   };
 
   const handleSubmit = () => {
-    const payload = mapFormData(formData);
+    const payload = {
+      ...mapFormData(formData),
+      budget: parseFloat(formData.budget) / rates[currency],
+    };
 
     axios
       .post("/api/trips/", payload)
-      .then((response) => {
-        if (response.status === 201) {
-          console.log(response.data);
-          const trip_id = response.data.trip_details.id;
-
-          axios
-            .post("/api/plans/", { trip_id: trip_id })
-            .then((response) => {
-              if (response.status === 201) {
-                console.log(response.data);
-                navigate(`/trips/${response.data.trip_plan.id}`);
-              }
-            })
-            .catch((error) => {
-              console.log(error.response);
-            });
-        }
+      .then((res) => {
+        const trip_id = res.data.trip_details.id;
+        return axios.post("/api/plans/", { trip_id });
       })
-      .catch((error) => {
-        console.log(error.response);
-      });
+      .then((res) => {
+        navigate(`/trips/${res.data.trip_plan.id}`);
+      })
+      .catch((error) => console.log(error.response));
   };
 
   return (
@@ -209,6 +181,7 @@ const PlanAccordion = () => {
               validationErrors={validationErrors}
               setValidationErrors={setValidationErrors}
               serializerErrors={serializerErrors}
+              currency={currency}
             />
           )}
 
@@ -284,7 +257,9 @@ const PlanAccordion = () => {
 
             <div className="p-4 border rounded-lg shadow-sm">
               <p className="text-gray-500 text-sm">Budget</p>
-              <p className="font-semibold">{formData.budget} LKR</p>
+              <p className="font-semibold">
+                {formData.budget} {currency}
+              </p>
             </div>
           </div>
 

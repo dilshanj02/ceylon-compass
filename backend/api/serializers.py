@@ -185,7 +185,7 @@ class TripSerializer(serializers.ModelSerializer):
             min_required_budget = transport_cost + accommodation_cost + food_cost + misc_cost
 
             if budget < min_required_budget:
-                errors["budget"] = f"Minimum required budget is LKR {min_required_budget:.2f}."
+                errors["budget"] = f"{min_required_budget:.2f}"
 
         if errors:
             raise serializers.ValidationError(errors)

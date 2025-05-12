@@ -6,6 +6,7 @@ const AccommodationInput = ({
   accommodationTier,
   setAccommodationTier,
   validationErrors,
+  serializerErrors,
 }) => {
   useEffect(() => {
     if (!accommodationType) {
@@ -57,6 +58,11 @@ const AccommodationInput = ({
         {validationErrors.accommodation_tier && (
           <p className="text-red-500 text-xs mt-1 pl-4">
             Please select a valid accommodation tier
+          </p>
+        )}
+        {serializerErrors.accommodation && (
+          <p className="text-red-500 text-xs mt-1 pl-4">
+            {serializerErrors.accommodation}
           </p>
         )}
       </fieldset>
